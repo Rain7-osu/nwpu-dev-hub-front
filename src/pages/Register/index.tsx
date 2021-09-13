@@ -9,6 +9,9 @@ import { fetchRegister } from '../../api/fetchRegister';
 import { fetchEmailCode } from '../../api/fetchEmailCode';
 import { fetchCheckEmail } from '../../api/fetchCheckEmail';
 import { modal } from '../../components/Modal';
+import { Select } from 'antd';
+
+import './style.css';
 
 export enum Gender {
   NONE= -1,
@@ -30,7 +33,7 @@ export function Register() {
   const [nameErr, setNameErr] = useState<string>('');
   const [genderSelectedIndex, setGenderSelectedIndex] = useState<Gender>(-1);
   const [genderErr, setGenderErr] = useState<string>('');
-  const [school, setSchool] = useState<string>('');
+  const [school, setSchool] = useState<string>('软件学院');
   const [schoolErr, setSchoolErr] = useState<string>('');
   const [grade, setGrade] = useState<string>('');
   const [gradeErr, setGradeErr] = useState<string>('');
@@ -151,8 +154,8 @@ export function Register() {
     setGenderSelectedIndex(1);
   }, [setGenderSelectedIndex]);
 
-  const handleInputSchool = useCallback((e: BaseSyntheticEvent) => {
-    setSchool(e.target.value);
+  const handleInputSchool = useCallback((value) => {
+    setSchool(value);
   }, [setSchool]);
 
   const handleInputGrade = useCallback((e: BaseSyntheticEvent) => {
@@ -384,8 +387,8 @@ export function Register() {
   return (
     <RegisterContainer>
       <div className="top-title"><span>Dev Hub 报名表</span></div>
-      <FormContainer>
-        <FormRow>
+      <FormContainer className="form-container">
+        <FormRow className="aspect-fit">
           <Input
             label="姓名"
             placeholder="请输入姓名"
@@ -396,15 +399,36 @@ export function Register() {
           />
           <Input label="性别" required render={renderGenderInput} errMsg={genderErr} />
         </FormRow>
-        <FormRow>
-          <Input
-            label="学院"
-            placeholder="请输入学院"
-            required
-            value={school}
-            errMsg={schoolErr}
-            onInput={handleInputSchool}
-          />
+        <FormRow className="aspect-fit">
+          <Select defaultValue="软件学院" value={school} onChange={handleInputSchool}>
+            <Select.Option value="航空学院">航空学院</Select.Option>
+            <Select.Option value="航天学院">航天学院</Select.Option>
+            <Select.Option value="航海学院">航海学院</Select.Option>
+            <Select.Option value="材料学院">材料学院</Select.Option>
+            <Select.Option value="机电学院">机电学院</Select.Option>
+            <Select.Option value="力学与土木建筑学院">力学与土木建筑学院</Select.Option>
+            <Select.Option value="动力与能源学院">动力与能源学院</Select.Option>
+            <Select.Option value="电子信息学院">电子信息学院</Select.Option>
+            <Select.Option value="自动化学院">自动化学院</Select.Option>
+            <Select.Option value="计算机学院">计算机学院</Select.Option>
+            <Select.Option value="数学与统计学院">数学与统计学院</Select.Option>
+            <Select.Option value="物理科学与技术学院">物理科学与技术学院</Select.Option>
+            <Select.Option value="化学与化工学院">化学与化工学院</Select.Option>
+            <Select.Option value="管理学院">管理学院</Select.Option>
+            <Select.Option value="公共政策与管理学院">公共政策与管理学院</Select.Option>
+            <Select.Option value="软件学院">软件学院</Select.Option>
+            <Select.Option value="生命学院">生命学院</Select.Option>
+            <Select.Option value="外国语学院">外国语学院</Select.Option>
+            <Select.Option value="教育实验学院">教育实验学院</Select.Option>
+            <Select.Option value="国际教育学院">国际教育学院</Select.Option>
+            <Select.Option value="国家保密学院">国家保密学院</Select.Option>
+            <Select.Option value="马克思主义学院">马克思主义学院</Select.Option>
+            <Select.Option value="西北工业大学伦敦玛丽女王大学工程学院">西北工业大学伦敦玛丽女王大学工程学院</Select.Option>
+            <Select.Option value="微电子学院">微电子学院</Select.Option>
+            <Select.Option value="网络空间安全学院">网络空间安全学院</Select.Option>
+            <Select.Option value="民航学院">民航学院</Select.Option>
+            <Select.Option value="生态环境学院">生态环境学院</Select.Option>
+          </Select>
           <Input
             label={
               <>
@@ -427,7 +451,7 @@ export function Register() {
           />
         </FormRow>
         <FormRow><FormRowTitle>联系方式</FormRowTitle></FormRow>
-        <FormRow>
+        <FormRow className="aspect-fit">
           <Input
             label="qq"
             value={qq}
@@ -440,7 +464,7 @@ export function Register() {
             onInput={handleInputWechat}
           />
         </FormRow>
-        <FormRow>
+        <FormRow className="aspect-fit">
           <Input
             label="邮箱"
             required

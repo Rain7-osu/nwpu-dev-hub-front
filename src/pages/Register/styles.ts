@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const RegisterContainer = styled.div`
   margin: 50px auto;
   max-width: 1080px;
-  min-width: 720px;
   
   .top-title {
     padding-left: 4px;
@@ -26,16 +25,11 @@ export const FormContainer = styled.div`
 
 export const FormRow = styled.div<{ align?: string }>`
   display: flex;
-  flex-direction: row;
   justify-content: ${props => props.align || 'space-between'};
   align-items: center;
   
   > div {
     flex: 1;
-
-    :not(:last-child) {
-      margin-right: 100px;
-    }
   }
   
   .send-code {
