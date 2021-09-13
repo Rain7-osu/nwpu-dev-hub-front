@@ -14,8 +14,23 @@ export interface InputProps {
   onBlur?: (e: BaseSyntheticEvent) => void;
 }
 
-export function Input(props: InputProps) {
-  const { onInput, label, required, errMsg, value, placeholder, render, labelPlacement = 'top', onBlur } = props;
+/**
+ * 原来的名称是 Input 后期将改版为纯 FormItem // TODO
+ * @param props
+ * @constructor
+ */
+export function FormItem(props: InputProps) {
+  const {
+    onInput,
+    label,
+    required,
+    errMsg,
+    value,
+    placeholder,
+    render,
+    labelPlacement = 'top',
+    onBlur,
+  } = props;
 
   const base =
     typeof render === 'function'
