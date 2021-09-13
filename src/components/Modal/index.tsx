@@ -8,10 +8,11 @@ export interface ModalProps {
   onClose: () => void;
   content?: ReactNode;
   title?: ReactNode;
+  mask?: boolean;
 }
 
 function Modal(props: ModalProps) {
-  const { onClose, content, title } = props;
+  const { onClose, content, title, mask = true } = props;
 
   const handleClickContent = (e: any) => {
     e.stopPropagation();
@@ -22,7 +23,7 @@ function Modal(props: ModalProps) {
   };
 
   return (
-    <ModalContainer onClick={handleClickContainer}>
+    <ModalContainer mask={mask} onClick={handleClickContainer}>
       <ModalContent onClick={handleClickContent}>
         <ModalTitle>
           {title}

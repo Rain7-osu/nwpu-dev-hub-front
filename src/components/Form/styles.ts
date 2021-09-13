@@ -54,13 +54,20 @@ export const BaseTextareaContainer = styled.div`
     line-height: 32px;
     padding: 20px;
     resize: none;
-    height: 200px;
     width: 100%;
     box-sizing: border-box;
     font-size: 18px;
-    font-family: -apple-system, "Microsoft YaHei UI" ,BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: -apple-system, "Microsoft YaHei UI", BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    ${baseInput}
+    ${baseInput};
+  
+    @media screen and (max-width: 480px) {
+        height: 400px;
+    }
+  
+    @media screen and (max-width: 480px) {
+        height: 400px;
+    }
   }
-`;
+}`;
