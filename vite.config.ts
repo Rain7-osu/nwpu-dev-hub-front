@@ -13,4 +13,7 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: '../devhub-proxy/dist',
+  },
 });
