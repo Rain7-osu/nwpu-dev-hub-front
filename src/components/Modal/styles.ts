@@ -52,6 +52,13 @@ export const ModalBottom = styled.div`
 
 export const ModalMain = styled.div`
   padding: 10px;
-  min-width: 420px;
   min-height: 120px;
+
+  @media screen and (min-width: 480px) {
+    min-width: 420px;
+  }
+
+  @media screen and (min-width: 480px) {
+    width: 100%;
+  }
 `;
