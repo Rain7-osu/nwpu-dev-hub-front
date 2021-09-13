@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalContainer = styled.div`
+export const ModalContainer = styled.div<{ mask: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -9,6 +9,7 @@ export const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  ${props => props.mask && 'background: #00000073'};
 `;
 
 export const ModalContent = styled.div`
@@ -52,6 +53,13 @@ export const ModalBottom = styled.div`
 
 export const ModalMain = styled.div`
   padding: 10px;
-  min-width: 420px;
   min-height: 120px;
+
+  @media screen and (min-width: 480px) {
+    min-width: 420px;
+  }
+
+  @media screen and (min-width: 480px) {
+    width: 100%;
+  }
 `;
