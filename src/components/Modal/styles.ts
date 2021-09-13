@@ -9,7 +9,7 @@ export const ModalContainer = styled.div<{ mask: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${props => props.mask && 'background: #00000073'};
+  ${props => props.mask ? 'background: #00000073;' : ''}
 `;
 
 export const ModalContent = styled.div`
@@ -32,6 +32,8 @@ export const ModalContent = styled.div`
       cursor: pointer;
     }
   }
+  
+  width: 100vw;
 `;
 
 export const ModalTitle = styled.div`
@@ -59,7 +61,7 @@ export const ModalMain = styled.div`
     min-width: 420px;
   }
 
-  @media screen and (min-width: 480px) {
-    width: 100%;
+  @media screen and (max-width: 480px) {
+    width: calc(100% - 20px);
   }
 `;

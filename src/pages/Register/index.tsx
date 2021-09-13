@@ -1,4 +1,4 @@
-import React, { BaseSyntheticEvent, memo, useCallback, useState } from 'react';
+import React, { BaseSyntheticEvent, memo, useCallback, useMemo, useState } from 'react';
 import { RegisterContainer, FormContainer, FormRow, GenderContainer, IntentionGroup, FormRowTitle, ErrorText } from './styles';
 import { FormItem } from '../../components/Form';
 import { Icon } from '../../components/Icon';
@@ -8,7 +8,7 @@ import { Button } from '../../components/Button';
 import { fetchRegister } from '../../api/fetchRegister';
 import { fetchEmailCode } from '../../api/fetchEmailCode';
 import { fetchCheckEmail } from '../../api/fetchCheckEmail';
-import { modal } from '../../components/Modal';
+import { Modal, modal } from '../../components/Modal';
 
 import './style.css';
 import { SchoolSelector } from './SchoolSelector';
@@ -64,6 +64,8 @@ const IntentionItem = (props: IntentionItemProps) => {
     </div>
   );
 };
+
+let firstErr = true;
 
 export const Register = memo(() => {
   const [name, setName] = useState<string>('');
@@ -279,23 +281,20 @@ export const Register = memo(() => {
     });
   }, [email, validateEmail]);
 
-  const handleShowModal = useCallback(() => {
-    modal.show({
-      title: '错误',
-      content: (
-        <>
-          {nameErr && <ErrorText>{nameErr}</ErrorText>}
-          {genderErr && <ErrorText>{genderErr}</ErrorText>}
-          {schoolErr && <ErrorText>{schoolErr}</ErrorText>}
-          {gradeErr && <ErrorText>{gradeErr}</ErrorText>}
-          {intentionGroupErr && <ErrorText>{intentionGroupErr}</ErrorText>}
-          {qqErr && <ErrorText>{qqErr}</ErrorText>}
-          {wechatErr && <ErrorText>{wechatErr}</ErrorText>}
-          {emailErr && <ErrorText>{emailErr}</ErrorText>}
-          {codeErr && <ErrorText>{codeErr}</ErrorText>}
-        </>
-      ),
-    });
+  const errModal = useMemo(() => {
+    return (
+      <>
+        {nameErr && <ErrorText>{nameErr}</ErrorText>}
+        {genderErr && <ErrorText>{genderErr}</ErrorText>}
+        {schoolErr && <ErrorText>{schoolErr}</ErrorText>}
+        {gradeErr && <ErrorText>{gradeErr}</ErrorText>}
+        {intentionGroupErr && <ErrorText>{intentionGroupErr}</ErrorText>}
+        {qqErr && <ErrorText>{qqErr}</ErrorText>}
+        {wechatErr && <ErrorText>{wechatErr}</ErrorText>}
+        {emailErr && <ErrorText>{emailErr}</ErrorText>}
+        {codeErr && <ErrorText>{codeErr}</ErrorText>}
+      </>
+    );
   }, [
     nameErr,
     genderErr,
@@ -320,7 +319,11 @@ export const Register = memo(() => {
     validate = validateEmail() && validate;
     validate = validateCode() && validate;
     if (!validate) {
-      handleShowModal();
+      modal.show({
+        title: '错误',
+        content: firstErr ? '请检查信息是否正确填写！' : errModal,
+      });
+      firstErr = false;
       return;
     }
 
@@ -352,7 +355,7 @@ export const Register = memo(() => {
       });
     });
   }, [
-    handleShowModal,
+    errModal,
     validateName,
     validateGender,
     validateSchool,

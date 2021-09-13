@@ -1,18 +1,18 @@
-import React, { ReactNode } from 'react';
+import React, { memo, ReactNode, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { ModalBottom, ModalContainer, ModalContent, ModalMain, ModalTitle } from './styles';
 import { Button } from '../Button';
 
 
-export interface ModalProps {
+export interface BaseModalProps {
   onClose: () => void;
   content?: ReactNode;
   title?: ReactNode;
   mask?: boolean;
 }
 
-function Modal(props: ModalProps) {
-  const { onClose, content, title, mask = true } = props;
+function BaseModal(props: BaseModalProps) {
+  const { onClose, content, title, mask } = props;
 
   const handleClickContent = (e: any) => {
     e.stopPropagation();
@@ -23,7 +23,7 @@ function Modal(props: ModalProps) {
   };
 
   return (
-    <ModalContainer mask={mask} onClick={handleClickContainer}>
+    <ModalContainer mask={mask || true} onClick={handleClickContainer}>
       <ModalContent onClick={handleClickContent}>
         <ModalTitle>
           {title}
@@ -56,7 +56,7 @@ export const modal = {
       element.remove();
     };
     ReactDOM.render(
-      <Modal
+      <BaseModal
         onClose={handleClose}
         {...props}
       />,
@@ -64,3 +64,24 @@ export const modal = {
     );
   },
 };
+
+export interface ModalProps extends OpenParams {
+  visible: boolean;
+}
+
+export const Modal = memo((props: ModalProps) => {
+  const { title, content, visible, onClose } = props;
+  useEffect(() => {
+    if (!visible) {
+      return;
+    }
+    modal.show({
+      title,
+      content,
+      onClose,
+    });
+  }, [content, onClose, title, visible]);
+  return null;
+});
+
+Modal.displayName = 'Modal';
