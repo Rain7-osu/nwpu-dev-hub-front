@@ -1,4 +1,4 @@
-import React, { BaseSyntheticEvent, useCallback, useState } from 'react';
+import React, { BaseSyntheticEvent, memo, useCallback, useState } from 'react';
 import { RegisterContainer, FormContainer, FormRow, GenderContainer, IntentionGroup, FormRowTitle, ErrorText } from './styles';
 import { FormItem } from '../../components/Form';
 import { Icon } from '../../components/Icon';
@@ -65,7 +65,7 @@ const IntentionItem = (props: IntentionItemProps) => {
   );
 };
 
-export function Register() {
+export const Register = memo(() => {
   const [name, setName] = useState<string>('');
   const [nameErr, setNameErr] = useState<string>('');
   const [genderSelectedIndex, setGenderSelectedIndex] = useState<Gender>(-1);
@@ -450,7 +450,6 @@ export function Register() {
             errMsg={intentionGroupErr}
           />
         </FormRow>
-        <FormRow><FormRowTitle>联系方式</FormRowTitle></FormRow>
         <FormRow className="aspect-fit">
           <FormItem
             label="qq"
@@ -473,23 +472,29 @@ export function Register() {
             onBlur={handleCheckEmail}
             errMsg={emailErr}
           />
-          <div className="send-code">
-            <Button
-              style={{ width: 160 }}
-              extClass="btn"
-              disabled={disableCode}
-              onClick={handleSendCode}
-            >
-              { disableCode? `${codeRemainTime}s 后再次发送` : '发送验证码'}
-            </Button>
-            <FormItem
-              label="邮箱验证码"
-              required
-              value={code}
-              onInput={handleInputCode}
-              errMsg={codeErr}
-            />
-          </div>
+          <FormItem
+            render={() => {
+              return (
+                <div className="send-code">
+                  <Button
+                    style={{ width: 120 }}
+                    extClass="btn"
+                    disabled={disableCode}
+                    onClick={handleSendCode}
+                  >
+                    { disableCode? `${codeRemainTime}s 后再次发送` : '发送验证码'}
+                  </Button>
+                  <FormItem
+                    label="邮箱验证码"
+                    required
+                    value={code}
+                    onInput={handleInputCode}
+                    errMsg={codeErr}
+                  />
+                </div>
+              );
+            }}
+          />
         </FormRow>
         <FormRow>
           <FormItem
@@ -523,4 +528,6 @@ export function Register() {
       </FormContainer>
     </RegisterContainer>
   );
-}
+});
+
+Register.displayName = 'Register';

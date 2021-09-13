@@ -2,7 +2,13 @@ import styled from 'styled-components';
 import { baseInput } from '../../styles';
 
 export const Container = styled.div`
-  margin: 40px;
+  @media screen and (min-width: 720px) {
+    margin: 0 40px;
+  }
+
+  @media screen and (max-width: 720px) {
+    margin: 0 15px;
+  }
   
   .single-line-wrapper {
     display: flex;

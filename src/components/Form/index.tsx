@@ -20,7 +20,17 @@ export interface InputProps {
  * @constructor
  */
 export function FormItem(props: InputProps) {
-  const { onInput, label, required, errMsg, value, placeholder, render, labelPlacement = 'top', onBlur } = props;
+  const {
+    onInput,
+    label,
+    required,
+    errMsg,
+    value,
+    placeholder,
+    render,
+    labelPlacement = 'top',
+    onBlur,
+  } = props;
 
   const base =
     typeof render === 'function'

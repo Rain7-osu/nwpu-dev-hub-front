@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Selector } from '../../../components/Selector';
 
 const options = [
@@ -35,7 +35,7 @@ interface SchoolSelectorProps {
   onChange: (index: number, value: string) => void;
 }
 
-export function SchoolSelector(props: SchoolSelectorProps) {
+export const SchoolSelector = memo((props: SchoolSelectorProps) => {
   return (
     <Selector
       defaultValue="请选择学院"
@@ -43,4 +43,6 @@ export function SchoolSelector(props: SchoolSelectorProps) {
       onChange={props.onChange}
     />
   );
-}
+});
+
+SchoolSelector.displayName = 'SchoolSelector';
