@@ -1,22 +1,22 @@
 import React, { BaseSyntheticEvent, useCallback, useState } from 'react';
 import { RegisterContainer, FormContainer, FormRow, GenderContainer, IntentionGroup, FormRowTitle, ErrorText } from './styles';
-import { Input } from '../../components/Input';
+import { FormItem } from '../../components/Form';
 import { Icon } from '../../components/Icon';
 import cls from 'classnames';
-import { BaseTextarea } from '../../components/Input/BaseTextarea';
+import { BaseTextarea } from '../../components/Form/BaseTextarea';
 import { Button } from '../../components/Button';
 import { fetchRegister } from '../../api/fetchRegister';
 import { fetchEmailCode } from '../../api/fetchEmailCode';
 import { fetchCheckEmail } from '../../api/fetchCheckEmail';
 import { modal } from '../../components/Modal';
-import { Select } from 'antd';
 
 import './style.css';
+import { SchoolSelector } from './SchoolSelector';
 
 export enum Gender {
   NONE= -1,
   MAN = 0,
-  WOMAN = 1, 
+  WOMAN = 1,
 }
 
 export enum Intention {
@@ -27,6 +27,43 @@ export enum Intention {
   UI = 3,
   OPERATE = 4,
 }
+
+export enum Qualification {
+  NONE = -1,
+  /**
+   * 本科
+   */
+  UNDERGRADUATE = 0,
+  /**
+   * 硕士
+   */
+  MASTER = 1,
+  /**
+   * 博士
+   */
+  DOCTOR = 2,
+}
+
+interface IntentionItemProps {
+  chosen: boolean;
+  type: Intention;
+  icon: string;
+}
+
+const groupIconProps = {
+  width: 80,
+  height: 80,
+};
+
+const IntentionItem = (props: IntentionItemProps) => {
+  const { chosen, type, icon } = props;
+
+  return (
+    <div className={cls('intention-wrapper', { 'chosen': chosen })} data-index={type}>
+      <Icon {...groupIconProps} type={icon} />
+    </div>
+  );
+};
 
 export function Register() {
   const [name, setName] = useState<string>('');
@@ -51,7 +88,7 @@ export function Register() {
   const [codeErr, setCodeErr] = useState<string>('');
   const [disableCode, setDisableCode] = useState<boolean>(false);
   const [codeRemainTime, setCodeRemainTime] = useState<number>(60);
-  
+
   const validateCode = useCallback((): boolean => {
     if (!/^[A-z0-9]{6}$/.test(code)) {
       setCodeErr('验证码不正确！');
@@ -61,7 +98,7 @@ export function Register() {
       return true;
     }
   }, [code]);
-  
+
   const validateName = useCallback((): boolean => {
     if (!/^[\u4E00-\u9FA5A-Za-z]+$/.test(name)) {
       setNameErr('请正确填写姓名！');
@@ -71,7 +108,7 @@ export function Register() {
       return true;
     }
   }, [name]);
-  
+
   const validateGender = useCallback((): boolean => {
     if (genderSelectedIndex === -1) {
       setGenderErr('请选择性别！');
@@ -147,16 +184,12 @@ export function Register() {
   }, [setName]);
 
   const handleSelectMan = useCallback(() => {
-    setGenderSelectedIndex(0);
+    setGenderSelectedIndex(Gender.MAN);
   }, [setGenderSelectedIndex]);
 
   const handleSelectWoman = useCallback(() => {
-    setGenderSelectedIndex(1);
+    setGenderSelectedIndex(Gender.WOMAN);
   }, [setGenderSelectedIndex]);
-
-  const handleInputSchool = useCallback((value) => {
-    setSchool(value);
-  }, [setSchool]);
 
   const handleInputGrade = useCallback((e: BaseSyntheticEvent) => {
     setGrade(e.target.value);
@@ -164,7 +197,7 @@ export function Register() {
 
   const handleChooseGroup = useCallback((e: BaseSyntheticEvent) => {
     const index = +e.target.parentNode.parentNode.dataset.index;
-    if (index > 4 || index < -1) {
+    if (index > Intention.OPERATE || index < Intention.NONE) {
       return;
     }
     setIntentionIndex(index as Intention);
@@ -199,7 +232,7 @@ export function Register() {
     const value = e.target.value;
     setCode(value);
   }, []);
-  
+
   const handleSendCode = useCallback(() => {
     if (!validateEmail()) {
       return;
@@ -234,7 +267,7 @@ export function Register() {
       });
     });
   }, [email, intentionIndex, name, validateEmail]);
-  
+
   const handleCheckEmail = useCallback(() => {
     if (!validateEmail()) {
       return;
@@ -292,11 +325,11 @@ export function Register() {
     }
 
     const sp = grade.split('级');
-    const qualification = ['本科', '硕士', '博士'].indexOf(sp[1]) as 0 | 1 | 2 | -1;
+    const qualification = ['本科', '硕士', '博士'].indexOf(sp[1]) as Qualification;
 
     fetchRegister({
       name,
-      gender: genderSelectedIndex === 0,
+      gender: genderSelectedIndex === Gender.MAN,
       department: school,
       grade: sp[0],
       qualification,
@@ -358,28 +391,20 @@ export function Register() {
   }, [handleSelectMan, handleSelectWoman, genderSelectedIndex]);
 
   const renderChooseGroup = useCallback(() => {
-    const groupIconProps = {
-      width: 80,
-      height: 80,
-    };
-    
+    const intentionsArr: IntentionItemProps[] = [
+      { icon: 'app_group', type: Intention.APP, chosen: intentionIndex === Intention.APP },
+      { icon: 'web_group', type: Intention.WEB, chosen: intentionIndex === Intention.WEB },
+      { icon: 'mini_group', type: Intention.MINI, chosen: intentionIndex === Intention.MINI },
+      { icon: 'ui_group', type: Intention.UI, chosen: intentionIndex === Intention.UI },
+      { icon: 'operate_group', type: Intention.OPERATE, chosen: intentionIndex === Intention.OPERATE },
+    ];
+
     return (
       <IntentionGroup onClick={handleChooseGroup}>
-        <div className={cls('intention-wrapper', { 'chosen': intentionIndex === 0 })} data-index={0}>
-          <Icon {...groupIconProps} type={'app_group'} />
-        </div>
-        <div className={cls('intention-wrapper', { 'chosen': intentionIndex === 1 })} data-index={1}>
-          <Icon {...groupIconProps} type={'web_group'} />
-        </div>
-        <div className={cls('intention-wrapper', { 'chosen': intentionIndex === 2 })} data-index={2}>
-          <Icon {...groupIconProps} type={'mini_group'} />
-        </div>
-        <div className={cls('intention-wrapper', { 'chosen': intentionIndex === 3 })} data-index={3}>
-          <Icon {...groupIconProps} type={'ui_group'} />
-        </div>
-        <div className={cls('intention-wrapper', { 'chosen': intentionIndex === 4 })} data-index={4}>
-          <Icon {...groupIconProps} type={'operate_group'} />
-        </div>
+        {intentionsArr.map((props: IntentionItemProps) => {
+          const { icon } = props;
+          return <IntentionItem key={icon} {...props} />;
+        })}
       </IntentionGroup>
     );
   }, [handleChooseGroup, intentionIndex]);
@@ -389,7 +414,7 @@ export function Register() {
       <div className="top-title"><span>Dev Hub 报名表</span></div>
       <FormContainer className="form-container">
         <FormRow className="aspect-fit">
-          <Input
+          <FormItem
             label="姓名"
             placeholder="请输入姓名"
             required
@@ -397,39 +422,14 @@ export function Register() {
             errMsg={nameErr}
             onInput={handleInputName}
           />
-          <Input label="性别" required render={renderGenderInput} errMsg={genderErr} />
+          <FormItem label="性别" required render={renderGenderInput} errMsg={genderErr} />
         </FormRow>
         <FormRow className="aspect-fit">
-          <Select defaultValue="软件学院" value={school} onChange={handleInputSchool}>
-            <Select.Option value="航空学院">航空学院</Select.Option>
-            <Select.Option value="航天学院">航天学院</Select.Option>
-            <Select.Option value="航海学院">航海学院</Select.Option>
-            <Select.Option value="材料学院">材料学院</Select.Option>
-            <Select.Option value="机电学院">机电学院</Select.Option>
-            <Select.Option value="力学与土木建筑学院">力学与土木建筑学院</Select.Option>
-            <Select.Option value="动力与能源学院">动力与能源学院</Select.Option>
-            <Select.Option value="电子信息学院">电子信息学院</Select.Option>
-            <Select.Option value="自动化学院">自动化学院</Select.Option>
-            <Select.Option value="计算机学院">计算机学院</Select.Option>
-            <Select.Option value="数学与统计学院">数学与统计学院</Select.Option>
-            <Select.Option value="物理科学与技术学院">物理科学与技术学院</Select.Option>
-            <Select.Option value="化学与化工学院">化学与化工学院</Select.Option>
-            <Select.Option value="管理学院">管理学院</Select.Option>
-            <Select.Option value="公共政策与管理学院">公共政策与管理学院</Select.Option>
-            <Select.Option value="软件学院">软件学院</Select.Option>
-            <Select.Option value="生命学院">生命学院</Select.Option>
-            <Select.Option value="外国语学院">外国语学院</Select.Option>
-            <Select.Option value="教育实验学院">教育实验学院</Select.Option>
-            <Select.Option value="国际教育学院">国际教育学院</Select.Option>
-            <Select.Option value="国家保密学院">国家保密学院</Select.Option>
-            <Select.Option value="马克思主义学院">马克思主义学院</Select.Option>
-            <Select.Option value="西北工业大学伦敦玛丽女王大学工程学院">西北工业大学伦敦玛丽女王大学工程学院</Select.Option>
-            <Select.Option value="微电子学院">微电子学院</Select.Option>
-            <Select.Option value="网络空间安全学院">网络空间安全学院</Select.Option>
-            <Select.Option value="民航学院">民航学院</Select.Option>
-            <Select.Option value="生态环境学院">生态环境学院</Select.Option>
-          </Select>
-          <Input
+          <FormItem
+            label="学院"
+            render={() => <SchoolSelector onChange={(index, value) => setSchool(value)} />}
+          />
+          <FormItem
             label={
               <>
                 年级  <span style={{ color: 'gray' }}>如：2018级本科、2020级硕士、2019级博士</span>
@@ -443,7 +443,7 @@ export function Register() {
           />
         </FormRow>
         <FormRow>
-          <Input
+          <FormItem
             label="意向组别"
             required
             render={renderChooseGroup}
@@ -452,20 +452,20 @@ export function Register() {
         </FormRow>
         <FormRow><FormRowTitle>联系方式</FormRowTitle></FormRow>
         <FormRow className="aspect-fit">
-          <Input
+          <FormItem
             label="qq"
             value={qq}
             onInput={handleInputQq}
             errMsg={qqErr}
           />
-          <Input
+          <FormItem
             label="微信"
             value={wechat}
             onInput={handleInputWechat}
           />
         </FormRow>
         <FormRow className="aspect-fit">
-          <Input
+          <FormItem
             label="邮箱"
             required
             value={email}
@@ -482,7 +482,7 @@ export function Register() {
             >
               { disableCode? `${codeRemainTime}s 后再次发送` : '发送验证码'}
             </Button>
-            <Input
+            <FormItem
               label="邮箱验证码"
               required
               value={code}
@@ -492,7 +492,7 @@ export function Register() {
           </div>
         </FormRow>
         <FormRow>
-          <Input
+          <FormItem
             label="个人经历"
             render={() => {
               return (
@@ -502,7 +502,7 @@ export function Register() {
           />
         </FormRow>
         <FormRow>
-          <Input
+          <FormItem
             label="其他说明"
             render={() => {
               return (

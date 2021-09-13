@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import { baseInput } from '../../styles';
 
 export const Container = styled.div`
+  margin: 40px;
+  
   .single-line-wrapper {
     display: flex;
     flex-direction: row;
@@ -29,21 +32,14 @@ export const RequiredTag = styled.span`
 `;
 
 export const InputContainer = styled.div`
+  flex: 1;
+  
   input {
-    outline: 1px solid deepskyblue;
-    border: none;
     padding: 12px;
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
-
-    &:hover, &:focus {
-      outline: 1px solid #F48617;
-    }
-    
-    &.error {
-      outline: 1px solid red;
-    }
+    ${baseInput}
   }
 `;
 
@@ -53,17 +49,12 @@ export const BaseTextareaContainer = styled.div`
     padding: 20px;
     resize: none;
     height: 200px;
-    outline: 1px solid deepskyblue;
-    border: none;
     width: 100%;
     box-sizing: border-box;
     font-size: 18px;
     font-family: -apple-system, "Microsoft YaHei UI" ,BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    
-    &:hover, &:focus {
-      outline: 1px solid #F48617;
-    }
+    ${baseInput}
   }
 `;
