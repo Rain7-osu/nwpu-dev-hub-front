@@ -70,16 +70,17 @@ export const IntentionGroup = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  margin: 20px;
+  flex-wrap: wrap;
+  margin: 5px;
   
   .intention-wrapper {
-    padding: 10px;
+    padding: 3px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
     
     &.chosen {
-      border: 4px solid #F48617;
-      margin-top: -2px;
-      margin-left: -2px;
-      -webkit-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;
+      background-color: #F48617;
     }
     
     &:hover {
