@@ -4,9 +4,13 @@ git pull --rebase
 
 echo 'pull master...'
 
+npm run reinstall
+
+echo 'install dependencies...'
+
 npm run build
 
-echo 'building..'
+echo 'building...'
 
 pm2 stop  www
 
