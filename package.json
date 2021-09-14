@@ -5,19 +5,24 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "reinstall": "rm -rf node_modules && npm i"
   },
   "dependencies": {
     "classnames": "^2.3.1",
     "qs": "^6.10.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-router": "^5.1.16",
+    "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.14",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
