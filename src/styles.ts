@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Page = styled.div`
-  padding: 20px;
+  padding-top: 60px;
 `;
 
 export const boxShadow = css`
@@ -52,4 +52,9 @@ export const baseInput = css`
   &.readonly:hover {
     cursor: pointer;
   }
+`;
+
+export const ContentWrapper = styled.section`
+  max-width: 1200px;
+  margin: 0 auto;
 `;

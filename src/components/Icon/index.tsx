@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './styles';
-import { iconMap } from '../../assets/imgs';
+import { iconMap } from '../../assets/imgs/icons';
 
 export interface IconProps {
   type: string;

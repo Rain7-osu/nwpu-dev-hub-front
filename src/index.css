@@ -12,3 +12,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --navigator_color: #fff;
+  --nav_box_shadow: 0 2px 8px #f0f1f2;
+  --box_shadow: 0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;
+  --hover_base: #e9e9e9;
+  --hover_base_dark: #a0a0a0;
+  --box_shadow_dark: 0 6px 16px -8px #bbb, 0 9px 28px #aaa, 0 12px 48px 16px #bbb;
+}
+
+*::selection {
+  background-color: #e9e9e9;
+}

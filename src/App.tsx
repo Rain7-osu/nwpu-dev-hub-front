@@ -1,13 +1,9 @@
 import React from 'react';
-import { Register } from './pages/Register';
-import { Page } from './styles';
+import { Entry } from './routes/Entry';
+import './index.css';
 
 function App() {
-  return (
-    <Page>
-      <Register />
-    </Page>
-  );
+  return <Entry />;
 }
 
 export default App;
