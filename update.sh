@@ -1,14 +1,14 @@
 #!/bin/bash
 
-git pull --rebase
+sudo git pull --rebase
 
 echo 'pull master...'
 
-npm run reinstall
+sudo npm run reinstall
 
 echo 'install dependencies...'
 
-npm run build
+sudo npm run build
 
 echo 'building...'
 
