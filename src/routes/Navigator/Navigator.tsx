@@ -20,11 +20,11 @@ const Links = () => {
 export const Navigator = () => {
   return (
     <Container>
-      <MobileNavigator />
+      <MobileNavigator/>
       <DefaultContainer className="default">
         <NavWrapper>
-          <DevhubLogo size="normal" />
-          <Links />
+          <DevhubLogo size="normal"/>
+          <Links/>
         </NavWrapper>
       </DefaultContainer>
     </Container>

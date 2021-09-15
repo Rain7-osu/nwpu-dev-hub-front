@@ -1,3 +1,8 @@
+* {
+  /* 解决手机端点击后背景变色问题 */
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, "Microsoft YaHei UI" ,BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -19,8 +24,21 @@ code {
   --hover_base: #e9e9e9;
   --hover_base_dark: #a0a0a0;
   --box_shadow_dark: 0 6px 16px -8px #bbb, 0 9px 28px #aaa, 0 12px 48px 16px #bbb;
+  --base_orange: #EB9228;
+
+  --base_gray_color: #707070;
+  --footer_bg: #F8F8F8;
 }
 
 *::selection {
   background-color: #e9e9e9;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:visited {
+  color: #000;
 }

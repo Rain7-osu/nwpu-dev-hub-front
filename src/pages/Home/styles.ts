@@ -7,6 +7,15 @@ export const HomeContainer = styled.div`
     justify-content: space-around;
     flex-wrap: wrap;
   }
+  
+  .last-pic {
+    width: 100%;
+    margin: 100px 0;
+    
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 export const SimpleIntroduction = styled.div`
@@ -46,41 +55,48 @@ export const HomeItemWrapper = styled(ContentWrapper)`
 `;
 
 export const ThreeCardContainer = styled.div<{ color: string }>`
-  margin: 20px;
   height: 525px;
   width: 360px;
   color: #fff;
-  background-color: ${props => props.color};
+  box-sizing: border-box;
+  padding: 10px;
   
-  &:hover {
-    cursor: pointer;
-    box-shadow: var(--box_shadow_dark);
-    transition: all .3s ease;
-  }
-  
-  .img {
-    width: 360px;
-    height: 304px;
-    background-size: contain;
+  .three-box {
+    width: 100%;
+    height: 100%;
+    background-color: ${props => props.color};
     box-sizing: border-box;
-    border: 1px solid #000;
-  }
-  
-  .main {
-    padding: 50px 20px 20px;
-  }
-  
-  .title {
-    margin-bottom: 10px;
-    font-size: 20px;
-  }
-  
-  .description {
-    font-size: 18px;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: var(--box_shadow_dark);
+      transition: all .3s ease;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      background-size: contain;
+      box-sizing: border-box;
+      border: 1px solid #000;
+    }
+
+    .main {
+      padding: 50px 20px 20px;
+    }
+
+    .title {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .description {
+      font-size: 18px;
+    }
   }
 `;
 
-export const HealthyWrapper = styled.section`
+export const PerfectMechanismWrapper = styled.section`
   background-color: #1B1F25;
   color: #fff;
   display: flex;
@@ -113,7 +129,16 @@ export const HealthyWrapper = styled.section`
       .picture {
         height: 300px;
         width: 400px;
-        background-color: skyblue;
+        overflow: hidden;
+        
+        img {
+          transition: all .3s ease;
+        }
+        
+        img:hover {
+          transform: scale(1.2);
+        }
+        
       }
     }
     
@@ -144,24 +169,28 @@ export const HealthyWrapper = styled.section`
     
     .right {
       flex-direction: column;
-      width: 100%;
-      padding: 20px;
+      padding: 40px;
 
       .picture {
-        width: 100%;
-        margin: 20px 0;
-        background-color: skyblue;
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+          width: 100%;
+        }
       }
     }
 
     .left {
-      padding-left: 64px;
-      width: 100%;
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-
+      padding-top: 75px;
+      
       .title {
         line-height: 64px;
         font-size: 32px;
@@ -172,5 +201,92 @@ export const HealthyWrapper = styled.section`
         font-size: 24px;
       }
     }
+  }
+`;
+
+export const JoinUsModuleWrapper = styled.section`
+  background-color: #fff;
+  
+  .img img {
+    width: 300px;
+  }
+  
+  .text-wrapper {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    padding-left: 80px;
+  }
+  
+  .text-box {
+    width: 300px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    letter-spacing: 0.3em;
+    
+    .title {
+      font-size: 24px;
+      font-weight: bolder;
+      padding: 20px 0;
+    }
+    
+    .subtitle {
+      font-size: 20px;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .join-link {
+      font-size: 18px;
+      padding: 5px 0;
+      margin: 35px 0;
+
+      display: flex;
+      flex-direction: row;
+      
+      .text {
+        display: block;
+        text-decoration: none;
+        color: var(--base_gray_color);
+        transition: color .3s ease;
+      }
+      
+      .text:hover {
+        color: deepskyblue;
+        cursor: pointer;
+      }
+      
+      .icon {
+        height: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+          height: 1em;
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width: 1080px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+
+    .text-wrapper {
+      margin-top: 100px;
+    }
+  } 
+  
+  @media screen and (min-width: 1080px) {
+    padding: 100px;
+    display: flex;
+    justify-content: center;
   }
 `;

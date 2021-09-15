@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Register } from '../pages/Register';
 import { Home } from '../pages/Home';
 import { Page } from '../styles';
+import { Footer } from './Footer';
 
 export const Layout = memo(() => {
   return (
@@ -13,6 +14,7 @@ export const Layout = memo(() => {
         <Route exact path="/" component={Home}/>
         <Route exact path="/register" component={Register}/>
       </Page>
+      <Footer />
     </BrowserRouter>
   );
 });

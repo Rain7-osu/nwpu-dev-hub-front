@@ -20,7 +20,7 @@ export const DropdownContainer = styled.div`
     top: 50px;
     max-height: 0;
     opacity: 0;
-    transition: all, opacity 0.3s ease;
+    transition: all 0.3s ease;
     background-color: #fff;
     overflow: auto;
     box-sizing: border-box;

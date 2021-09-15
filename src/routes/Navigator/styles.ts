@@ -11,47 +11,47 @@ export const Container = styled.div`
   left: 0;
   z-index: 9999;
   
-  @media screen and (max-width: 480px) {
-    .default {
-      display: none;
-    }
-    
+  @media screen and (max-width: 1080px) {
     .mobile {
       display: flex;
+    }
+    
+    .default {
+      display: none;
     }
   }
-  
-  @media screen and (min-width: 480px){
-    .default {
-      display: flex;
-    }
-    
+
+  @media screen and (min-width: 1080px) {
     .mobile {
       display: none;
+    }
+
+    .default {
+      display: flex;
     }
   }
 
   a {
     text-decoration: none;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: 4px;
     color: #000;
-    height: 100%;
-    padding: 20px;
-    transition: background-color 0.3s ease;
+    height: 80%;
+    padding: 10px 20px;
+    transition: border-color 0.3s ease;
 
     &:hover {
-      background-color: var(--hover_base);
       cursor: pointer;
-    }
-
-    :visited {
-      color: #000;
+      border-color: var(--base_orange);
     }
   }
 `;
 
 export const MobileContainer = styled.header`
   height: 60px;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
