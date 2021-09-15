@@ -78,48 +78,6 @@ export const DefaultContainer = styled.header`
   margin: 0 auto;
 `;
 
-export const DevhubWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 60px;
-  align-items: center;
-  width: 270px;
-  
-  &:hover {
-    cursor: pointer;
-  }
-  
-  .logo {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    img {
-      height: 100%;
-    }
-  }
-  
-  .text-wrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: flex-start;
-    color: #888;
-    
-    .cn-name {
-      font-size: 24px;
-      font-family: 幼圆, serif;
-      font-weight: 600;
-    }
-    
-    .en-name {
-      font-size: 20px;
-    }
-  }
-`;
-
 export const NavWrapper = styled(ContentWrapper)`
   margin: 0 auto;
   width: 100%;

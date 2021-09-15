@@ -1,5 +1,5 @@
 import React, { BaseSyntheticEvent, memo, useCallback, useMemo, useState } from 'react';
-import { RegisterContainer, FormContainer, FormRow, GenderContainer, IntentionGroup, FormRowTitle, ErrorText } from './styles';
+import { RegisterContainer, FormContainer, FormRow, GenderContainer, IntentionGroup, ErrorText } from './styles';
 import { FormItem } from '../../components/Form';
 import { Icon } from '../../components/Icon';
 import cls from 'classnames';
@@ -8,7 +8,7 @@ import { Button } from '../../components/Button';
 import { fetchRegister } from '../../api/fetchRegister';
 import { fetchEmailCode } from '../../api/fetchEmailCode';
 import { fetchCheckEmail } from '../../api/fetchCheckEmail';
-import { Modal, modal } from '../../components/Modal';
+import { modal } from '../../components/Modal';
 
 import './style.css';
 import { SchoolSelector } from './SchoolSelector';
@@ -430,6 +430,7 @@ export const Register = memo(() => {
         <FormRow className="aspect-fit">
           <FormItem
             label="学院"
+            required
             render={() => <SchoolSelector onChange={(index, value) => setSchool(value)} />}
           />
           <FormItem
@@ -488,6 +489,7 @@ export const Register = memo(() => {
                     { disableCode? `${codeRemainTime}s 后再次发送` : '发送验证码'}
                   </Button>
                   <FormItem
+                    style={{ marginRight: 0, marginLeft: 20 }}
                     label="邮箱验证码"
                     required
                     value={code}

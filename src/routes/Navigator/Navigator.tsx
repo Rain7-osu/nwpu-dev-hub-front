@@ -1,23 +1,8 @@
 import React from 'react';
-import { Container, DefaultContainer, DevhubWrapper, NavWrapper, LinkUl } from './styles';
+import { Container, DefaultContainer, NavWrapper, LinkUl } from './styles';
 import { MobileNavigator } from './MobileNavigator';
-import { iconMap } from '../../assets/imgs/icons';
 import { Link } from 'react-router-dom';
-
-
-export const DevhubLogo = () => {
-  return (
-    <DevhubWrapper>
-      <div className="logo">
-        <img alt="logo" src={iconMap['logo']}/>
-      </div>
-      <div className="text-wrapper">
-        <div className="cn-name">工大开发者社区</div>
-        <div className="en-name">NPU Developer Hub</div>
-      </div>
-    </DevhubWrapper>
-  );
-};
+import { DevhubLogo } from '../../components/DevhubLogo';
 
 const Links = () => {
   return (
@@ -38,7 +23,7 @@ export const Navigator = () => {
       <MobileNavigator />
       <DefaultContainer className="default">
         <NavWrapper>
-          <DevhubLogo />
+          <DevhubLogo size="normal" />
           <Links />
         </NavWrapper>
       </DefaultContainer>

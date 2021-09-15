@@ -1,22 +1,12 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { MobileContainer } from './styles';
-import { iconMap } from '../../assets/imgs/icons';
 import { Link } from 'react-router-dom';
-
-
-
-export const DevhubMobileLogo = () => {
-  return (
-    <div className="logo">
-      <img alt="logo" src={iconMap['logo']}/>
-    </div>
-  );
-};
+import { DevhubLogo } from '../../components/DevhubLogo';
 
 export const MobileNavigator = () => {
   return (
     <MobileContainer className="mobile">
-      <DevhubMobileLogo />
+      <DevhubLogo size="small" />
       <div><Link to="/register">加入我们</Link></div>
     </MobileContainer>
   );

@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import { Carousel } from '../../components/Carousel';
 import { HomeContainer, HomeItemWrapper, SimpleIntroduction, ThreeCardContainer } from './styles';
-import { DevhubLogo } from '../../routes/Navigator/Navigator';
 
 import Banner1 from '../../assets/imgs/banners/banner1.png';
 import Banner2 from '../../assets/imgs/banners/banner2.png';
@@ -9,6 +8,7 @@ import Banner3 from '../../assets/imgs/banners/banner3.png';
 import Three1 from '../../assets/imgs/home-three-card/three1.png';
 import Three2 from '../../assets/imgs/home-three-card/three2.png';
 import Three3 from '../../assets/imgs/home-three-card/three3.png';
+import { DevhubLogo } from '../../components/DevhubLogo';
 
 interface ThreeCardProps {
   img: string;
@@ -35,10 +35,14 @@ export const Home = memo(() => {
     <HomeContainer>
       <Carousel paths={[Banner1, Banner2, Banner3]} />
       <HomeItemWrapper className="simple-introduction">
-        <div className="devhub-logo-main"><DevhubLogo /></div>
-        <SimpleIntroduction>
-          依托于共青团西北工业大学委员会和西安寻师有道信息科技有限公司（旗下有LOOP校园系列），工大开发者社区拥有稳定充裕的资金来源、项目来源和场地支持。
-        </SimpleIntroduction>
+        <div className="hover-block">
+          <DevhubLogo size="normal" />
+        </div>
+        <div className="hover-block">
+          <SimpleIntroduction>
+            依托于共青团西北工业大学委员会和西安寻师有道信息科技有限公司（旗下有LOOP校园系列），工大开发者社区拥有稳定充裕的资金来源、项目来源和场地支持。
+          </SimpleIntroduction>
+        </div>
       </HomeItemWrapper>
       <HomeItemWrapper className="three-card">
         <ThreeCard color="#9646E6" img={Three1} title="兼具专业与高效" description="搭建您的专属课题网站" />

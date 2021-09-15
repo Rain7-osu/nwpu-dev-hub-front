@@ -2,39 +2,6 @@ import styled from 'styled-components';
 import { ContentWrapper } from '../../styles';
 
 export const HomeContainer = styled.div`
-  .simple-introduction {
-    display: flex;
-    
-    @media screen and (max-width: 1080px) {
-      justify-content: center;
-    }
-    
-    @media screen and (min-width: 1080px) {
-      justify-content: space-between;
-    }
-    
-    align-items: center;
-    flex-direction: row;
-    margin-top: 100px;
-  }
-  
-  .devhub-logo-main {
-    transform: scale(1.5);
-    color: #000;
-    transition: all .3s ease;
-    margin: 108px 0;
-
-    @media screen and (min-width: 1080px) {
-      margin-left: 108px;
-      margin-right: 40px;
-    }
-
-    @media screen and (min-width: 1080px) {
-      margin-right: 0;
-      margin-left: 0;
-    }
-  }
-  
   .three-card {
     display: flex;
     justify-content: space-around;
@@ -48,15 +15,34 @@ export const SimpleIntroduction = styled.div`
   font-size: 20px;
   transition: all .3s ease;
   padding: 20px;
-
-  @media screen and (min-width: 1080px) {
-    margin-right: 40px;
-    padding: 0;
-  }
 `;
 
 export const HomeItemWrapper = styled(ContentWrapper)`
-  flex-wrap: wrap;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  
+  > div.hover-block {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &:hover {
+      transition: all .3s ease;
+      background-color: var(--hover_base);
+    }
+  }
+  
+  @media screen and (min-width: 1080px) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const ThreeCardContainer = styled.div<{ color: string }>`
@@ -76,6 +62,8 @@ export const ThreeCardContainer = styled.div<{ color: string }>`
     width: 360px;
     height: 304px;
     background-size: contain;
+    box-sizing: border-box;
+    border: 1px solid #000;
   }
   
   .main {

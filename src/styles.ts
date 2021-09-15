@@ -57,4 +57,6 @@ export const baseInput = css`
 export const ContentWrapper = styled.section`
   max-width: 1200px;
   margin: 0 auto;
+  transition: all .3s ease;
+  display: flex;
 `;

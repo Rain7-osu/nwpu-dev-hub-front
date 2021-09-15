@@ -38,7 +38,7 @@ interface SchoolSelectorProps {
 export const SchoolSelector = memo((props: SchoolSelectorProps) => {
   return (
     <Selector
-      defaultValue="请选择学院"
+      defaultValue="航空学院"
       options={options}
       onChange={props.onChange}
     />
