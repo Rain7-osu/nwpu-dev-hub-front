@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
+
+
 export const ModalContainer = styled.div<{ mask: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  ${props => props.mask ? 'background: #00000073;' : ''}
+  ${props => props.mask ? 'background: #00000073;' : ''};
+  transition: background .3s ease;
 `;
 
 export const ModalContent = styled.div`
@@ -20,6 +23,7 @@ export const ModalContent = styled.div`
   -moz-border-radius: 5px;
   border-radius: 5px;
   box-shadow: 0px -5px 15px 5px #a0a0a0;
+  box-sizing: border-box;
 
   .close {
     position: absolute;
@@ -33,12 +37,23 @@ export const ModalContent = styled.div`
     }
   }
   
-  width: 100vw;
+  .show {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  @media screen and (min-width: 500px) {
+    width: 480px;
+  }
+  
+  @media screen and (max-width: 500px) {
+    width: calc(100% - 100px);
+  }
 `;
 
 export const ModalTitle = styled.div`
   border-bottom: 1px solid #e9e9e9;
-  padding: 5px 5px 10px;
+  padding: 10px 5px;
   min-height: 30px;
   display: flex;
   justify-content: center;
@@ -47,7 +62,7 @@ export const ModalTitle = styled.div`
 
 export const ModalBottom = styled.div`
   border-top: 1px solid #e9e9e9;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,12 +71,5 @@ export const ModalBottom = styled.div`
 export const ModalMain = styled.div`
   padding: 10px;
   min-height: 120px;
-
-  @media screen and (min-width: 480px) {
-    min-width: 420px;
-  }
-
-  @media screen and (max-width: 480px) {
-    width: calc(100% - 20px);
-  }
+  width: 100%;
 `;
