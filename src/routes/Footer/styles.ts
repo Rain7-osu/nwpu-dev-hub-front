@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FooterContainer = styled.div`
   width: 100%;
   background: var(--footer_bg);
-  padding: 30px;
+  padding: 30px 0;
   display: flex;
   justify-content: stretch;
   align-items: stretch;
@@ -36,8 +36,6 @@ export const FooterContainer = styled.div`
       justify-content: space-between;
       
       .m-col {
-        margin-right: 100px;
-        
         a {
           display: block;
           color: var(--base_gray_color);
@@ -57,6 +55,10 @@ export const FooterContainer = styled.div`
   }
   
   @media screen and (max-width: 1080px) {
+    .top {
+      text-align: center;
+    }
+    
     .medium {
       display: flex;
       flex-direction: column;
@@ -65,6 +67,23 @@ export const FooterContainer = styled.div`
       
       .m-right {
         margin-top: 60px;
+      }
+      
+      .m-left {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 75%;
+
+        .m-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          text-align: center;
+          margin: 0;
+        }
       }
     }
   }
@@ -86,6 +105,12 @@ export const FooterContainer = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      
+      .m-left {
+        .m-col {
+          margin-right: 100px;
+        }
+      }
       
       .m-right {
         margin-right: 150px;

@@ -26,7 +26,7 @@ export const Footer = memo(() => {
               </div>
             </div>
             <div className="m-right">
-              <DevhubLogo size="large" />
+              <DevhubLogo size="normal" />
             </div>
           </div>
           <div className="copy-right">
