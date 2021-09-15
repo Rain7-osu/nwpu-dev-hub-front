@@ -1,5 +1,5 @@
 import React, { BaseSyntheticEvent, memo, useCallback, useMemo, useState } from 'react';
-import { RegisterContainer, FormContainer, FormRow, GenderContainer, IntentionGroup, FormRowTitle, ErrorText } from './styles';
+import { RegisterContainer, FormContainer, FormRow, GenderContainer, IntentionGroup, ErrorText } from './styles';
 import { FormItem } from '../../components/Form';
 import { Icon } from '../../components/Icon';
 import cls from 'classnames';
@@ -8,7 +8,7 @@ import { Button } from '../../components/Button';
 import { fetchRegister } from '../../api/fetchRegister';
 import { fetchEmailCode } from '../../api/fetchEmailCode';
 import { fetchCheckEmail } from '../../api/fetchCheckEmail';
-import { Modal, modal } from '../../components/Modal';
+import { modal } from '../../components/Modal';
 
 import './style.css';
 import { SchoolSelector } from './SchoolSelector';
@@ -237,8 +237,13 @@ export const Register = memo(() => {
 
   const handleSendCode = useCallback(() => {
     if (!validateEmail()) {
+      modal.show({
+        title: '错误',
+        content: <ErrorText size={18}>请填写邮箱！</ErrorText>,
+      });
       return;
     }
+
     setDisableCode(true);
     {
       let remainTime = 60;
@@ -318,10 +323,11 @@ export const Register = memo(() => {
     validate = validateWechat() && validate;
     validate = validateEmail() && validate;
     validate = validateCode() && validate;
+
     if (!validate) {
       modal.show({
         title: '错误',
-        content: firstErr ? '请检查信息是否正确填写！' : errModal,
+        content: firstErr ? <ErrorText size={18}>请正确填写报名信息！</ErrorText> : errModal,
       });
       firstErr = false;
       return;
@@ -430,6 +436,7 @@ export const Register = memo(() => {
         <FormRow className="aspect-fit">
           <FormItem
             label="学院"
+            required
             render={() => <SchoolSelector onChange={(index, value) => setSchool(value)} />}
           />
           <FormItem
@@ -485,9 +492,10 @@ export const Register = memo(() => {
                     disabled={disableCode}
                     onClick={handleSendCode}
                   >
-                    { disableCode? `${codeRemainTime}s 后再次发送` : '发送验证码'}
+                    { disableCode? `已发送 ${codeRemainTime}s` : '发送验证码'}
                   </Button>
                   <FormItem
+                    style={{ marginRight: 0, marginLeft: 20 }}
                     label="邮箱验证码"
                     required
                     value={code}

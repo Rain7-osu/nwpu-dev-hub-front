@@ -81,6 +81,7 @@ export const IntentionGroup = styled.div`
     
     &.chosen {
       background-color: #F48617;
+      transition: all .3s ease;
     }
     
     &:hover {
@@ -94,7 +95,7 @@ export const FormRowTitle = styled.div`
   padding: 15px 0;
 `;
 
-export const ErrorText = styled.div`
-  font-size: 12px;
+export const ErrorText = styled.div<{ size?: number }>`
+  font-size: ${props => props.size || 12}px;
   color: red;
 `;

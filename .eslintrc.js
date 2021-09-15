@@ -68,6 +68,7 @@ module.exports = {
     'curly': ['error', 'all'],
     'react/no-array-index-key': ['error'],
     'react/jsx-props-no-multi-spaces': ['error'],
+    '@typescript-eslint/no-explicit-any': ['off'],
   },
   'settings': {
     'react': {

@@ -26,7 +26,12 @@ const defaultHeaders = {
 // TODO: 由于时间比较赶，所以没有进行二层封装，后期把异常先拦截
 // 以及，后期用 对象参数
 export const request = {
-  post: async <T>(path: string, params: IParams = {}, body: IBody = {}, headers: IHeaders = defaultHeaders): Promise<T> => {
+  post: async <T>(
+    path: string,
+    params: IParams = {},
+    body: IBody = {},
+    headers: IHeaders = defaultHeaders
+  ): Promise<T> => {
     const query = qs.stringify(params);
     const url = `${path}${query.length > 0 ? `?${query}` : ''}`;
     const response = await fetch(url, {

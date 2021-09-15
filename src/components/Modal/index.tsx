@@ -1,7 +1,8 @@
-import React, { memo, ReactNode, useEffect } from 'react';
+import React, { memo, ReactNode, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { ModalBottom, ModalContainer, ModalContent, ModalMain, ModalTitle } from './styles';
 import { Button } from '../Button';
+import cls from 'classnames';
 
 
 export interface BaseModalProps {
@@ -32,7 +33,7 @@ function BaseModal(props: BaseModalProps) {
           {content}
         </ModalMain>
         <ModalBottom>
-          <Button onClick={onClose}>确认</Button>
+          <Button type="primary" onClick={onClose}>确认</Button>
         </ModalBottom>
         <div className="close" onClick={onClose}>✖</div>
       </ModalContent>

@@ -17,11 +17,18 @@ export function Dropdown (props: DropdownProps) {
   const handleMouseOver = useCallback(() => {
     if (trigger === 'hover') {
       setShow(true);
+      document.addEventListener('click', () => {
+        setShow(false);
+      }, { once: true });
     }
   }, [trigger, setShow]);
-  const handleClickContent = useCallback(() => {
+  const handleClickContent = useCallback((e: any) => {
+    e.stopPropagation();
     if (trigger === 'click') {
       setShow(true);
+      document.addEventListener('click', () => {
+        setShow(false);
+      }, { once: true });
     }
   }, [trigger]);
   return (

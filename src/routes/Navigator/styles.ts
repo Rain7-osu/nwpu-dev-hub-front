@@ -11,47 +11,47 @@ export const Container = styled.div`
   left: 0;
   z-index: 9999;
   
-  @media screen and (max-width: 480px) {
-    .default {
-      display: none;
-    }
-    
+  @media screen and (max-width: 1080px) {
     .mobile {
       display: flex;
+    }
+    
+    .default {
+      display: none;
     }
   }
-  
-  @media screen and (min-width: 480px){
-    .default {
-      display: flex;
-    }
-    
+
+  @media screen and (min-width: 1080px) {
     .mobile {
       display: none;
+    }
+
+    .default {
+      display: flex;
     }
   }
 
   a {
     text-decoration: none;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: 4px;
     color: #000;
-    height: 100%;
-    padding: 20px;
-    transition: background-color 0.3s ease;
+    height: 80%;
+    padding: 10px 20px;
+    transition: border-color 0.3s ease;
 
     &:hover {
-      background-color: var(--hover_base);
       cursor: pointer;
-    }
-
-    :visited {
-      color: #000;
+      border-color: var(--base_orange);
     }
   }
 `;
 
 export const MobileContainer = styled.header`
   height: 60px;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,48 +76,6 @@ export const DefaultContainer = styled.header`
   max-width: 1440px;
   height: 100%;
   margin: 0 auto;
-`;
-
-export const DevhubWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 60px;
-  align-items: center;
-  width: 270px;
-  
-  &:hover {
-    cursor: pointer;
-  }
-  
-  .logo {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    img {
-      height: 100%;
-    }
-  }
-  
-  .text-wrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: flex-start;
-    color: #888;
-    
-    .cn-name {
-      font-size: 24px;
-      font-family: 幼圆, serif;
-      font-weight: 600;
-    }
-    
-    .en-name {
-      font-size: 20px;
-    }
-  }
 `;
 
 export const NavWrapper = styled(ContentWrapper)`

@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "reinstall": "rm -rf node_modules && npm i"
+    "reinstall": "rm -rf node_modules && npm i",
+    "lint": "eslint src"
   },
   "dependencies": {
     "classnames": "^2.3.1",

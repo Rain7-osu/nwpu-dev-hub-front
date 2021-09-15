@@ -1,4 +1,4 @@
-import React, { BaseSyntheticEvent, ReactNode } from 'react';
+import React, { BaseSyntheticEvent, CSSProperties, ReactNode } from 'react';
 import { RequiredTag, Container, Label } from './styles';
 import { BaseInput } from './BaseInput';
 
@@ -12,6 +12,7 @@ export interface InputProps {
   render?: () => ReactNode;
   onInput?: (e: BaseSyntheticEvent) => void;
   onBlur?: (e: BaseSyntheticEvent) => void;
+  style?: CSSProperties;
 }
 
 /**
@@ -30,6 +31,7 @@ export function FormItem(props: InputProps) {
     render,
     labelPlacement = 'top',
     onBlur,
+    style,
   } = props;
 
   const base =
@@ -38,7 +40,7 @@ export function FormItem(props: InputProps) {
       : <BaseInput value={value} placeholder={placeholder} onInput={onInput} onBlur={onBlur} />;
 
   return (
-    <Container>
+    <Container style={style}>
       {labelPlacement === 'top' && <Label>{required && <RequiredTag />} {label}</Label>}
       {labelPlacement === 'top' && base}
       {labelPlacement === 'left' && (
