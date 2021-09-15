@@ -56,9 +56,20 @@ export const FooterContainer = styled.div`
 
   }
   
+  @media screen and (max-width: 1080px) {
+    .medium {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
+      .m-right {
+        margin-top: 60px;
+      }
+    }
+  }
+  
   @media screen and (min-width: 1080px) {
-    display: flex;
-    
     .center-box {
       margin: 0 auto;
       min-width: 1080px;
