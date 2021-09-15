@@ -11,7 +11,7 @@ export const boxShadow = css`
 export const borderRadius = css`
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  border-radius: 5px;
+  border-radius: 5px; 
 `;
 
 export const basePanel = css`
@@ -36,6 +36,7 @@ export const baseInputError = css`
 export const baseInput = css`
   border: 1px solid deepskyblue;
   box-sizing: border-box;
+  transition: all .3s ease;
   
   &:hover {
     ${baseInputHover}

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { baseInput } from '../../styles';
 
 export const Container = styled.div`
+  transition: all .3s ease;
+  
   @media screen and (min-width: 720px) {
     margin: 0 40px;
   }
@@ -23,6 +25,7 @@ export const Container = styled.div`
     margin: 8px 0;
     height: 14px;
   }
+    
 `;
 
 export const Label = styled.div`

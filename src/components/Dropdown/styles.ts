@@ -20,11 +20,11 @@ export const DropdownContainer = styled.div`
     top: 50px;
     max-height: 0;
     opacity: 0;
-    transition: max-height, opacity 0.3s ease;
+    transition: all, opacity 0.3s ease;
     background-color: #fff;
     overflow: auto;
     box-sizing: border-box;
-    ${basePanel}
+    ${basePanel};
     
     .overlay-content {
       padding: 5px 0;

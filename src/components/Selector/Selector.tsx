@@ -23,26 +23,13 @@ export interface SelectorProps {
 
 export function Selector(props: SelectorProps) {
   const { options, defaultValue, onChange } = props;
-  // const [show, setShow] = useState<boolean>(false);
   const [value, setValue] = useState<string>(defaultValue);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  // const hideDropdown = () => {
-  //   setShow(false);
-  // };
-  // const showDropdown = () => {
-  //   setShow(true);
-  // };
-  // const style = useMemo(() => {
-  //   return {
-  //     transform: show ? 'scaleY(1) translateY(50px)' : 'scaleY(0) translateY(50px)',
-  //   };
-  // }, [show]);
   const dropdown = useMemo(() => {
     return options.map((value, index) => {
       const onClick = () => {
         setValue(value);
         onChange(index, value);
-        // setShow(false);
         setSelectedIndex(index);
       };
       return (
@@ -60,13 +47,4 @@ export function Selector(props: SelectorProps) {
       <BaseInput value={value} readonly />
     </Dropdown>
   );
-  // return (
-  //
-  //   <SelectorContainer>
-  //     <Content onClick={showDropdown}><BaseInput value={value} readonly /></Content>
-  //     <SelectorDropdown style={style} onBlur={hideDropdown} onClick={hideDropdown}>
-  //       {dropdown}
-  //     </SelectorDropdown>
-  //   </SelectorContainer>
-  // );
 }

@@ -1,10 +1,15 @@
 import { DevhubWrapper } from './styles';
 import { iconMap } from '../../assets/imgs/icons';
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router';
 
 export const DevhubLogo = ({ size }: { size: 'normal' | 'large' | 'small'}) => {
+  const history = useHistory();
+  const handleClick = useCallback(() => {
+    history.push('/');
+  }, [history]);
   return (
-    <DevhubWrapper className={size}>
+    <DevhubWrapper className={size} onClick={handleClick}>
       <div className="logo">
         <img alt="logo" src={iconMap['logo']}/>
       </div>

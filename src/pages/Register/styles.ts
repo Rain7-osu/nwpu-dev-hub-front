@@ -81,6 +81,7 @@ export const IntentionGroup = styled.div`
     
     &.chosen {
       background-color: #F48617;
+      transition: all .3s ease;
     }
     
     &:hover {
