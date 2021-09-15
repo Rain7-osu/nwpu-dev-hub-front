@@ -79,3 +79,98 @@ export const ThreeCardContainer = styled.div<{ color: string }>`
     font-size: 18px;
   }
 `;
+
+export const HealthyWrapper = styled.section`
+  background-color: #1B1F25;
+  color: #fff;
+  display: flex;
+  box-sizing: border-box;
+  
+  .left {
+    height: 200px;
+  }
+  
+  @media screen and (min-width: 1440px) {
+    padding: 0 160px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media screen and (min-width: 1080px) {
+    height: 600px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    .right {
+      height: 600px;
+      width: 800px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+      .picture {
+        height: 300px;
+        width: 400px;
+        background-color: skyblue;
+      }
+    }
+    
+    .left {
+      width: 240px;
+      padding-left: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      
+      .title {
+        line-height: 64px;
+        font-size: 32px;
+      }
+      
+      .subtitle {
+        line-height: 48px;
+        font-size: 24px;
+      }
+    }
+  }
+  
+  @media screen and (max-width: 1080px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .right {
+      flex-direction: column;
+      width: 100%;
+      padding: 20px;
+
+      .picture {
+        width: 100%;
+        margin: 20px 0;
+        background-color: skyblue;
+      }
+    }
+
+    .left {
+      padding-left: 64px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      .title {
+        line-height: 64px;
+        font-size: 32px;
+      }
+
+      .subtitle {
+        line-height: 48px;
+        font-size: 24px;
+      }
+    }
+  }
+`;

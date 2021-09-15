@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Carousel } from '../../components/Carousel';
-import { HomeContainer, HomeItemWrapper, SimpleIntroduction, ThreeCardContainer } from './styles';
+import { HealthyWrapper, HomeContainer, HomeItemWrapper, SimpleIntroduction, ThreeCardContainer } from './styles';
 
 import Banner1 from '../../assets/imgs/banners/banner1.png';
 import Banner2 from '../../assets/imgs/banners/banner2.png';
@@ -17,6 +17,11 @@ interface ThreeCardProps {
   color: string;
 }
 
+/**
+ * 这是三个卡片，健全的赛制什么的
+ * @param props
+ * @constructor
+ */
 const ThreeCard = (props: ThreeCardProps) => {
   const { img, title, description, color } = props;
   return (
@@ -27,6 +32,28 @@ const ThreeCard = (props: ThreeCardProps) => {
         <div className="description">{description}</div>
       </div>
     </ThreeCardContainer>
+  );
+};
+
+/**
+ * 健全的机制这一栏
+ * @constructor
+ */
+export const Healthy = () => {
+  return (
+    <HealthyWrapper>
+      <div className="left">
+        <div className="title">健全的机制</div>
+        <div className="subtitle">全流程</div>
+        <div className="subtitle"> 全方位的培养模式</div>
+      </div>
+      <div className="right">
+        <div className="picture"><img alt="pic" /></div>
+        <div className="picture"><img alt="pic" /></div>
+        <div className="picture"><img alt="pic" /></div>
+        <div className="picture"><img alt="pic" /></div>
+      </div>
+    </HealthyWrapper>
   );
 };
 
@@ -49,6 +76,7 @@ export const Home = memo(() => {
         <ThreeCard color="#F48617" img={Three2} title="连接赛事" description="十四运 & NPU-Devhub" />
         <ThreeCard color="#1BAE8A" img={Three3} title="打通校园" description="智慧化信息发布平台" />
       </HomeItemWrapper>
+      <Healthy />
     </HomeContainer>
   );
 });
