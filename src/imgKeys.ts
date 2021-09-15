@@ -5,7 +5,7 @@ export enum ImgKeys {
 
   HOME_THREE1 = 'https://z3.ax1x.com/2021/09/15/4VUtHK.png',
   HOME_THREE2 = 'https://z3.ax1x.com/2021/09/15/4VUUAO.png',
-  HOME_THREE3 = 'https://z3.ax1x.com/2021/09/15/4VU09H.png',
+  HOME_THREE3 = 'https://z3.ax1x.com/2021/09/15/4VUaND.png',
 
   HOME_FOUR1 = 'https://z3.ax1x.com/2021/09/15/4VU09H.png',
   HOME_FOUR2 = 'https://z3.ax1x.com/2021/09/15/4VUDgA.png',
