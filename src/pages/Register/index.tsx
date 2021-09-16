@@ -492,7 +492,7 @@ export const Register = memo(() => {
                     disabled={disableCode}
                     onClick={handleSendCode}
                   >
-                    { disableCode? `已发送 ${codeRemainTime}s` : '发送验证码'}
+                    { disableCode? `${codeRemainTime}s` : '发送验证码'}
                   </Button>
                   <FormItem
                     style={{ marginRight: 0, marginLeft: 20 }}

@@ -11,9 +11,11 @@ export interface DropdownProps {
 export function Dropdown (props: DropdownProps) {
   const { trigger = 'click', overlay, children } = props;
   const [show, setShow] = useState<boolean>(false);
+
   const handleClickOverlay = useCallback(() => {
     setShow(false);
   }, [setShow]);
+
   const handleMouseOver = useCallback(() => {
     if (trigger === 'hover') {
       setShow(true);
@@ -22,6 +24,7 @@ export function Dropdown (props: DropdownProps) {
       }, { once: true });
     }
   }, [trigger, setShow]);
+
   const handleClickContent = useCallback((e: any) => {
     e.stopPropagation();
     if (trigger === 'click') {
@@ -31,6 +34,7 @@ export function Dropdown (props: DropdownProps) {
       }, { once: true });
     }
   }, [trigger]);
+
   return (
     <DropdownContainer onMouseOver={handleMouseOver}>
       <div className="content" onClick={handleClickContent}>{children}</div>

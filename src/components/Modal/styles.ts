@@ -1,6 +1,24 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
+const maskAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
+const modalAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
 
 export const ModalContainer = styled.div<{ mask: boolean }>`
   position: fixed;
@@ -12,7 +30,7 @@ export const ModalContainer = styled.div<{ mask: boolean }>`
   justify-content: center;
   align-items: center;
   ${props => props.mask ? 'background: #00000073;' : ''};
-  transition: background .3s ease;
+  animation: ${maskAnimation} .3s ease;
 `;
 
 export const ModalContent = styled.div`
@@ -24,6 +42,7 @@ export const ModalContent = styled.div`
   border-radius: 5px;
   box-shadow: 0px -5px 15px 5px #a0a0a0;
   box-sizing: border-box;
+  animation: ${modalAnimation} .3s ease;
 
   .close {
     position: absolute;
