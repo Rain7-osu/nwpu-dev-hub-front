@@ -12,6 +12,7 @@ import { modal } from '../../components/Modal';
 
 import './style.css';
 import { SchoolSelector } from './SchoolSelector';
+import { useHistory } from 'react-router';
 
 export enum Gender {
   NONE= -1,
@@ -71,6 +72,8 @@ let firstErr = true;
  *  // TODO: 后期做个表单组件 直接由组件收集数据，在组件里头 写 onInput 真的 太 zz 了。。。
  */
 export const Register = memo(() => {
+  const history = useHistory();
+
   const [name, setName] = useState<string>('');
   const [nameErr, setNameErr] = useState<string>('');
   const [genderSelectedIndex, setGenderSelectedIndex] = useState<Gender>(0);
@@ -185,7 +188,7 @@ export const Register = memo(() => {
   }, [email]);
 
   const handleInputName = useCallback((e: BaseSyntheticEvent) => {
-    setName(e.target.value);
+    setName(e.target.value.trim());
   }, [setName]);
 
   const handleSelectMan = useCallback(() => {
@@ -197,7 +200,7 @@ export const Register = memo(() => {
   }, [setGenderSelectedIndex]);
 
   const handleInputGrade = useCallback((e: BaseSyntheticEvent) => {
-    setGrade(e.target.value);
+    setGrade(e.target.value.trim());
   }, [setGrade]);
 
   const handleChooseGroup = useCallback((e: BaseSyntheticEvent) => {
@@ -225,22 +228,22 @@ export const Register = memo(() => {
   }, [setOther]);
 
   const handleInputQq = useCallback((e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setQq(value);
   }, [setQq]);
 
   const handleInputWechat = useCallback((e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setWechat(value);
   }, [setWechat]);
 
   const handleInputEmail = useCallback((e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setEmail(value);
   }, [setEmail]);
 
   const handleInputCode = useCallback((e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setCode(value);
   }, []);
 
@@ -354,14 +357,17 @@ export const Register = memo(() => {
       willGroup: intentionIndex,
       email,
       code,
-      qq,
-      wechat,
-      personalExperience: experience,
-      parenthetical: other,
+      ...(qq ? { qq } : {}),
+      ...(wechat ? { wechat } : {}),
+      ...(experience ? { personalExperience: experience.trim() } : {}),
+      ...(other ? { parenthetical: other.trim() } : {}),
     }).then(() => {
       modal.show({
         title: '成功',
         content: '报名成功',
+        onOk() {
+          history.push('/');
+        },
       });
     }).catch((err) => {
       modal.show({
@@ -370,6 +376,7 @@ export const Register = memo(() => {
       });
     });
   }, [
+    history,
     errModal,
     validateName,
     validateGender,

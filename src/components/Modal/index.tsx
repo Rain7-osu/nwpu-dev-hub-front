@@ -1,4 +1,4 @@
-import React, { memo, ReactNode, useEffect } from 'react';
+import React, { memo, ReactNode, useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { ModalBottom, ModalContainer, ModalContent, ModalMain, ModalTitle } from './styles';
 import { Button } from '../Button';
@@ -6,13 +6,14 @@ import { Button } from '../Button';
 
 export interface BaseModalProps {
   onClose: () => void;
+  onOk?: () => void;
   content?: ReactNode;
   title?: ReactNode;
   mask?: boolean;
 }
 
 function BaseModal(props: BaseModalProps) {
-  const { onClose, content, title, mask } = props;
+  const { onClose, content, title, mask, onOk } = props;
 
   const handleClickContent = (e: any) => {
     e.stopPropagation();
@@ -21,6 +22,11 @@ function BaseModal(props: BaseModalProps) {
   const handleClickContainer = () => {
     onClose();
   };
+
+  const handleClickOk = useCallback(() => {
+    onOk && onOk();
+    onClose();
+  }, [onOk, onClose]);
 
   return (
     <ModalContainer mask={mask || true} onClick={handleClickContainer}>
@@ -32,7 +38,7 @@ function BaseModal(props: BaseModalProps) {
           {content}
         </ModalMain>
         <ModalBottom>
-          <Button type="primary" onClick={onClose}>确认</Button>
+          <Button type="primary" onClick={handleClickOk}>确认</Button>
         </ModalBottom>
         <div className="close" onClick={onClose}>✖</div>
       </ModalContent>
@@ -42,6 +48,7 @@ function BaseModal(props: BaseModalProps) {
 
 export interface OpenParams {
   onClose?: () => void;
+  onOk?: () => void;
   content?: ReactNode;
   title?: ReactNode;
 }
@@ -70,7 +77,7 @@ export interface ModalProps extends OpenParams {
 }
 
 export const Modal = memo((props: ModalProps) => {
-  const { title, content, visible, onClose } = props;
+  const { title, content, visible, onClose, onOk } = props;
   useEffect(() => {
     if (!visible) {
       return;
@@ -79,8 +86,9 @@ export const Modal = memo((props: ModalProps) => {
       title,
       content,
       onClose,
+      onOk,
     });
-  }, [content, onClose, title, visible]);
+  }, [content, onClose, title, visible, onOk]);
   return null;
 });
 
