@@ -7,7 +7,7 @@ export const MobileNavigator = () => {
   return (
     <MobileContainer className="mobile">
       <DevhubLogo size="small" />
-      <div><Link to="/register">加入我们</Link></div>
+      <div><Link to="/register">报名</Link></div>
     </MobileContainer>
   );
 };

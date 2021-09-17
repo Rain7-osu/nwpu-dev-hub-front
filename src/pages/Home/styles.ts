@@ -106,6 +106,18 @@ export const PerfectMechanismWrapper = styled.section`
     height: 200px;
   }
   
+  .right {
+    .picture {
+      position: relative;
+      
+      .pic-text {
+        position: absolute;
+        color: #ffffff;
+        transition: all .3s ease;
+      }
+    }
+  }
+  
   @media screen and (min-width: 1440px) {
     padding: 0 160px;
     flex-direction: column;
@@ -130,6 +142,19 @@ export const PerfectMechanismWrapper = styled.section`
         height: 300px;
         width: 400px;
         overflow: hidden;
+        
+        &:hover {
+          .pic-text {
+            color: var(--base_orange);
+            font-size: 32px;
+          }
+        }
+
+        .pic-text {
+          font-size: 40px;
+          bottom: 25px;
+          left: 25px;
+        }
         
         img {
           transition: all .3s ease;
@@ -176,6 +201,13 @@ export const PerfectMechanismWrapper = styled.section`
         display: flex;
         justify-content: center;
         align-items: center;
+
+        .pic-text {
+          font-size: 36px;
+          bottom: 50px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
         
         img {
           width: 100%;

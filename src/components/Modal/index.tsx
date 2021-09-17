@@ -1,8 +1,7 @@
-import React, { memo, ReactNode, useEffect, useState } from 'react';
+import React, { memo, ReactNode, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { ModalBottom, ModalContainer, ModalContent, ModalMain, ModalTitle } from './styles';
 import { Button } from '../Button';
-import cls from 'classnames';
 
 
 export interface BaseModalProps {

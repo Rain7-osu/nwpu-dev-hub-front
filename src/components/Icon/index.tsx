@@ -11,7 +11,7 @@ export interface IconProps {
 
 export function Icon(props: IconProps) {
   const { alt, type, width, height } = props;
-  
+
   return (
     <Container width={width} height={height}>
       <img alt={alt || type} src={type in iconMap ? iconMap[type] : ''} />

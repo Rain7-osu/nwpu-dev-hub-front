@@ -7,8 +7,6 @@ export interface BaseTextareaProps {
   maxLength?: number;
 }
 
-const MAX_LENGTH = 400;
-
 export function BaseTextarea (props: BaseTextareaProps) {
   const { value, onInput, maxLength } = props;
   const [count, setCount] = useState<number>(0);
@@ -16,7 +14,7 @@ export function BaseTextarea (props: BaseTextareaProps) {
   const handleInput = (e: BaseSyntheticEvent) => {
     setCount(e.target.value.length);
     onInput && onInput(e);
-  }
+  };
 
   return (
     <BaseTextareaContainer>

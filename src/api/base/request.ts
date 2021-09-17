@@ -30,7 +30,7 @@ export const request = {
     path: string,
     params: IParams = {},
     body: IBody = {},
-    headers: IHeaders = defaultHeaders
+    headers: IHeaders = defaultHeaders,
   ): Promise<T> => {
     const query = qs.stringify(params);
     const url = `${path}${query.length > 0 ? `?${query}` : ''}`;

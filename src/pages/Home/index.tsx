@@ -66,10 +66,22 @@ export const PerfectMechanism = () => {
         <div className="subtitle"> 全方位的培养模式</div>
       </div>
       <div className="right">
-        <div className="picture"><img alt="pic" src={ImgKeys.HOME_FOUR1} /></div>
-        <div className="picture"><img alt="pic" src={ImgKeys.HOME_FOUR2} /></div>
-        <div className="picture"><img alt="pic" src={ImgKeys.HOME_FOUR3} /></div>
-        <div className="picture"><img alt="pic" src={ImgKeys.HOME_FOUR4} /></div>
+        <div className="picture">
+          <img alt="pic" src={ImgKeys.HOME_FOUR1} />
+          <div className="pic-text">培养</div>
+        </div>
+        <div className="picture">
+          <img alt="pic" src={ImgKeys.HOME_FOUR2} />
+          <div className="pic-text">转正</div>
+        </div>
+        <div className="picture">
+          <img alt="pic" src={ImgKeys.HOME_FOUR3} />
+          <div className="pic-text">立项</div>
+        </div>
+        <div className="picture">
+          <img alt="pic" src={ImgKeys.HOME_FOUR4} />
+          <div className="pic-text">酬劳</div>
+        </div>
       </div>
     </PerfectMechanismWrapper>
   );

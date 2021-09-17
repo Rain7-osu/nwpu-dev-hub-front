@@ -20,7 +20,7 @@ export default defineConfig(() => {
       },
     },
     build: {
-      outDir: buildTarget,
+      outDir: buildTarget || 'dist',
       assetsInlineLimit: 4096,
     },
     mode: 'production',

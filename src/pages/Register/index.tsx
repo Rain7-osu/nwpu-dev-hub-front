@@ -67,10 +67,13 @@ const IntentionItem = (props: IntentionItemProps) => {
 
 let firstErr = true;
 
+/**
+ *  // TODO: 后期做个表单组件 直接由组件收集数据，在组件里头 写 onInput 真的 太 zz 了。。。
+ */
 export const Register = memo(() => {
   const [name, setName] = useState<string>('');
   const [nameErr, setNameErr] = useState<string>('');
-  const [genderSelectedIndex, setGenderSelectedIndex] = useState<Gender>(-1);
+  const [genderSelectedIndex, setGenderSelectedIndex] = useState<Gender>(0);
   const [genderErr, setGenderErr] = useState<string>('');
   const [school, setSchool] = useState<string>('软件学院');
   const [schoolErr, setSchoolErr] = useState<string>('');
@@ -162,7 +165,7 @@ export const Register = memo(() => {
   }, [qq]);
 
   const validateWechat = useCallback((): boolean => {
-    if (wechat && !/^[a-zA-Z][a-zA-Z\d_-]{5,19}$/.test(wechat)) {
+    if (wechat && !/((^[a-zA-Z][a-zA-Z\d_-]{5,19}$)|(^1\d{10}$))/.test(wechat)) {
       setWechatErr('微信号格式不正确！');
       return false;
     } else {
@@ -199,11 +202,17 @@ export const Register = memo(() => {
 
   const handleChooseGroup = useCallback((e: BaseSyntheticEvent) => {
     const index = +e.target.parentNode.parentNode.dataset.index;
+
     if (index > Intention.OPERATE || index < Intention.NONE) {
       return;
     }
+
+    if (intentionGroupErr.length > 0) {
+      validateIntentionGroup();
+    }
+
     setIntentionIndex(index as Intention);
-  }, [setIntentionIndex]);
+  }, [setIntentionIndex, intentionGroupErr, validateIntentionGroup]);
 
   const handleInputExperience = useCallback((e) => {
     const value = e.target.value;
@@ -430,6 +439,7 @@ export const Register = memo(() => {
             value={name}
             errMsg={nameErr}
             onInput={handleInputName}
+            onBlur={() => validateName()}
           />
           <FormItem label="性别" required render={renderGenderInput} errMsg={genderErr} />
         </FormRow>
@@ -437,7 +447,14 @@ export const Register = memo(() => {
           <FormItem
             label="学院"
             required
-            render={() => <SchoolSelector onChange={(index, value) => setSchool(value)} />}
+            render={() => {
+              return (
+                <SchoolSelector onChange={(index, value) => {
+                  setSchool(value);
+                  validateSchool();
+                }} />
+              );
+            }}
           />
           <FormItem
             label={
@@ -450,6 +467,7 @@ export const Register = memo(() => {
             value={grade}
             errMsg={gradeErr}
             onInput={handleInputGrade}
+            onBlur={() => validateGrade()}
           />
         </FormRow>
         <FormRow>
@@ -465,12 +483,15 @@ export const Register = memo(() => {
             label="qq"
             value={qq}
             onInput={handleInputQq}
+            onBlur={() => validateQq()}
             errMsg={qqErr}
           />
           <FormItem
             label="微信"
             value={wechat}
             onInput={handleInputWechat}
+            errMsg={wechatErr}
+            onBlur={() => validateWechat()}
           />
         </FormRow>
         <FormRow className="aspect-fit">

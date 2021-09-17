@@ -10,6 +10,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   z-index: 9999;
+  box-sizing: border-box;
   
   @media screen and (max-width: 1080px) {
     .mobile {
@@ -52,6 +53,8 @@ export const Container = styled.div`
 export const MobileContainer = styled.header`
   height: 60px;
   width: 100vw;
+  padding-right: 10px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
