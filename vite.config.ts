@@ -5,7 +5,6 @@ import { proxyUrl, buildTarget } from './config.json'
 // @ts-ignore
 const mode = process.env.NODE_ENV;
 
-// https://vitejs.dev/config/
 export default defineConfig(() => {
 
   return {
@@ -23,6 +22,6 @@ export default defineConfig(() => {
       outDir: buildTarget || 'dist',
       assetsInlineLimit: 4096,
     },
-    mode: 'production',
+    mode,
   }
 });

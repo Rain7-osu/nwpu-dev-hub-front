@@ -4,6 +4,7 @@
   "author": "rain7",
   "scripts": {
     "dev": "set NODE_ENV=development && vite",
+    "pro": "set NODE_ENV=production && vite",
     "build": "set NODE_ENV=production && tsc && vite build",
     "serve": "vite preview",
     "reinstall": "rm -rf node_modules && npm i",

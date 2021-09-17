@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo git pull --rebase
+sudo git checkout master
+
+sudo git pull
 
 echo 'pull master...'
 
