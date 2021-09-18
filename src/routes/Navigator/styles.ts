@@ -9,7 +9,7 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 10;
   box-sizing: border-box;
   
   @media screen and (max-width: 1080px) {
