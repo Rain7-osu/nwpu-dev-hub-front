@@ -1,30 +1,51 @@
 import React from 'react';
-import { Container, DefaultContainer, NavWrapper, LinkUl } from './styles';
-import { MobileNavigator } from './MobileNavigator';
-import { Link } from 'react-router-dom';
+import { Container, DefaultContainer, MobileContainer, NavWrapper } from './styles';
+import { NavLink } from 'react-router-dom';
 import { DevhubLogo } from '../../components/DevhubLogo';
-
-const Links = () => {
-  return (
-    <LinkUl>
-      <li><Link to="/">首页</Link></li>
-      <li><a>社区简介</a></li>
-      <li><a>新闻中心</a></li>
-      <li><a>项目介绍</a></li>
-      <li><a>加入我们</a></li>
-      <li><Link to="/register">报名</Link></li>
-    </LinkUl>
-  );
-};
+import { Dropdown } from '../../components/Dropdown';
+import Menu from '../../components/Menu';
+import { HamburgerButton } from '../../components/HamburgerButton';
+import { useLocation } from 'react-router';
 
 export const Navigator = () => {
+  const { pathname } = useLocation();
+  const links = (
+    <>
+      <Menu.Item active={pathname === '/'}>
+        <NavLink to="/">首页</NavLink>
+      </Menu.Item>
+      <Menu.Item active={pathname === '/info'}>
+        <NavLink to="/info">社区简介</NavLink>
+      </Menu.Item>
+      <Menu.Item active={pathname === '/news'}>
+        <NavLink to="/news">新闻中心</NavLink>
+      </Menu.Item>
+      <Menu.Item active={pathname === '/project'}>
+        <NavLink to="/project" >项目介绍</NavLink>
+      </Menu.Item>
+      <Menu.Item active={pathname === '/register'}>
+        <NavLink to="/register" >加入我们</NavLink>
+      </Menu.Item>
+    </>
+  );
+
   return (
     <Container>
-      <MobileNavigator/>
+      <MobileContainer className="mobile">
+        <DevhubLogo size="small" />
+        <Dropdown
+          placement="bottom-right"
+          overlay={<Menu>{links}</Menu>}
+        >
+          <HamburgerButton />
+        </Dropdown>
+      </MobileContainer>
       <DefaultContainer className="default">
         <NavWrapper>
           <DevhubLogo size="normal"/>
-          <Links/>
+          <Menu direction="horizontal">
+            {links}
+          </Menu>
         </NavWrapper>
       </DefaultContainer>
     </Container>

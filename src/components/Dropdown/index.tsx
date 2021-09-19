@@ -6,39 +6,52 @@ export interface DropdownProps {
   children: ReactNode;
   overlay: ReactNode;
   trigger?: 'hover' | 'click';
+  placement?: 'top-left' | 'top-right' | 'top' | 'bottom' | 'bottom-right' | 'bottom-left';
+  enableScrollBar?: boolean;
 }
 
 export function Dropdown (props: DropdownProps) {
-  const { trigger = 'click', overlay, children } = props;
+  const {
+    trigger = 'click',
+    placement = 'bottom-left',
+    overlay,
+    children,
+    enableScrollBar = false,
+  } = props;
   const [show, setShow] = useState<boolean>(false);
 
   const handleClickOverlay = useCallback(() => {
     setShow(false);
   }, [setShow]);
 
+  const setHidEvent = useCallback(() => {
+    document.addEventListener('click', (e: any) => {
+      e.stopPropagation();
+      setShow(false);
+    }, { once: true, capture: true });
+  }, [setShow]);
+
   const handleMouseOver = useCallback(() => {
     if (trigger === 'hover') {
       setShow(true);
-      document.addEventListener('click', () => {
-        setShow(false);
-      }, { once: true });
     }
   }, [trigger, setShow]);
 
-  const handleClickContent = useCallback((e: any) => {
+  const handleClickTriggerButton = useCallback((e: any) => {
     e.stopPropagation();
     if (trigger === 'click') {
-      setShow(true);
-      document.addEventListener('click', () => {
-        setShow(false);
-      }, { once: true });
+      setShow(!show);
+      setHidEvent();
     }
-  }, [trigger]);
+  }, [setHidEvent, show, trigger]);
 
   return (
     <DropdownContainer onMouseOver={handleMouseOver}>
-      <div className="content" onClick={handleClickContent}>{children}</div>
-      <div className={cls('overlay', { show })} onClick={handleClickOverlay}>
+      <div className="content" onClick={handleClickTriggerButton}>{children}</div>
+      <div className={cls('overlay', {
+        show,
+        scroll: enableScrollBar,
+      }, placement)} onClick={handleClickOverlay}>
         <div className="overlay-content">{overlay}</div>
       </div>
     </DropdownContainer>

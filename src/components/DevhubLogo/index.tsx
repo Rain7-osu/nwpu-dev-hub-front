@@ -13,7 +13,10 @@ export const DevhubLogo = ({ size }: { size: 'normal' | 'large' | 'small'}) => {
       <div className="logo">
         <img alt="logo" src={iconMap['logo']}/>
       </div>
-      <div className="base-name">Devhub</div>
+      <div className="base-name">
+        <div className="base-sc-name">NPU</div>
+        <div className="base-gr-name">Dev Hub</div>
+      </div>
       <div className="text-wrapper">
         <div className="cn-name">工大开发者社区</div>
         <div className="en-name">NPU Developer Hub</div>

@@ -39,6 +39,11 @@ export const FooterContainer = styled.div`
         a {
           display: block;
           color: var(--base_gray_color);
+          transition: color .3s ease;
+          
+          &:hover {
+            color: var(--base_orange);
+          }
         }
 
         .c-item-large {

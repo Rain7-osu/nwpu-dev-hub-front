@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const HamburgerButtonContainer = styled.div<{ color?: string | [string, string, string] }>`
   .ham-wrapper {
@@ -9,26 +9,18 @@ export const HamburgerButtonContainer = styled.div<{ color?: string | [string, s
     box-sizing: border-box;
     
     .ham-item {
-      background: ${({ color }) => {
-        return typeof color === 'string' ? color : '#aaa';
-      }};
+      background: ${({ color }) => typeof color === 'string' ? color : '#aaa'};
       
       &.ham-1 {
-        background: ${({ color }) => {
-          return Array.isArray(color) ? color[0] : '#aaa';
-        }};
+        background: ${({ color }) => Array.isArray(color) ? color[0] : '#aaa'};
       }
 
       &.ham-2 {
-        background: ${({ color }) => {
-          return typeof color === 'string' ? color[1] : '#aaa';
-        }};
+        background: ${({ color }) => typeof color === 'string' ? color[1] : '#aaa'};
       }
 
       &.ham-3 {
-        background: ${({ color }) => {
-          return typeof color === 'string' ? color[2] : '#aaa';
-        }};
+        background: ${({ color }) => typeof color === 'string' ? color[2] : '#aaa'};
       }
     }
     

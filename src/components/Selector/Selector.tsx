@@ -43,7 +43,7 @@ export function Selector(props: SelectorProps) {
     });
   }, [onChange, options, selectedIndex]);
   return (
-    <Dropdown overlay={dropdown} >
+    <Dropdown overlay={dropdown} enableScrollBar >
       <BaseInput value={value} readonly />
     </Dropdown>
   );
