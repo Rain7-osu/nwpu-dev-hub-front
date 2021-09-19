@@ -1,10 +1,17 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { Carousel } from '../../components/Carousel';
-import { PerfectMechanismWrapper, HomeContainer, HomeItemWrapper, SimpleIntroduction, ThreeCardContainer, JoinUsModuleWrapper } from './styles';
-
 import { DevhubLogo } from '../../components/DevhubLogo';
 import { ImgKeys } from '../../imgKeys';
-import { Link } from 'react-router-dom';
+import t from '../../text.json';
+import {
+  HomeContainer,
+  HomeItemWrapper,
+  JoinUsModuleWrapper,
+  PerfectMechanismWrapper,
+  SimpleIntroduction,
+  ThreeCardContainer,
+} from './styles';
 
 interface ThreeCardProps {
   img: string;
@@ -96,9 +103,7 @@ export const Home = memo(() => {
           <DevhubLogo size="normal" />
         </div>
         <div className="hover-block">
-          <SimpleIntroduction>
-            依托于共青团西北工业大学委员会和西安寻师有道信息科技有限公司（旗下有LOOP校园系列），工大开发者社区拥有稳定充裕的资金来源、项目来源和场地支持。
-          </SimpleIntroduction>
+          <SimpleIntroduction>{t['hub-introduction']}</SimpleIntroduction>
         </div>
       </HomeItemWrapper>
       <HomeItemWrapper className="three-card">

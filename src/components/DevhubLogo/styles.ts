@@ -17,13 +17,22 @@ export const DevhubWrapper = styled.div`
     
     .base-name {
       display: flex;
-      line-height: 60px;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      
+      .base-sc-name {
+        font-size: 20px;
+      }
+      
+      .base-gr-name {
+        font-size: 16px;
+      }
     }
   }
   
   &.normal {
     height: 60px;
-    width: 270px;
     
     .logo {
       width: 50px;
@@ -82,5 +91,16 @@ export const DevhubWrapper = styled.div`
       font-family: 幼圆, serif;
       font-weight: 600;
     }
+  }
+  
+  img.large {
+  }
+  
+  img.normal {
+    max-width: 250px;
+  }
+  
+  img.small {
+    max-width: 180px;
   }
 `;

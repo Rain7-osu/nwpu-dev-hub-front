@@ -1,6 +1,6 @@
 import React from 'react';
-import { OptionContainer } from './styles';
 import cls from 'classnames';
+import { OptionContainer } from './styles';
 
 export interface OptionProps {
   value: string;

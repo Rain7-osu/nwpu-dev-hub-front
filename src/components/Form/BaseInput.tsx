@@ -1,6 +1,6 @@
 import React, { BaseSyntheticEvent } from 'react';
-import { InputContainer } from './styles';
 import cls from 'classnames';
+import { InputContainer } from './styles';
 
 export interface BaseInputProps {
   onInput?: (e: BaseSyntheticEvent) => void;
