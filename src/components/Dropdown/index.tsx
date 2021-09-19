@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback, useState } from 'react';
-import { DropdownContainer } from './styles';
 import cls from 'classnames';
+import { DropdownContainer } from './styles';
 
 export interface DropdownProps {
   children: ReactNode;

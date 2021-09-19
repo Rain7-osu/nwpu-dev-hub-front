@@ -10,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 360px;
 }
 
 code {
@@ -31,6 +32,10 @@ code {
   --base_light3_orange: #E8922811;
 
   --base_gray_color: #707070;
+  --base_gray1_color: #707070aa;
+  --base_gray2_color: #70707077;
+  --base_gray3_color: #70707033;
+  --base_gray4_color: #70707011;
   --footer_bg: #F8F8F8;
 
   --transition_func_1: cubic-bezier(.7,.3,.1,1);

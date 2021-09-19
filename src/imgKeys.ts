@@ -17,4 +17,6 @@ export enum ImgKeys {
   HOME_SIX = 'https://z3.ax1x.com/2021/09/15/4VUIvn.png',
 
   HOME_JOIN_ICON_ARROW_RIGHT = 'https://z3.ax1x.com/2021/09/15/4VUcHf.png',
+
+  IN_BANNER = 'https://z3.ax1x.com/2021/09/15/4V0RLn.png',
 }

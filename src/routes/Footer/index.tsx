@@ -1,10 +1,10 @@
-import React, { memo, useCallback, useState } from 'react';
-import { FooterContainer } from './styles';
-import { DevhubLogo } from '../../components/DevhubLogo';
+import React, { memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import cls from 'classnames';
+import { DevhubLogo } from '../../components/DevhubLogo';
 import { modal } from '../../components/Modal';
 import qrCode from '../../assets/imgs/home_footer-QRcode.png';
-import cls from 'classnames';
+import { FooterContainer } from './styles';
 
 export const Footer = memo(() => {
   const handleGetNewGuys = useCallback((e: any) => {
@@ -54,7 +54,7 @@ export const Footer = memo(() => {
               </div>
             </div>
             <div className="m-right">
-              <DevhubLogo size="normal" />
+              <DevhubLogo size="normal" type="picture" />
             </div>
           </div>
           <div className="copy-right">

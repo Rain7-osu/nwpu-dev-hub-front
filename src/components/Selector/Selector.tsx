@@ -1,8 +1,7 @@
 import React, { useMemo, useState } from 'react';
-// import { Content, SelectorContainer, SelectorDropdown } from './styles';
-import { Option } from './Option';
 import { BaseInput } from '../Form/BaseInput';
 import { Dropdown } from '../Dropdown';
+import { Option } from './Option';
 
 export interface SelectorProps {
   /**

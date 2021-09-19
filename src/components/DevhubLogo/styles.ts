@@ -33,7 +33,6 @@ export const DevhubWrapper = styled.div`
   
   &.normal {
     height: 60px;
-    width: 270px;
     
     .logo {
       width: 50px;
@@ -92,5 +91,16 @@ export const DevhubWrapper = styled.div`
       font-family: 幼圆, serif;
       font-weight: 600;
     }
+  }
+  
+  img.large {
+  }
+  
+  img.normal {
+    max-width: 250px;
+  }
+  
+  img.small {
+    max-width: 180px;
   }
 `;

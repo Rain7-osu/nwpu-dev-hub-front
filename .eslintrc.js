@@ -8,6 +8,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:import-order/recommended',
   ],
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
@@ -21,6 +22,7 @@ module.exports = {
     'react',
     '@typescript-eslint',
     'react-hooks',
+    'import-order',
   ],
   'rules': {
     'indent': [
@@ -69,6 +71,7 @@ module.exports = {
     'react/no-array-index-key': ['error'],
     'react/jsx-props-no-multi-spaces': ['error'],
     '@typescript-eslint/no-explicit-any': ['off'],
+    'import-order/import-order': ['error'],
   },
   'settings': {
     'react': {

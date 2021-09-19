@@ -1,6 +1,6 @@
 import React from 'react';
-import { HamburgerButtonContainer } from './styles';
 import cls from 'classnames';
+import { HamburgerButtonContainer } from './styles';
 
 export interface HamburgerButtonProps {
   color?: string | [string, string, string];
