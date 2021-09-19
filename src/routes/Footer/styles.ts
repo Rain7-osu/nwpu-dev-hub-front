@@ -1,14 +1,17 @@
 import styled from 'styled-components';
+import icon_wechat from '../../assets/imgs/icons/icon_home_footer-wecaht-default.png';
+import icon_wechat_hover from '../../assets/imgs/icons/icon_home_footer-wechat-hover.png';
+import { boxShadow } from '../../styles';
 
 export const FooterContainer = styled.div`
+  margin-top: 200px;
   width: 100%;
   background: var(--footer_bg);
   padding: 30px 0;
   display: flex;
   justify-content: stretch;
   align-items: stretch;
-  flex-direction: column;
-  
+  flex-direction: column;  
   color: var(--base_gray_color);
   
   .copy-right {
@@ -21,9 +24,28 @@ export const FooterContainer = styled.div`
   .top {
     padding: 30px 0;
     border-bottom: 1px solid var(--base_gray_color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     
     .follow-us {
       font-size: 24px;
+      display: flex;
+      align-items: center;
+
+      .wechat-logo {
+        height: 1.5em;
+        width: 1.5em;
+        margin-left: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+    .qr-code {
+      display: none;
     }
   }
   
@@ -62,6 +84,19 @@ export const FooterContainer = styled.div`
   @media screen and (max-width: 1080px) {
     .top {
       text-align: center;
+      
+      .follow-us {
+        .wechat-logo {
+          background-image: url(${icon_wechat_hover});
+        }
+      }
+      
+      .qr-code {
+        display: block;
+        margin-left: 20px;
+        width: 150px;
+        height: 150px;
+      }
     }
     
     .medium {
@@ -94,6 +129,43 @@ export const FooterContainer = styled.div`
   }
   
   @media screen and (min-width: 1080px) {
+    .top {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      
+      .qr-code {
+        position: absolute;
+        bottom: 100%;
+        ${boxShadow};
+        width: 200px;
+        height: 200px;
+      }
+      
+      .wechat-logo {
+        background-image: url(${icon_wechat});
+      }
+      
+      .follow-us {
+        display: flex;
+        flex-direction: row;
+        font-size: 24px;        
+        cursor: pointer;
+        
+        &:hover {
+          cursor: pointer;
+          
+          .wechat-logo {
+            background-image: url(${icon_wechat_hover});
+          }
+        }
+        
+        &:hover + .qr-code {
+          display: block;
+        }
+      }
+    }
+    
     .center-box {
       margin: 0 auto;
       min-width: 1080px;
