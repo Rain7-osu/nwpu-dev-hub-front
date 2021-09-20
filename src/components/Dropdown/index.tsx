@@ -24,11 +24,11 @@ export function Dropdown (props: DropdownProps) {
     setShow(false);
   }, [setShow]);
 
-  const setHidEvent = useCallback(() => {
+  const setHidEvent = useCallback((capture = false) => {
     document.addEventListener('click', (e: any) => {
       e.stopPropagation();
       setShow(false);
-    }, { once: true, capture: true });
+    }, { once: true, capture });
   }, [setShow]);
 
   const handleMouseOver = useCallback(() => {
