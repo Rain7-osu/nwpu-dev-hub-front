@@ -45,7 +45,7 @@ export const Footer = memo(() => {
           <div className="medium">
             <div className="m-left">
               <div className="m-col">
-                <Link to="/register" className="c-item-large">加入我们</Link>
+                <Link to="/join" className="c-item-large">加入我们</Link>
                 <Link to="/" className="c-item-small" onClick={handleGetNewGuys}>协会纳新</Link>
               </div>
               <div className="m-col">

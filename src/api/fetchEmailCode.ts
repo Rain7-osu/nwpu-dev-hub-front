@@ -1,4 +1,4 @@
-import { Intention } from '../pages/Register';
+import { Intention } from '../pages/JoinUs/Register';
 import { IResponse, request } from './base/request';
 
 export interface FetchEmailCodeParams {

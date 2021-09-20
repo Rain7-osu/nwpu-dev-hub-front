@@ -21,21 +21,35 @@ code {
 :root {
   --navigator_color: #fff;
   --nav_box_shadow: 0 2px 8px #f0f1f2;
-  --box_shadow: 0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;
+  --box_shadow: 0 6px 16px -8px #00000014, 0 9px 8px #0000000d, 0 12px 48px 16px #00000008;
   --hover_base: #e9e9e9;
   --hover_base_dark: #a0a0a0;
   --box_shadow_dark: 0 6px 16px -8px #bbb, 0 9px 28px #aaa, 0 12px 48px 16px #bbb;
 
-  --base_orange: #EB9228;
-  --base_light_orange: #E8922855;
-  --base_light2_orange: #E8922833;
-  --base_light3_orange: #E8922811;
+  --base_orange: #F48617;
+  --base_orange1: #F69E45;
+  --base_orange2: #F8B673;
+  --base_orange3: #FBCEA2;
+  --base_orange4: #FDE7D0;
 
   --base_gray_color: #707070;
   --base_gray1_color: #707070aa;
   --base_gray2_color: #70707077;
   --base_gray3_color: #70707033;
   --base_gray4_color: #70707011;
+
+  --base_purple: #9646E6;
+  --base_purple1: #AB6BEB;
+  --base_purple2: #C090F0;
+  --base_purple3: #D5B5F5;
+  --base_purple4: #EADAFA;
+
+  --base_green: #1BAE8A;
+  --base_green1: #48BEA1;
+  --base_green2: #76CEB9;
+  --base_green3:  #A3DFD0;
+  --base_green4: #D1EFE8;
+
   --footer_bg: #F8F8F8;
 
   --transition_func_1: cubic-bezier(.7,.3,.1,1);

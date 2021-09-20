@@ -3,17 +3,17 @@ import styled from 'styled-components';
 export const IntroductionContainer = styled.div`
   .top-banner {
     width: 100%;
-    
+
     img {
       width: 100%;
     }
   }
-  
+
   .intro-nav {
     height: 60px;
     font-size: 18px;
     background-color: var(--footer_bg);
-    
+
     .intro-nav-menu {
       max-width: 1080px;
       margin: 0 auto;
@@ -24,15 +24,15 @@ export const IntroductionContainer = styled.div`
       }
     }
   }
-  
+
   .hub-introduction {
     padding: 40px;
     transition: all .3s ease;
-    
+
     &:hover {
-      background-color: var(--base_light3_orange);
+      background-color: var(--base_orange4);
     }
-    
+
     .hub-introduction-wrapper {
       margin: 0 auto;
       max-width: 1080px;
@@ -45,7 +45,7 @@ export const IntroductionContainer = styled.div`
         margin: 40px;
         font-size: 24px;
       }
-      
+
       .hub-intro-content {
         max-width: 720px;
         line-height: 1.5em;
@@ -54,10 +54,10 @@ export const IntroductionContainer = styled.div`
       }
     }
   }
-  
+
   .hub-structure {
     background-color: var(--footer_bg);
-    
+
     .hub-structure-wrapper {
       margin: 0 auto;
       max-width: 1080px;
@@ -67,12 +67,12 @@ export const IntroductionContainer = styled.div`
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      
+
       .hub-structure-title {
         font-size: 24px;
         margin: 40px;
       }
-      
+
       .hub-structure-content {
         margin: 40px;
         width: 100%;
@@ -80,7 +80,7 @@ export const IntroductionContainer = styled.div`
       }
     }
   }
-  
+
   @media screen and (max-width: 480px) {
     .intro-nav {
       font-size: 12px;
@@ -91,7 +91,7 @@ export const IntroductionContainer = styled.div`
         display: flex;
         flex-direction: row;
         margin: 0 auto;
-        
+
         > li {
           flex: 1;
         }
@@ -105,37 +105,37 @@ export const IntroductionContainer = styled.div`
       }
     }
   }
-  
+
   .structure {
     width: 100%;
     margin: 0 auto;
-    
+
     .devhub-logo .normal {
       transition: all .3s ease;
-      
+
       @media screen and (min-width: 720px) {
         width: 250px;
       }
 
-      @media screen and (min-width: 540px) and (max-width: 720px){
+      @media screen and (min-width: 540px) and (max-width: 720px) {
         width: 210px;
       }
 
-      @media screen and (max-width: 540px){
+      @media screen and (max-width: 540px) {
         width: 180px;
       }
     }
-    
+
     .l-1 {
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    
+
     .l-2 {
       display: flex;
       flex-direction: column;
-      
+
       .line-v {
         width: 2px;
         background-color: #a0a0a0;
@@ -146,15 +146,15 @@ export const IntroductionContainer = styled.div`
           height: 60px;
         }
 
-        @media screen and (min-width: 540px) and (max-width: 720px){
+        @media screen and (min-width: 540px) and (max-width: 720px) {
           height: 40px;
         }
 
-        @media screen and (max-width: 540px){
+        @media screen and (max-width: 540px) {
           height: 20px;
         }
       }
-      
+
       .line-groups {
         display: flex;
         width: 100%;
@@ -162,12 +162,12 @@ export const IntroductionContainer = styled.div`
         margin: 0 auto;
         justify-content: space-between;
       }
-      
+
       .line-h {
         height: 2px;
         background-color: #a0a0a0;
       }
-      
+
       .line-2 {
         width: 75%;
         margin: 0 auto;

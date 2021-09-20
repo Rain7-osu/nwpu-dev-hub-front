@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 import { Carousel } from '../../components/Carousel';
 import { DevhubLogo } from '../../components/DevhubLogo';
 import { ImgKeys } from '../../imgKeys';
@@ -95,12 +96,14 @@ export const PerfectMechanism = () => {
 };
 
 export const Home = memo(() => {
+  console.log(dayjs('2021-9-24 23:59:00'));
+
   return (
     <HomeContainer>
       <Carousel paths={[ImgKeys.HOME_BANNER1, ImgKeys.HOME_BANNER2, ImgKeys.HOME_BANNER3]} />
       <HomeItemWrapper className="simple-introduction">
         <div className="hover-block">
-          <DevhubLogo size="normal" />
+          <DevhubLogo type="picture" size="normal" />
         </div>
         <div className="hover-block">
           <SimpleIntroduction>{t['hub-introduction']}</SimpleIntroduction>

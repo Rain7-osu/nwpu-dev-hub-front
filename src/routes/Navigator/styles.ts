@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: 100%;
   height: 60px;
   background-color: var(--navigator_color);
-  box-shadow: var(--nav_box_shadow);
+  box-shadow: var(--box_shadow);
   position: fixed;
   top: 0;
   left: 0;
@@ -95,25 +95,4 @@ export const NavWrapper = styled(ContentWrapper)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`;
-
-export const LinkUl = styled.ul`
-  justify-content: flex-start;
-  align-items: center;
-  list-style: none;
-  margin-left: 0;
-  appearance: none;
-  height: 100%;
-  
-  @media screen and (min-width: 900px) {
-    display: flex;
-  }
-  
-  @media screen and (max-width: 900px) {
-    display: none;
-  }
-  
-  li {
-    list-style: none;
-  }
 `;
