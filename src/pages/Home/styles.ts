@@ -56,7 +56,7 @@ export const HomeItemWrapper = styled(ContentWrapper)`
 
 export const ThreeCardContainer = styled.div<{ color: string }>`
   height: 525px;
-  width: 360px;
+  width: 350px;
   color: #fff;
   box-sizing: border-box;
   padding: 10px;
@@ -110,6 +110,10 @@ export const PerfectMechanismWrapper = styled.section`
     .picture {
       position: relative;
       
+      img {
+        height: 100%;
+      }
+      
       .pic-text {
         position: absolute;
         color: #ffffff;
@@ -139,8 +143,8 @@ export const PerfectMechanismWrapper = styled.section`
       flex-wrap: wrap;
       
       .picture {
-        height: 300px;
-        width: 400px;
+        height: 297px;
+        width: 396px;
         overflow: hidden;
         
         &:hover {
@@ -211,6 +215,7 @@ export const PerfectMechanismWrapper = styled.section`
         
         img {
           width: 100%;
+          max-width: 540px;
         }
       }
     }
