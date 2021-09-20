@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
-import { Container, ControlButton, Picture, Pictures } from './styles';
 import { iconMap } from '../../assets/imgs/icons';
+import { Container, ControlButton, Picture, Pictures } from './styles';
 
 export interface CarouselProps {
   paths: string[];

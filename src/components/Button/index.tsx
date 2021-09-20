@@ -1,7 +1,7 @@
 import React, { BaseSyntheticEvent } from 'react';
-import { BaseButton } from './style';
 import cls from 'classnames';
 import { CSSProperties } from 'styled-components';
+import { BaseButton } from './style';
 
 export interface ButtonProps {
   children?: string;
@@ -26,3 +26,4 @@ export function Button (props: ButtonProps) {
     </BaseButton>
   );
 }
+

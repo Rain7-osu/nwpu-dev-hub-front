@@ -1,8 +1,10 @@
 import React, { memo, useCallback } from 'react';
-import { FooterContainer } from './styles';
-import { DevhubLogo } from '../../components/DevhubLogo';
 import { Link } from 'react-router-dom';
+import cls from 'classnames';
+import { DevhubLogo } from '../../components/DevhubLogo';
 import { modal } from '../../components/Modal';
+import qrCode from '../../assets/imgs/home_footer-QRcode.png';
+import { FooterContainer } from './styles';
 
 export const Footer = memo(() => {
   const handleGetNewGuys = useCallback((e: any) => {
@@ -34,10 +36,11 @@ export const Footer = memo(() => {
       <div className="center-box">
         <div className="footer-wrapper">
           <div className="top">
-            <div className="follow-us">关注我们</div>
-            {/*<div className="wechat-logo">*/}
-            {/*  <img alt="wechat-logo" src="" />*/}
-            {/*</div>*/}
+            <div className="follow-us">
+              <div className="follow">关注我们</div>
+              <div className="wechat-logo" />
+            </div>
+            <img alt="qrcode" className={cls('qr-code')} src={qrCode} />
           </div>
           <div className="medium">
             <div className="m-left">
@@ -51,7 +54,7 @@ export const Footer = memo(() => {
               </div>
             </div>
             <div className="m-right">
-              <DevhubLogo size="normal" />
+              <DevhubLogo size="normal" type="picture" />
             </div>
           </div>
           <div className="copy-right">

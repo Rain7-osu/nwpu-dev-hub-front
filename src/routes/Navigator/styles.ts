@@ -9,7 +9,7 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 10;
   box-sizing: border-box;
   
   @media screen and (max-width: 1080px) {
@@ -31,28 +31,11 @@ export const Container = styled.div`
       display: flex;
     }
   }
-
-  a {
-    text-decoration: none;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 0;
-    border-bottom-width: 4px;
-    color: #000;
-    height: 80%;
-    padding: 10px 20px;
-    transition: border-color 0.3s ease;
-
-    &:hover {
-      cursor: pointer;
-      border-color: var(--base_orange);
-    }
-  }
 `;
 
 export const MobileContainer = styled.header`
   height: 60px;
-  width: 100vw;
+  width: 100%;
   padding-right: 10px;
   box-sizing: border-box;
   display: flex;
@@ -79,6 +62,30 @@ export const DefaultContainer = styled.header`
   max-width: 1440px;
   height: 100%;
   margin: 0 auto;
+  
+  li {
+    height: 100%;
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    border-color: transparent;
+    border-style: solid;
+    color: #000000d9;
+    height: 100%;
+    line-height: 60px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    font-size: 16px;
+    
+    &::before {
+      content: "";
+      background-color: transparent;
+      bottom: -2px;
+    }
+  }
 `;
 
 export const NavWrapper = styled(ContentWrapper)`

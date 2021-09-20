@@ -251,7 +251,7 @@ export const JoinUsModuleWrapper = styled.section`
   }
   
   .text-box {
-    width: 300px;
+    width: 260px;
     display: flex;
     flex: 1;
     flex-direction: column;

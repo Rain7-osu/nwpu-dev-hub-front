@@ -1,18 +1,17 @@
 import React, { BaseSyntheticEvent, memo, useCallback, useMemo, useState } from 'react';
-import { RegisterContainer, FormContainer, FormRow, GenderContainer, IntentionGroup, ErrorText } from './styles';
+import { useHistory } from 'react-router';
+import cls from 'classnames';
 import { FormItem } from '../../components/Form';
 import { Icon } from '../../components/Icon';
-import cls from 'classnames';
 import { BaseTextarea } from '../../components/Form/BaseTextarea';
 import { Button } from '../../components/Button';
 import { fetchRegister } from '../../api/fetchRegister';
 import { fetchEmailCode } from '../../api/fetchEmailCode';
 import { fetchCheckEmail } from '../../api/fetchCheckEmail';
 import { modal } from '../../components/Modal';
-
-import './style.css';
+import { ErrorText, FormContainer, FormRow, GenderContainer, IntentionGroup, RegisterContainer } from './styles';
 import { SchoolSelector } from './SchoolSelector';
-import { useHistory } from 'react-router';
+import './style.css';
 
 export enum Gender {
   NONE= -1,
