@@ -1,26 +1,39 @@
 import styled from 'styled-components';
 
 export const RegisterContainer = styled.div`
-  margin: 50px auto;
+  margin: 20px auto;
   max-width: 1080px;
-  
+
   .top-title {
-    padding-left: 4px;
-    border-left: 4px solid #F48617;
-    
-    span {
-      font-size: 22px;
-      line-height: 22px;
-      vertical-align: baseline;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+    background-color: var(--base_orange);
+    margin-bottom: 20px;
+    transition: all .3s ease;
+
+    @media screen and (min-width: 540px) {
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
     }
   }
-  
 `;
 
 export const FormContainer = styled.div`
   margin-top: 50px;
   display: flex;
   flex-direction: column;
+  padding-bottom: 50px;
+  
+  @media screen and (min-width: 540px) {
+    box-shadow: var(--nav_box_shadow);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
 `;
 
 export const FormRow = styled.div<{ align?: string }>`

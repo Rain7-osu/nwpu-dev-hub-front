@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Selector } from '../../../components/Selector';
+import { Selector } from '../../../../components/Selector';
 
 const options = [
   '航空学院',
