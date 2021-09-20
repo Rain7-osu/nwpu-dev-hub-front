@@ -127,24 +127,34 @@ export const PerfectMechanismWrapper = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .right {
+      height: 540px;
+      width: 720px;
+
+      .picture {
+        height: 270px;
+        width: 360px;
+      }
+    }
   }
   
   @media screen and (min-width: 1080px) {
-    height: 600px;
+    height: 540px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     
     .right {
-      height: 600px;
-      width: 800px;
+      height: 540px;
+      width: 720px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       
       .picture {
-        height: 297px;
-        width: 396px;
+        height: 270px;
+        width: 360px;
         overflow: hidden;
         
         &:hover {
