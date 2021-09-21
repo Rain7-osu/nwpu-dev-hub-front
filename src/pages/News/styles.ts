@@ -59,11 +59,34 @@ export const HubNewsContainer = styled(ContentWrapper)`
     font-weight: 400;
     margin: 40px 0 20px;
     padding: 20px;
+
+    @media (max-width: 720px) {
+      text-align: center;
+    }
   }
   
   .news-list {
     display: flex;
-    flex-direction: row;
+    
+    @media (min-width: 720px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+      .news-card-wrapper {
+        width: 50%;
+      }
+    }
+    
+    @media (max-width: 720px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
+      .news-card-wrapper {
+        width: 80%;
+      }
+    }
+
   }
   
   .news-card-wrapper {
