@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Page } from '../styles';
 import { Introduction } from '../pages/Introduction';
@@ -16,9 +16,8 @@ export const Layout = memo(() => {
       <Page>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/join" component={JoinUs}/>
+          <Route path="/join" render={() => <JoinUs/>} />
           <Route exact path="/info" component={Introduction}/>
-          <Redirect to="/" />
         </Switch>
       </Page>
       <Footer />

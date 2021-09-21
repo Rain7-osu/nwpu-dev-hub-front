@@ -8,4 +8,9 @@ export const JoinUsContainer = styled.div`
     max-width: 1080px;
     margin: 0 auto;
   }
+  
+  .see-rule {
+    color: var(--base_orange);
+    font-size: 18px;
+  }
 `;
