@@ -43,12 +43,12 @@ export const HomeItemWrapper = styled(ContentWrapper)`
     }
   }
   
-  @media screen and (min-width: 1080px) {
+  @media (min-width: 1080px) {
     flex-direction: row;
     align-items: stretch;
   }
   
-  @media screen and (max-width: 1080px) {
+  @media (max-width: 1080px) {
     flex-direction: column;
     align-items: center;
   }

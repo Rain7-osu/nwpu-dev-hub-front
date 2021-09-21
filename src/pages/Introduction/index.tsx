@@ -70,6 +70,7 @@ export const Introduction = memo(() => {
     <IntroductionContainer>
       <div className="top-banner">
         <img alt="banner" src={ImgKeys.IN_BANNER} />
+        <div className="banner-desc">西北工业大学学生开发者社区</div>
       </div>
       <SubNav>
         {[
