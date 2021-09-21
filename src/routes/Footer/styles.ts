@@ -3,7 +3,7 @@ import icon_wechat from '../../assets/imgs/icons/icon_home_footer-wecaht-default
 import icon_wechat_hover from '../../assets/imgs/icons/icon_home_footer-wechat-hover.png';
 import { boxShadow } from '../../styles';
 
-export const FooterContainer = styled.div`
+export const FooterContainer = styled.footer`
   margin-top: 200px;
   width: 100%;
   background: var(--footer_bg);

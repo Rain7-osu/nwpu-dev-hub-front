@@ -1,9 +1,7 @@
 import React, { memo } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { Home } from '../pages/Home';
 import { Page } from '../styles';
-import { Introduction } from '../pages/Introduction';
-import { JoinUs } from '../pages/JoinUs';
+import routes from './RouterConfig';
 import { Footer } from './Footer';
 import { Navigator } from './Navigator';
 import { RouterListener } from './RouterListener';
@@ -15,9 +13,7 @@ export const Layout = memo(() => {
       <Navigator/>
       <Page>
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/join" component={JoinUs}/>
-          <Route exact path="/info" component={Introduction}/>
+          {routes.map(({ title, ...props }) => <Route key={title} {...props} />)}
           <Redirect to="/" />
         </Switch>
       </Page>
