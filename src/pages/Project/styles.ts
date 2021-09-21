@@ -5,9 +5,21 @@ export const ProjectContainer = styled.div`
   .project-banner {
     width: 100%;
     position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     img {
-      width: 100%;
+      @media (min-width: 1440px) {
+        max-width: 100%;
+      }
+
+      @media (max-width: 1440px) {
+        height: 358.5px;
+        --x: calc(100% - width) ;
+        transform: translateX(var(--x)px);
+      }
     }
 
     .banner-desc {
@@ -19,16 +31,12 @@ export const ProjectContainer = styled.div`
       z-index: 999;
       opacity: .75;
       
-      @media screen and (min-width: 1080px) {
+      @media (min-width: 1080px) {
         font-size: 48px;
       }
 
-      @media screen and (min-width: 720px) and (max-width: 1080px){
+      @media (max-width: 1080px){
         font-size: 36px;
-      }
-
-      @media screen and (max-width: 720px) {
-        font-size: 24px;
       }
     }
   }
