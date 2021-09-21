@@ -23,8 +23,8 @@ export const Navigator = () => {
       {/*<Menu.Item active={pathname === '/project'}>*/}
       {/*  <NavLink to="/project" >项目介绍</NavLink>*/}
       {/*</Menu.Item>*/}
-      <Menu.Item active={pathname === '/register'}>
-        <NavLink to="/register" >加入我们</NavLink>
+      <Menu.Item active={pathname === '/join'}>
+        <NavLink to="/join" >加入我们</NavLink>
       </Menu.Item>
     </>
   );

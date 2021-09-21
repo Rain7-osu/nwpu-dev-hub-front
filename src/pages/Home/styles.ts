@@ -56,7 +56,7 @@ export const HomeItemWrapper = styled(ContentWrapper)`
 
 export const ThreeCardContainer = styled.div<{ color: string }>`
   height: 525px;
-  width: 360px;
+  width: 350px;
   color: #fff;
   box-sizing: border-box;
   padding: 10px;
@@ -110,6 +110,10 @@ export const PerfectMechanismWrapper = styled.section`
     .picture {
       position: relative;
       
+      img {
+        height: 100%;
+      }
+      
       .pic-text {
         position: absolute;
         color: #ffffff;
@@ -123,24 +127,34 @@ export const PerfectMechanismWrapper = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .right {
+      height: 540px;
+      width: 720px;
+
+      .picture {
+        height: 270px;
+        width: 360px;
+      }
+    }
   }
   
   @media screen and (min-width: 1080px) {
-    height: 600px;
+    height: 540px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     
     .right {
-      height: 600px;
-      width: 800px;
+      height: 540px;
+      width: 720px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       
       .picture {
-        height: 300px;
-        width: 400px;
+        height: 270px;
+        width: 360px;
         overflow: hidden;
         
         &:hover {
@@ -211,6 +225,7 @@ export const PerfectMechanismWrapper = styled.section`
         
         img {
           width: 100%;
+          max-width: 540px;
         }
       }
     }

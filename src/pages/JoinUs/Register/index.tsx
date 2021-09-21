@@ -1,14 +1,14 @@
 import React, { BaseSyntheticEvent, memo, useCallback, useMemo, useState } from 'react';
 import { useHistory } from 'react-router';
 import cls from 'classnames';
-import { FormItem } from '../../components/Form';
-import { Icon } from '../../components/Icon';
-import { BaseTextarea } from '../../components/Form/BaseTextarea';
-import { Button } from '../../components/Button';
-import { fetchRegister } from '../../api/fetchRegister';
-import { fetchEmailCode } from '../../api/fetchEmailCode';
-import { fetchCheckEmail } from '../../api/fetchCheckEmail';
-import { modal } from '../../components/Modal';
+import { FormItem } from '../../../components/Form';
+import { Icon } from '../../../components/Icon';
+import { BaseTextarea } from '../../../components/Form/BaseTextarea';
+import { Button } from '../../../components/Button';
+import { fetchRegister } from '../../../api/fetchRegister';
+import { fetchEmailCode } from '../../../api/fetchEmailCode';
+import { fetchCheckEmail } from '../../../api/fetchCheckEmail';
+import { modal } from '../../../components/Modal';
 import { ErrorText, FormContainer, FormRow, GenderContainer, IntentionGroup, RegisterContainer } from './styles';
 import { SchoolSelector } from './SchoolSelector';
 import './style.css';
@@ -435,8 +435,8 @@ export const Register = memo(() => {
 
   return (
     <RegisterContainer>
-      <div className="top-title"><span>Dev Hub 报名表</span></div>
       <FormContainer className="form-container">
+        <div className="top-title">即刻报名</div>
         <FormRow className="aspect-fit">
           <FormItem
             label="姓名"
