@@ -2,7 +2,7 @@ import { RouteProps } from 'react-router';
 import { Home } from '../pages/Home';
 import { JoinUs } from '../pages/JoinUs';
 import { Introduction } from '../pages/Introduction';
-import { News} from '../pages/News';
+import { News } from '../pages/News';
 import { Project } from '../pages/Project';
 
 const routes: Array<RouteProps & { title: string }> = [

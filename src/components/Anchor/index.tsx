@@ -11,20 +11,20 @@ const scrollToAnchor = (id: string): void => {
 };
 
 export interface AnchorProps {
-  name: string;
+  link: string;
   className?: string;
   style?: CSSProperties;
 }
 
 export const Anchor: React.FC<React.PropsWithChildren<ReactNode> & AnchorProps> = ({
-  name,
+  link,
   children,
   className,
   style,
 }) => {
   const handleScroll = useCallback(() => {
-    scrollToAnchor(name);
-  }, [name]);
+    scrollToAnchor(link);
+  }, [link]);
 
   return (
     <div className={className} style={style} onClick={handleScroll}>{children}</div>

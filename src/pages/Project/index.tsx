@@ -5,3 +5,5 @@ export const Project = memo(() => {
     <div>项目介绍</div>
   );
 });
+
+Project.displayName = 'Project';

@@ -4,9 +4,9 @@ import { useLocation } from 'react-router';
 import { DevhubLogo } from '../../components/DevhubLogo';
 import { Dropdown } from '../../components/Dropdown';
 import Menu from '../../components/Menu';
+import routes from '../RouterConfig';
 import { HamburgerButton } from '../../components/HamburgerButton';
 import { Container, DefaultContainer, MobileContainer, NavWrapper } from './styles';
-import routes from '../RouterConfig';
 
 export const Navigator = memo(() => {
   const { pathname } = useLocation();
