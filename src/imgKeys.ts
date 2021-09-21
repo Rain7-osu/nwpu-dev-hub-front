@@ -19,4 +19,11 @@ export enum ImgKeys {
   HOME_JOIN_ICON_ARROW_RIGHT = 'https://z3.ax1x.com/2021/09/15/4VUcHf.png',
 
   IN_BANNER = 'http://qzoul2wdn.hn-bkt.clouddn.com/img/%2A%2Aintro_banner%402x.png',
+
+  P_1 = 'http://qzoul2wdn.hn-bkt.clouddn.com/p-1.png',
+  P_2 = 'http://qzoul2wdn.hn-bkt.clouddn.com/p-2.png',
+  P_3 = 'http://qzoul2wdn.hn-bkt.clouddn.com/p-3.png',
+  P_4 = 'http://qzoul2wdn.hn-bkt.clouddn.com/p-4.png',
+
+  P_BANNER = 'http://qzoul2wdn.hn-bkt.clouddn.com/p-banner.png',
 }
