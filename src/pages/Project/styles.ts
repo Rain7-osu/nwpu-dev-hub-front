@@ -17,8 +17,6 @@ export const ProjectContainer = styled.main`
 
       @media (max-width: 1440px) {
         height: 358.5px;
-        --x: calc(100% - width) ;
-        transform: translateX(var(--x)px);
       }
     }
 

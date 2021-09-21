@@ -26,4 +26,14 @@ export enum ImgKeys {
   P_4 = 'http://qzoul2wdn.hn-bkt.clouddn.com/p-4.png',
 
   P_BANNER = 'http://qzoul2wdn.hn-bkt.clouddn.com/p-banner.png',
+
+  N_BANNER = 'http://qzoul2wdn.hn-bkt.clouddn.com/n-banner.png',
+
+  N_N1 = 'http://qzoul2wdn.hn-bkt.clouddn.com/news_content01-pic01%402x.png',
+  N_N2 = 'http://qzoul2wdn.hn-bkt.clouddn.com/news_content01-pic02%402x.png',
+
+  N_P1 = 'http://qzoul2wdn.hn-bkt.clouddn.com/news_content02-pic01%402x.png',
+  N_P2 = 'http://qzoul2wdn.hn-bkt.clouddn.com/news_content02-pic02%402x.png',
+  N_P3 = 'http://qzoul2wdn.hn-bkt.clouddn.com/news_content02-pic03%402x.png',
+  N_P4 = 'http://qzoul2wdn.hn-bkt.clouddn.com/news_content02-pic04%402x.png',
 }
