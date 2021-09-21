@@ -1,11 +1,47 @@
 import styled from 'styled-components';
 
-export const IntroductionContainer = styled.div`
+export const IntroductionContainer = styled.main`
   .top-banner {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    
+    .banner-desc {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--base_gray_light);
+      font-size: 36px;
+      line-height: 150%;
+      letter-spacing: 0.2em;
+      transition: all .3s ease;
+      
+      @media (min-width: 1080px) {
+        width: 80%;
+        padding: 50px;
+      }
+
+      @media (max-width: 1080px) {
+        width: 380px;
+        padding: 50px;
+        font-size: 28px;
+        box-sizing: border-box;
+      }
+    }
 
     img {
-      width: 100%;
+      @media (max-width: 1440px) {
+        height: 358.5px;
+      } 
+      
+      @media (min-width: 1440px) {
+        width: 100%;
+      }
     }
   }
 

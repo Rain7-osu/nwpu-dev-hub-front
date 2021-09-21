@@ -1,11 +1,10 @@
 import React, { memo } from 'react';
 import cls from 'classnames';
 import { ImgKeys } from '../../imgKeys';
-import Menu from '../../components/Menu';
-import { Anchor } from '../../components/Anchor';
 import { DevhubLogo } from '../../components/DevhubLogo';
 import t from '../../text.json';
 import { Icon } from '../../components/Icon';
+import { SubNav } from '../../components/SubNav';
 import { GroupIcon, IntroductionContainer } from './styles';
 
 interface IntentionItemProps {
@@ -71,23 +70,16 @@ export const Introduction = memo(() => {
     <IntroductionContainer>
       <div className="top-banner">
         <img alt="banner" src={ImgKeys.IN_BANNER} />
+        <div className="banner-desc">西北工业大学学生开发者社区</div>
       </div>
-      <div className="intro-nav">
-        <Menu extClass="intro-nav-menu" direction="horizontal">
-          <Menu.Item>
-            <Anchor className="nav-link" name="hub-introduction">社区简介</Anchor>
-          </Menu.Item>
-          <Menu.Item>
-            <Anchor className="nav-link" name="hub-structure">组织结构</Anchor>
-          </Menu.Item>
-          {/*<Menu.Item>*/}
-          {/*  <Anchor className="nav-link" name="hub-introduction">社区架构</Anchor>*/}
-          {/*</Menu.Item>*/}
-          {/*<Menu.Item>*/}
-          {/*  <Anchor className="nav-link" name="hub-introduction">社区文化</Anchor>*/}
-          {/*</Menu.Item>*/}
-        </Menu>
-      </div>
+      <SubNav>
+        {[
+          { name: '社区简介', anchor: 'hub-introduction' },
+          { name: '组织结构', anchor: 'hub-structure' },
+          // { name: '社区架构', anchor: 'hub-introduction' },
+          // { name: '社区文化', anchor: 'hub-introduction' },
+        ]}
+      </SubNav>
       <div id="hub-introduction" className="hub-introduction" >
         <div className="hub-introduction-wrapper">
           <div className="hub-intro-title">社区简介</div>

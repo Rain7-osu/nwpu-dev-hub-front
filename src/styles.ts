@@ -56,7 +56,7 @@ export const baseInput = css`
 `;
 
 export const ContentWrapper = styled.section`
-  max-width: 1200px;
+  max-width: 1080px;
   margin: 0 auto;
   transition: all .3s ease;
   display: flex;

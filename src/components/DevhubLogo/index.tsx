@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router';
+import cls from 'classnames';
 import { iconMap } from '../../assets/imgs/icons';
 import { DevhubWrapper } from './styles';
-import cls from 'classnames';
 
 export interface DevhubLogoProps {
   size?: 'normal' | 'large' | 'small';

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ContentWrapper } from '../../styles';
 
-export const HomeContainer = styled.div`
+export const HomeContainer = styled.main`
   .three-card {
     display: flex;
     justify-content: space-around;
@@ -18,7 +18,7 @@ export const HomeContainer = styled.div`
   }
 `;
 
-export const SimpleIntroduction = styled.div`
+export const SimpleIntroduction = styled.section`
   max-width: 500px;
   line-height: 30px;
   font-size: 20px;
@@ -43,18 +43,18 @@ export const HomeItemWrapper = styled(ContentWrapper)`
     }
   }
   
-  @media screen and (min-width: 1080px) {
+  @media (min-width: 1080px) {
     flex-direction: row;
     align-items: stretch;
   }
   
-  @media screen and (max-width: 1080px) {
+  @media (max-width: 1080px) {
     flex-direction: column;
     align-items: center;
   }
 `;
 
-export const ThreeCardContainer = styled.div<{ color: string }>`
+export const ThreeCardContainer = styled.section<{ color: string }>`
   height: 525px;
   width: 350px;
   color: #fff;

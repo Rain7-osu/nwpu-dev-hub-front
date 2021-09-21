@@ -29,6 +29,7 @@ const Timer = (props: TimerProps) => {
   const [sec, setSec] = useState(0);
 
   useEffect(() => {
+    let timer: number | null = null;
     if (type === 'deadline') {
       let duration = parseInt(dayjs(date).diff(dayjs()) / 1000 + '');
       let tday = parseInt(duration / DAY + '');
@@ -43,7 +44,7 @@ const Timer = (props: TimerProps) => {
       setHour(thour);
       setDay(tday);
 
-      const timer = setInterval(() => {
+      timer = setInterval(() => {
         let brow = false;
         if (tsec > 0) {
           setSec(tsec -= 1);
@@ -69,10 +70,14 @@ const Timer = (props: TimerProps) => {
         if (brow && tday > 0) {
           setDay(tday -= 1);
         } else if (brow) {
-          clearInterval(timer);
+          timer && clearInterval(timer);
         }
       }, 1000);
     }
+
+    return () => {
+      timer && clearInterval(timer);
+    };
   }, [date, type]);
 
 

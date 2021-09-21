@@ -1,48 +1,45 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import { DevhubLogo } from '../../components/DevhubLogo';
 import { Dropdown } from '../../components/Dropdown';
 import Menu from '../../components/Menu';
+import routes from '../RouterConfig';
 import { HamburgerButton } from '../../components/HamburgerButton';
 import { Container, DefaultContainer, MobileContainer, NavWrapper } from './styles';
 
-export const Navigator = () => {
+export const Navigator = memo(() => {
   const { pathname } = useLocation();
   const links = (
     <>
-      <Menu.Item active={pathname === '/'}>
-        <NavLink to="/">首页</NavLink>
-      </Menu.Item>
-      <Menu.Item active={pathname === '/info'}>
-        <NavLink to="/info">社区简介</NavLink>
-      </Menu.Item>
-      {/*<Menu.Item active={pathname === '/news'}>*/}
-      {/*  <NavLink to="/news">新闻中心</NavLink>*/}
-      {/*</Menu.Item>*/}
-      {/*<Menu.Item active={pathname === '/project'}>*/}
-      {/*  <NavLink to="/project" >项目介绍</NavLink>*/}
-      {/*</Menu.Item>*/}
-      <Menu.Item active={pathname === '/join'}>
-        <NavLink to="/join" >加入我们</NavLink>
-      </Menu.Item>
+      {routes.map(({ title, path }) => {
+        if (typeof path !== 'string') {
+          return null;
+        }
+
+        return (
+          <Menu.Item key={title} active={pathname === path}>
+            <NavLink to={path}>{title}</NavLink>
+          </Menu.Item>
+        );
+      })}
     </>
   );
 
   return (
     <Container>
       <MobileContainer className="mobile">
-        <DevhubLogo size="small" type="default" />
+        <DevhubLogo size="small" type="default"/>
         <Dropdown
           placement="bottom-right"
           overlay={<Menu>{links}</Menu>}
         >
-          <HamburgerButton />
+          <HamburgerButton/>
         </Dropdown>
       </MobileContainer>
       <DefaultContainer className="default">
         <NavWrapper>
-          <DevhubLogo size="normal" type="default" />
+          <DevhubLogo size="normal" type="default"/>
           <Menu direction="horizontal">
             {links}
           </Menu>
@@ -50,4 +47,6 @@ export const Navigator = () => {
       </DefaultContainer>
     </Container>
   );
-};
+});
+
+Navigator.displayName = 'Navigator';
