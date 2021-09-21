@@ -50,7 +50,7 @@ export const JoinUsModule = () => {
           <div className="title">广纳英才</div>
           <div className="subtitle">开发者协会首轮纳新</div>
           <div className="join-link">
-            <Link className="text" to="/register">立即加入</Link>
+            <Link className="text" to="/join">立即加入</Link>
             <div className="icon">
               <img alt="join-icon" src={ImgKeys.HOME_JOIN_ICON_ARROW_RIGHT} />
             </div>
