@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ContentWrapper } from '../../styles';
 
-export const Container = styled.div`
+export const Container = styled.header`
   width: 100%;
   height: 60px;
   background-color: var(--navigator_color);
@@ -33,7 +33,7 @@ export const Container = styled.div`
   }
 `;
 
-export const MobileContainer = styled.header`
+export const MobileContainer = styled.nav`
   height: 60px;
   width: 100%;
   padding-right: 10px;
@@ -58,7 +58,7 @@ export const MobileContainer = styled.header`
   }
 `;
 
-export const DefaultContainer = styled.header`
+export const DefaultContainer = styled.nav`
   max-width: 1440px;
   height: 100%;
   margin: 0 auto;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const IntroductionContainer = styled.div`
+export const IntroductionContainer = styled.main`
   .top-banner {
     width: 100%;
     display: flex;

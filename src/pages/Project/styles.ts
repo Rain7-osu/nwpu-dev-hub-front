@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ContentWrapper } from '../../styles';
 
-export const ProjectContainer = styled.div`
+export const ProjectContainer = styled.main`
   .project-banner {
     width: 100%;
     position: relative;

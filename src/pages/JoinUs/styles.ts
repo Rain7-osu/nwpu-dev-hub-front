@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const JoinUsContainer = styled.div`
+export const JoinUsContainer = styled.main`
   width: 100%;
   padding-top: 60px;
   
