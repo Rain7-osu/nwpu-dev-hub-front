@@ -14,6 +14,7 @@ export const ClockContainer = styled.div`
     justify-content: space-around;
     align-items: center;
     flex-wrap: nowrap;
+    user-select: none;
     
     @media screen and (max-width: 720px) {
       padding: 0 20px;
