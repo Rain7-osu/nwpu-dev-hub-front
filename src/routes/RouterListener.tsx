@@ -1,5 +1,6 @@
 import { memo, useEffect } from 'react';
 import { useLocation } from 'react-router';
+import routes from './RouterConfig';
 
 export const RouterListener = memo(() => {
   const { pathname } = useLocation();
@@ -12,14 +13,17 @@ export const RouterListener = memo(() => {
     // 切换路由后，回到顶部
     document.documentElement.scrollTop = document.body.scrollTop = 0;
 
-    if (/^\/$/.test(pathname)) {
-      document.title = '首页';
-    }
+    routes.forEach(({ title, path }) => {
+      if (typeof path === 'string') {
+        const regex = new RegExp(path);
 
-    if (/^\/register/.test(pathname)) {
-      document.title = '报名';
-    }
-
+        if (regex.test(pathname)) {
+          document.title = title;
+        }
+      } else {
+        document.title = '工大开发者社区';
+      }
+    });
   }, [pathname]);
 
   return null;

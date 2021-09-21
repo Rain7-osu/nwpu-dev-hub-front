@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import { DevhubLogo } from '../../components/DevhubLogo';
@@ -7,7 +7,7 @@ import Menu from '../../components/Menu';
 import { HamburgerButton } from '../../components/HamburgerButton';
 import { Container, DefaultContainer, MobileContainer, NavWrapper } from './styles';
 
-export const Navigator = () => {
+export const Navigator = memo(() => {
   const { pathname } = useLocation();
   const links = (
     <>
@@ -50,4 +50,6 @@ export const Navigator = () => {
       </DefaultContainer>
     </Container>
   );
-};
+});
+
+Navigator.displayName = 'Navigator';
