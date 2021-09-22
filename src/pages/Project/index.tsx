@@ -44,7 +44,7 @@ const projectList: ProjectItemProps[] = [
     banner: ImgKeys.P_3,
   },
   {
-    title: '十四观众引导页面',
+    title: '十四运观众引导页面',
     desc: '快速且专业的页面设计体现',
     banner: ImgKeys.P_4,
   },
