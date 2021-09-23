@@ -31,6 +31,7 @@ export const Container = styled.div`
 export const Label = styled.div`
   font-size: 18px;
   padding: 15px 0;
+  line-height: 24px;
 `;
 
 export const RequiredTag = styled.span`
@@ -58,7 +59,7 @@ export const BaseTextareaContainer = styled.div`
   .textarea-counter {
     color: #444;
     position: absolute;
-    bottom: -20px;
+    bottom: -25px;
     right: 10px;
     height: 20px;
     font-size: 14px;

@@ -6,6 +6,7 @@ export const ClockContainer = styled.div`
   align-items: stretch;
   justify-content: center;
   box-sizing: border-box;
+  flex: 1;
   
   .clock {
     display: flex;

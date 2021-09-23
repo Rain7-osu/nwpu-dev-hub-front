@@ -47,7 +47,7 @@ export const JoinUsModule = () => {
       <div className="text-wrapper">
         <div className="text-box">
           <div className="title">广纳英才</div>
-          <div className="subtitle">开发者协会首轮纳新</div>
+          <div className="subtitle">开发者社区首轮纳新</div>
           <div className="join-link">
             <Link className="text" to="/join">立即加入</Link>
             <div className="icon">
