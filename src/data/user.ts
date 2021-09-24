@@ -15,7 +15,10 @@ export enum Role {
   USER = 0,
 }
 
-export enum Status {
+/**
+ * 用户所属流程状态
+ */
+export enum FlowStatus {
   /**
    * 项目组
    */
@@ -42,23 +45,60 @@ export enum Status {
   NONE = 0,
 }
 
+/**
+ * 性别
+ */
 export enum Gender {
   MALE = 1,
   FEMALE = 2,
+  UNKNOWN = 0,
 }
 
+/**
+ * 学位
+ */
 export enum Qualification {
-  
+  /**
+   * 本科
+   */
+  UNDERGRADUATE = 0,
+
+  /**
+   * 硕士
+   */
+  MASTER = 1,
+
+  /**
+   * 博士
+   */
+  DOCTOR = 2,
+
+  UNKNOWN = -1,
+}
+
+export enum Group {
+  APP = 0,
+  WEB = 1,
+  MINI = 2,
+  UI = 3,
+  OPERATE = 4,
+  UNKNOWN = -1,
 }
 
 export interface UserInfo {
-  username: string;
-  email: string;
-  role: Role;
-  avatar: string;
-  status: Status;
-  name: string;
-  gender: Gender;
-  department: string;
-  qualification: Qualification
+  username?: string;
+  email?: string;
+  role?: Role;
+  avatar?: string;
+  status?: FlowStatus;
+  name?: string;
+  gender?: Gender;
+  department?: string;
+  qualification?: Qualification;
+  grade?: string;
+  group?: Group;
+  qq?: string;
+  wechat?: string;
+  experience?: string;
+  introduction?: string;
 }

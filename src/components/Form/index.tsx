@@ -55,3 +55,18 @@ export function FormItem(props: InputProps) {
     </Container>
   );
 }
+
+export interface Validator<T> {
+  rule: RegExp | T | ((value: T) => boolean);
+  message: string;
+}
+
+export interface BaseItemProps<T = string> {
+  type: 'input' | 'textarea' | 'select';
+  validator?: Validator<T> | Validator<T>[];
+  defaultValue?: string;
+}
+
+export const Form = () => {
+  return <div />;
+};
