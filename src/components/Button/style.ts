@@ -10,6 +10,10 @@ export const BaseButton = styled.button`
   padding: 5px 10px;
   font-size: 16px;
   transition: all .3s ease;
+  
+  &.ndd-btn-block {
+    width: 100%;
+  }
 
   &:hover {
     cursor: pointer;
@@ -30,24 +34,6 @@ export const BaseButton = styled.button`
       background-color: var(--base_orange3);
 
       ${disabled};
-    }
-  }
-
-  &.warning {
-    background-color: #f48617;
-    border: 1px solid #f48617;
-    color: #fff;
-
-    ${disabled};
-
-    &:hover {
-      background-color: #e57f15;
-
-      ${disabled};
-    }
-
-    &:active {
-      background-color: #d07313;
     }
   }
 

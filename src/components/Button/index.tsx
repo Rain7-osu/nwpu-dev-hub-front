@@ -1,4 +1,4 @@
-import React, { BaseSyntheticEvent } from 'react';
+import React, { BaseSyntheticEvent, useCallback } from 'react';
 import cls from 'classnames';
 import { CSSProperties } from 'styled-components';
 import { BaseButton } from './style';
@@ -10,17 +10,41 @@ export interface ButtonProps {
   style?: CSSProperties;
   disabled?: boolean;
   extClass?: string;
+  htmlType?: 'submit' | 'reset' | 'button' | undefined;
+  block?: boolean;
+  link?: string;
 }
 
 export function Button (props: ButtonProps) {
-  const { children, onClick, style, type = 'default', disabled = false, extClass } = props;
+  const {
+    children,
+    onClick,
+    style,
+    type = 'default',
+    disabled = false,
+    extClass,
+    htmlType,
+    block,
+    link,
+  } = props;
+
+  const handleClick = useCallback((e) => {
+    if (onClick) {
+      onClick(e);
+    } else if (link) {
+      location.href = link;
+    }
+  }, [link, onClick]);
 
   return (
     <BaseButton
-      className={cls(type, extClass)}
-      onClick={onClick}
+      className={cls(type, extClass, {
+        'ndd-btn-block': block,
+      })}
+      onClick={handleClick}
       style={style}
       disabled={disabled}
+      type={htmlType}
     >
       {children}
     </BaseButton>

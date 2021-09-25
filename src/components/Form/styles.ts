@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { baseInput } from '../../styles';
+import { baseInput } from '@src/styles';
 
 export const Container = styled.div`
   transition: all .3s ease;
@@ -23,7 +23,7 @@ export const Container = styled.div`
     color: red;
     font-size: 12px;
     margin: 8px 0;
-    height: 14px;
+    line-height: 1.2em;
   }
     
 `;
@@ -49,7 +49,8 @@ export const InputContainer = styled.div`
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
-    ${baseInput}
+    ${baseInput};
+    caret-color: var(--base_gray_color);
   }
 `;
 
@@ -63,8 +64,10 @@ export const BaseTextareaContainer = styled.div`
     right: 10px;
     height: 20px;
     font-size: 14px;
-    
-    .current-count {
+    caret-color: var(--base_gray_color);
+
+
+      .current-count {
       color: #f00;
     }
   }
