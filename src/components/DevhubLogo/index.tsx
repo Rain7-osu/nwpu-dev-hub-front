@@ -1,20 +1,24 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router';
 import cls from 'classnames';
-import { iconMap } from '../../assets/imgs/icons';
+import { iconMap } from '@src/assets/imgs/icons';
 import { DevhubWrapper } from './styles';
 
 export interface DevhubLogoProps {
   size?: 'normal' | 'large' | 'small';
   type?: 'default' | 'picture';
   className?: string;
+  white?: boolean;
 }
 
-export const DevhubLogo = ({ size, type, className }: DevhubLogoProps ) => {
+export const DevhubLogo = ({ size, type, className, white }: DevhubLogoProps ) => {
   const history = useHistory();
   const handleClick = useCallback(() => {
     history.push('/');
   }, [history]);
+
+  const picture = white ? '/assets/DevhubLogo-white.svg' : '/assets/DevhubLogo-black.svg';
+
   return (
     <DevhubWrapper className={cls(size, className)} onClick={handleClick}>
       {type === 'default' && (
@@ -32,7 +36,7 @@ export const DevhubLogo = ({ size, type, className }: DevhubLogoProps ) => {
           </div>
         </>
       )}
-      {type === 'picture' && <img className={size} alt="logo" src="https://z3.ax1x.com/2021/09/15/4VUW4g.png" />}
+      {type === 'picture' && <img alt="logo" className={size} src={picture} />}
     </DevhubWrapper>
   );
 };

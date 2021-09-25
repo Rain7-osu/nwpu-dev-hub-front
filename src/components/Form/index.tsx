@@ -83,21 +83,28 @@ export function FormItem(props: FormItemProps) {
         />
       );
 
+  const errMessage = (
+    <div className="error-message" style={{
+      visibility: (showErr || typeof validator === 'undefined') ? 'visible' : 'hidden',
+    }}>
+      {errMsg}
+    </div>
+  );
+
   return (
     <Container className={className} style={style}>
       {labelPlacement === 'top' && <Label>{required && <RequiredTag />} {label}</Label>}
       {labelPlacement === 'top' && base}
+      {labelPlacement === 'top' && errMessage}
       {labelPlacement === 'left' && (
         <div className="single-line-wrapper">
           <Label>{required && <RequiredTag />} {label}</Label>
-          {base}
+          <div className="single-line-right">
+            {base}
+            {errMessage}
+          </div>
         </div>
       )}
-      <div className="error-message" style={{
-        visibility: (showErr || typeof validator === 'undefined') ? 'visible' : 'hidden',
-      }}>
-        {errMsg}
-      </div>
     </Container>
   );
 }
