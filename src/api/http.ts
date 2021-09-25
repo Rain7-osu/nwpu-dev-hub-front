@@ -1,13 +1,4 @@
-import { HttpInstance } from './base/request';
-import { httpFactory } from './base/fetcher';
+import { httpFactory, loginFactory } from './base/fetcher';
 
-let httpInstance: HttpInstance | null = null;
-
-export const getHttpInstance = () => {
-  if (!httpInstance) {
-    httpInstance = httpFactory();
-    return httpInstance;
-  }
-
-  return httpInstance;
-}
+export const http = httpFactory();
+export const login = loginFactory();
