@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router';
-import { DevhubLogo } from '../../components/DevhubLogo';
-import { Dropdown } from '../../components/Dropdown';
+import { DevhubLogo } from '@src/components/DevhubLogo';
+import { Dropdown } from '@src/components/Dropdown';
 import Menu from '../../components/Menu';
 import routes from '../RouterConfig';
-import { HamburgerButton } from '../../components/HamburgerButton';
+import { HamburgerButton } from '@src/components/HamburgerButton';
 import { Container, DefaultContainer, MobileContainer, NavWrapper } from './styles';
 
 export const Navigator = memo(() => {
@@ -40,10 +40,15 @@ export const Navigator = memo(() => {
       </MobileContainer>
       <DefaultContainer className="default">
         <NavWrapper>
-          <DevhubLogo size="normal" type="default"/>
-          <Menu direction="horizontal">
-            {links}
-          </Menu>
+          <div className="left-nav">
+            <DevhubLogo className="logo" size="normal" type="default"/>
+            <Menu direction="horizontal">
+              {links}
+            </Menu>
+          </div>
+          <div className="right-user">
+            <NavLink to="/login">点击登录</NavLink>
+          </div>
         </NavWrapper>
       </DefaultContainer>
     </Container>

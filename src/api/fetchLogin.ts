@@ -16,7 +16,7 @@ export const fetchLogin = async ({
     password: encrypt(password),
   });
 
-  const headers: Headers = res.headers;
+  const { headers } = res;
   const token = headers.get('token');
   setAccessToken(token || '');
 };

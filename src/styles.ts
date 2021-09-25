@@ -20,23 +20,27 @@ export const basePanel = css`
 `;
 
 export const baseInputHover = css`
-  border: 1px solid var(--base_orange);
+  border-color: var(--base_orange);
 `;
 
 export const baseInputFocus = css`
-  border: 1px solid var(--base_orange);
+  border-color: var(--base_orange);
   box-shadow: 0 0 2px 2px var(--base_orange);
   outline: 0;
 `;
 
-export const baseInputError = css`
-  border: 1px solid red;
-`;
-
 export const baseInput = css`
-  border: 1px solid var(--base_orange3);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--base_orange3);
   box-sizing: border-box;
   transition: all .3s ease;
+  color: var(--base_orange);
+  
+  ::placeholder {
+    color: var(--base_orange2);
+    font-size: 0.8em;
+  }
   
   &:hover {
     ${baseInputHover}

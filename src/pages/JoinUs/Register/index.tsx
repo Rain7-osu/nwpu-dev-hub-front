@@ -1,14 +1,14 @@
 import React, { BaseSyntheticEvent, memo, useCallback, useMemo, useState } from 'react';
 import { useHistory } from 'react-router';
 import cls from 'classnames';
-import { FormItem } from '../../../components/Form';
-import { Icon } from '../../../components/Icon';
-import { BaseTextarea } from '../../../components/Form/BaseTextarea';
-import { Button } from '../../../components/Button';
-import { fetchRegister } from '../../../api/fetchRegister';
-import { fetchEmailCode } from '../../../api/fetchEmailCode';
-import { fetchCheckEmail } from '../../../api/fetchCheckEmail';
-import { modal } from '../../../components/Modal';
+import { FormItem } from '@src/components/Form';
+import { Icon } from '@src/components/Icon';
+import { Textarea } from '@src/components/Form/Textarea';
+import { Button } from '@src/components/Button';
+import { fetchRegister } from '@src/api/fetchRegister';
+import { fetchEmailCode } from '@src/api/fetchEmailCode';
+import { fetchCheckEmail } from '@src/api/fetchCheckEmail';
+import { modal } from '@src/components/Modal';
 import { ErrorText, FormContainer, FormRow, GenderContainer, IntentionGroup, RegisterContainer } from './styles';
 import { SchoolSelector } from './SchoolSelector';
 import './style.css';
@@ -217,12 +217,12 @@ export const Register = memo(() => {
   }, [setIntentionIndex, intentionGroupErr, validateIntentionGroup]);
 
   const handleInputExperience = useCallback((e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     setExperience(value);
   }, [setExperience]);
 
   const handleInputOther = useCallback((e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     setOther(value);
   }, [setOther]);
 
@@ -539,7 +539,7 @@ export const Register = memo(() => {
             label="个人经历"
             render={() => {
               return (
-                <BaseTextarea maxLength={520} value={experience} onInput={handleInputExperience} />
+                <Textarea maxLength={520} value={experience} onInput={handleInputExperience} />
               );
             }}
           />
@@ -549,7 +549,7 @@ export const Register = memo(() => {
             label="其他说明"
             render={() => {
               return (
-                <BaseTextarea maxLength={520} value={other} onInput={handleInputOther} />
+                <Textarea maxLength={520} value={other} onInput={handleInputOther} />
               );
             }}
           />
