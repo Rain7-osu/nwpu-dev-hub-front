@@ -13,7 +13,8 @@ export const Navigator = memo(() => {
   const links = (
     <>
       {routes.map(({ title, path }) => {
-        if (typeof path !== 'string') {
+        // login 的另作处理
+        if (typeof path !== 'string' || path === '/login') {
           return null;
         }
 

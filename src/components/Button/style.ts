@@ -1,8 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const disabled = css`
+  &[disabled] {
+    background-color: var(--base_gray_light);
+  }
+`;
 
 export const BaseButton = styled.button`
   padding: 5px 10px;
   font-size: 16px;
+  transition: all .3s ease;
 
   &:hover {
     cursor: pointer;
@@ -14,19 +21,15 @@ export const BaseButton = styled.button`
 
   &.default {
     background-color: #fff;
-    border: 1px solid #e9e9e9;
-    color: #444;
-
-    &[disabled] {
-      background-color: darkgray;
-    }
+    border: 1px solid var(--base_orange3);
+    color: var(--base_orange);
+    
+    ${disabled};
 
     &:hover {
-      background-color: #e9e9e9;
+      background-color: var(--base_orange3);
 
-      &[disabled] {
-        background-color: darkgray;
-      }
+      ${disabled};
     }
   }
 
@@ -35,16 +38,12 @@ export const BaseButton = styled.button`
     border: 1px solid #f48617;
     color: #fff;
 
-    &[disabled] {
-      background-color: darkgray;
-    }
+    ${disabled};
 
     &:hover {
       background-color: #e57f15;
 
-      &[disabled] {
-        background-color: darkgray;
-      }
+      ${disabled};
     }
 
     &:active {
@@ -57,16 +56,12 @@ export const BaseButton = styled.button`
     border: 1px solid deepskyblue;
     color: #fff;
 
-    &[disabled] {
-      background-color: darkgray;
-    }
+    ${disabled};
 
     &:hover {
       background-color: skyblue;
 
-      &[disabled] {
-        background-color: darkgray;
-      }
+      ${disabled};
     }
 
     &:active {

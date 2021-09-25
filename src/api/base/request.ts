@@ -1,57 +1,56 @@
-import qs from 'qs';
+import type {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  AxiosInterceptorManager,
+} from 'axios';
+import axios from 'axios';
 
-export interface IParams {
-  [key: string]: any;
+export interface HttpInstance extends AxiosInstance {
+  request: <T = any>(config: AxiosRequestConfig) => Promise<T>;
+  get: <T = any>(url: string, config?: AxiosRequestConfig) => Promise<T>;
+  post: <T = any>(url: string, data?: any, config?: AxiosRequestConfig) => Promise<T>;
+  put: <T = any>(url: string, data?: any, config?: AxiosRequestConfig) => Promise<T>;
+  delete: <T = any>(url: string, config?: AxiosRequestConfig) => Promise<T>;
 }
 
-export interface IBody {
-  [key: string]: any;
+export type RequestInterceptor = Parameters<AxiosInterceptorManager<AxiosRequestConfig>['use']>;
+export type ResponseInterceptor = Parameters<AxiosInterceptorManager<AxiosResponse>['use']>;
+
+export interface BaseHttpFactoryParams {
+  requestInterceptor?: RequestInterceptor[];
+  responseInterceptor?: ResponseInterceptor[];
 }
 
-export interface IHeaders {
-  [key: string]: any;
-}
+const defaultOnFulfilled = <T>(v: T) => v;
+const defaultOnRejected = <T = any>(e: T) => Promise.reject(e);
 
-export interface IResponse<T> {
-  flag: boolean;
-  code: number;
-  message: string;
-  data: T;
-}
+export const baseHttpFactory = <T extends AxiosInstance = AxiosInstance>(
+  params: BaseHttpFactoryParams,
+) => {
+  const {
+    requestInterceptor,
+    responseInterceptor,
+  } = params;
 
-const defaultHeaders = {
-  'content-type': 'application/json',
-};
+  const reqInterceptor = Array.isArray(requestInterceptor) ? requestInterceptor : [];
+  const resInterceptor = Array.isArray(responseInterceptor) ? responseInterceptor : [];
 
-// TODO: 由于时间比较赶，所以没有进行二层封装，后期把异常先拦截
-// 以及，后期用 对象参数
-export const request = {
-  post: async <T>(
-    path: string,
-    params: IParams = {},
-    body: IBody = {},
-    headers: IHeaders = defaultHeaders,
-  ): Promise<T> => {
-    const query = qs.stringify(params);
-    const url = `${path}${query.length > 0 ? `?${query}` : ''}`;
-    const response = await fetch(url, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(body),
-      mode: 'cors',
-    });
-    const json = await response.json();
-    return json as T;
-  },
-  get: async <T>(path: string, params: IParams = {}, headers: IHeaders = defaultHeaders): Promise<T> => {
-    const query = qs.stringify(params);
-    const url = `${path}${query.length > 0 ? `?${query}` : ''}`;
-    const response = await fetch(url, {
-      method: 'GET',
-      headers,
-      mode: 'cors',
-    });
-    const json = await response.json();
-    return json as T;
-  },
+  const instance = axios.create();
+
+  reqInterceptor.forEach(([
+    onFulfilled = defaultOnFulfilled,
+    onRejected = defaultOnRejected,
+  ]) => {
+    instance.interceptors.request.use(onFulfilled, onRejected);
+  });
+
+  resInterceptor.forEach(([
+    onFulfilled = defaultOnFulfilled,
+    onRejected = defaultOnRejected,
+  ]) => {
+    instance.interceptors.response.use(onFulfilled, onRejected);
+  });
+
+  return instance as T;
 };

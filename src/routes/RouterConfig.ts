@@ -4,6 +4,7 @@ import { JoinUs } from '../pages/JoinUs';
 import { Introduction } from '../pages/Introduction';
 import { News } from '../pages/News';
 import { Project } from '../pages/Project';
+import { Login } from '../pages/Login';
 
 const routes: Array<RouteProps & { title: string }> = [
   { path: '/', component: Home, title: '首页', exact: true },
@@ -11,6 +12,7 @@ const routes: Array<RouteProps & { title: string }> = [
   { path: '/news', component: News, title: '新闻中心', exact: true },
   { path: '/project', component: Project, title: '项目介绍', exact: true },
   { path: '/join', component: JoinUs , title: '加入我们', exact: true },
+  { path: '/login', component: Login, title: '登录', exact: false },
 ];
 
 export default routes;

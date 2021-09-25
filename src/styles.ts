@@ -20,12 +20,12 @@ export const basePanel = css`
 `;
 
 export const baseInputHover = css`
-  border: 1px solid #F48617;
+  border: 1px solid var(--base_orange);
 `;
 
 export const baseInputFocus = css`
-  border: 1px solid #F48617;
-  box-shadow: 0 0 2px 2px #F48617;
+  border: 1px solid var(--base_orange);
+  box-shadow: 0 0 2px 2px var(--base_orange);
   outline: 0;
 `;
 
@@ -34,7 +34,7 @@ export const baseInputError = css`
 `;
 
 export const baseInput = css`
-  border: 1px solid deepskyblue;
+  border: 1px solid var(--base_orange3);
   box-sizing: border-box;
   transition: all .3s ease;
   

@@ -10,12 +10,18 @@ export interface IconProps {
   className?: string;
 }
 
+const keys = Object.keys(iconMap);
+
 export function Icon(props: IconProps) {
   const { alt, type, width, height, className } = props;
 
   return (
     <Container className={className} width={width} height={height}>
-      <img alt={alt || type} src={type in iconMap ? iconMap[type] : ''} />
+      {
+        keys.includes(type)
+          ? <img alt={alt || type} src={type in iconMap ? iconMap[type] : ''} />
+          : <i className={`icon_${type}`} />
+      }
     </Container>
   );
 }
