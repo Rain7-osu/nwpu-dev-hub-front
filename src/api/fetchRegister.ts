@@ -1,4 +1,5 @@
-import { IResponse, request } from './base/request';
+import { http } from './http';
+import { IResponse } from './base/types';
 
 export interface FetchRegisterParams {
   name: string;
@@ -16,7 +17,7 @@ export interface FetchRegisterParams {
 }
 
 export async function fetchRegister(params: FetchRegisterParams) {
-  const res = await request.post<IResponse<null>>('/api/applicant',{}, params);
+  const res = await http.post<IResponse<null>>('/api/applicant', params);
   if (res?.flag) {
     return res?.data || {};
   } else {

@@ -12,9 +12,11 @@
     "lint-fix": "eslint src --fix"
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.7",
     "dva": "^2.4.1",
+    "history": "^5.0.1",
     "qs": "^6.10.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
@@ -23,6 +25,7 @@
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/dva": "^1.1.0",
     "@types/qs": "^6.9.7",
     "@types/react": "^17.0.0",

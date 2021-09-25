@@ -1,7 +1,8 @@
-import { IResponse, request } from './base/request';
+import { http } from './http';
+import { IResponse } from './base/types';
 
 export async function fetchCheckEmail(email: string) {
-  const res = await request.get<IResponse<boolean>>(`/api/applicant/checkEmail/${email}`);
+  const res = await http.get<IResponse<boolean>>(`/api/applicant/checkEmail/${email}`);
   if (res?.flag && res?.data) {
     return true;
   } else {
