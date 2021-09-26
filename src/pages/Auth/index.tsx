@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AuthContainer } from './style';
 import { Login as LoginForm } from '@src/pages/Auth/Login';
-import { Register as RegisterForm } from '@src/pages/Auth/Register';
+import { SignIn as RegisterForm } from '@src/pages/Auth/SignIn';
 import { DevhubLogo } from '@src/components/DevhubLogo';
 
 export const Auth = memo(() => {

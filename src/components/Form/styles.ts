@@ -1,41 +1,6 @@
 import styled from 'styled-components';
 import { baseInput } from '@src/styles';
-
-export const Container = styled.div`
-  transition: all .3s ease;
-  
-  @media screen and (min-width: 720px) {
-    margin: 0 40px;
-  }
-
-  @media screen and (max-width: 720px) {
-    margin: 0 15px;
-  }
-  
-  .single-line-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    
-    .single-line-right {
-      flex: 1;
-    }
-      
-    input {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 12px;
-    margin: 8px 0;
-    line-height: 1.2em;
-  }
-    
-`;
+export { Container } from './form-item.styles';
 
 export const Label = styled.div`
   font-size: 18px;
@@ -51,7 +16,6 @@ export const RequiredTag = styled.span`
 `;
 
 export const InputContainer = styled.div`
-  flex: 1;
   
   input {
     padding: 12px;
@@ -60,6 +24,10 @@ export const InputContainer = styled.div`
     box-sizing: border-box;
     ${baseInput};
     caret-color: var(--base_orange);
+  }
+
+  input:hover {
+    box-sizing: border-box;
   }
 `;
 
@@ -76,7 +44,7 @@ export const BaseTextareaContainer = styled.div`
     caret-color: var(--base_gray_color);
 
 
-      .current-count {
+    .current-count {
       color: #f00;
     }
   }
@@ -104,4 +72,3 @@ export const BaseTextareaContainer = styled.div`
     }
   }
 `;
-

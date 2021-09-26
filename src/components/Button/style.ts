@@ -38,20 +38,19 @@ export const BaseButton = styled.button`
   }
 
   &.primary {
-    background-color: deepskyblue;
-    border: 1px solid deepskyblue;
+    background-color: var(--base_orange);
     color: #fff;
 
     ${disabled};
 
     &:hover {
-      background-color: skyblue;
+      background-color: var(--base_orange2);
 
       ${disabled};
     }
 
     &:active {
-      background-color: lightblue;
+      background-color: var(--base_orange1);
     }
   }
 `;

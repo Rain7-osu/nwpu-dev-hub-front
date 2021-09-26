@@ -10,10 +10,11 @@ export interface BaseModalProps {
   content?: ReactNode;
   title?: ReactNode;
   mask?: boolean;
+  okText?: string;
 }
 
 function BaseModal(props: BaseModalProps) {
-  const { onClose, content, title, mask, onOk } = props;
+  const { onClose, content, title, mask, onOk, okText } = props;
 
   const handleClickContent = (e: any) => {
     e.stopPropagation();
@@ -38,7 +39,7 @@ function BaseModal(props: BaseModalProps) {
           {content}
         </ModalMain>
         <ModalBottom>
-          <Button type="primary" onClick={handleClickOk}>确认</Button>
+          <Button type="primary" onClick={handleClickOk}>{okText || '确认'}</Button>
         </ModalBottom>
         <div className="close" onClick={onClose}>✖</div>
       </ModalContent>
@@ -46,12 +47,7 @@ function BaseModal(props: BaseModalProps) {
   );
 }
 
-export interface OpenParams {
-  onClose?: () => void;
-  onOk?: () => void;
-  content?: ReactNode;
-  title?: ReactNode;
-}
+export type OpenParams = Omit<BaseModalProps, 'onClose'> & { onClose?: () => void };
 
 export const modal = {
   show(params: OpenParams ) {

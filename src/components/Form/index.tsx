@@ -1,12 +1,12 @@
-import React, { CSSProperties, ReactNode, useCallback, useState } from 'react';
+import React, { CSSProperties, ReactNode, useCallback, useRef, useState } from 'react';
 import cls from 'classnames';
 import { http } from '@src/api/http';
 import { Container, Label, RequiredTag } from './styles';
 import { Input, InputProps, InputValue } from './Input';
-import './styles.less';
 import { getValuesFromForm } from './helper';
+import './styles.less';
 
-export interface FormItemProps extends Pick<InputProps, 'placeholder' | 'inputType' | 'onInput' | 'onFocus' | 'onBlur'>{
+export interface FormItemProps extends Pick<InputProps, 'placeholder' | 'htmlType' | 'onInput' | 'onFocus' | 'onBlur'>{
   value?: InputValue;
   label?: ReactNode;
   labelPlacement?: 'top' | 'left';
@@ -17,13 +17,17 @@ export interface FormItemProps extends Pick<InputProps, 'placeholder' | 'inputTy
   className?: string;
   style?: CSSProperties;
   validator?: ((value: InputValue) => boolean) | RegExp;
+
+  /**
+   * 每当表单内的值发生改变时，用于绑定输入表单内的值，
+   * 没有添加 validator 验证器时，返回 true
+   * @param value 当前值
+   * @param validate 是否校验通过
+   */
+  onChange?: (value: InputValue, validate: boolean) => void;
 }
 
-/**
- * 原来的名称是 Input 后期将改版为纯 FormItem // TODO
- * @param props
- * @constructor
- */
+
 export function FormItem(props: FormItemProps) {
   const {
     onInput,
@@ -39,35 +43,49 @@ export function FormItem(props: FormItemProps) {
     className,
     validator,
     name,
-    inputType,
+    htmlType,
+    onChange,
   } = props;
 
   const [innerValue, setInnerValue] = useState<string>('');
   const [showErr, setShowErr] = useState<boolean>(false);
 
+  const doValidate = useCallback(() => {
+    if (typeof validator === 'function') {
+      const pass = validator(value || innerValue);
+      setShowErr(!pass);
+      return !pass;
+    } else if(validator instanceof RegExp) {
+      const pass = validator.test(String(value || innerValue));
+      setShowErr(!pass);
+      return !pass;
+    }
+
+    return true;
+  }, [innerValue, validator, value]);
+
   const handleInputBlur = useCallback((e) => {
     if (onBlur) {
       onBlur(e);
-    } else {
-      if (typeof validator === 'function') {
-        console.log(innerValue, 123);
-        const pass = validator(value || innerValue);
-        console.log(pass, 123);
-        setShowErr(!pass);
-      } else if(validator instanceof RegExp) {
-        const pass = validator.test(String(value || innerValue));
-        setShowErr(!pass);
-      }
+      return;
     }
-  }, [innerValue, onBlur, validator, value]);
+
+    // 自定义渲染不做验证
+    if (render) {
+      return;
+    }
+
+    doValidate();
+  }, [doValidate, onBlur, render]);
 
   const handleInput = useCallback((e) => {
     if (onInput) {
       onInput(e);
     } else {
       setInnerValue(e.target.value);
+      onChange && onChange(e.target.value, doValidate());
     }
-  }, [onInput]);
+  }, [doValidate, onChange, onInput]);
 
   const base =
     typeof render === 'function'
@@ -79,14 +97,14 @@ export function FormItem(props: FormItemProps) {
           placeholder={placeholder}
           onInput={handleInput}
           onBlur={handleInputBlur}
-          inputType={inputType}
+          htmlType={htmlType}
         />
       );
 
   const errMessage = (
     <div className="error-message" style={{
       visibility: (showErr || typeof validator === 'undefined') ? 'visible' : 'hidden',
-    }}>
+    }} title={errMsg}>
       {errMsg}
     </div>
   );
@@ -129,19 +147,23 @@ function Form (props: React.PropsWithChildren<FormProps>) {
     name,
   } = props;
 
+  const formRef = useRef<HTMLFormElement>(null);
+
   const handleSubmit = useCallback((e) => {
-    const data = getValuesFromForm(document.forms.namedItem(name));
+    e.preventDefault();
+    const data = getValuesFromForm(formRef.current);
+
     if (onSubmit) {
-      e.preventDefault();
       onSubmit(data);
       return;
     }
 
     target && http.post(target, data);
-  }, [name, onSubmit, target]);
+  }, [onSubmit, target]);
 
   return (
     <form
+      ref={formRef}
       className={cls(className, 'ndd-form')}
       style={style}
       method={method}

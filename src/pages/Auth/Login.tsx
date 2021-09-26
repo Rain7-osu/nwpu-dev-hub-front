@@ -6,7 +6,7 @@ import { fetchLogin } from '@src/api/fetchLogin';
 import { modal } from '@src/components/Modal';
 import { useRouter } from '@src/routes';
 import { Icon } from '@src/components/Icon';
-import { LoginContainer } from './style';
+import { BaseContainer } from './style';
 
 export const Login = memo(() => {
   const router = useRouter();
@@ -23,8 +23,12 @@ export const Login = memo(() => {
     }
   }, [router]);
 
+  const handleGotoRegister = useCallback(() => {
+    router.push({ path: '/auth/register' });
+  }, [router]);
+
   return (
-    <LoginContainer>
+    <BaseContainer>
       <div className="form-picture">
         <img alt="login-pic" src={findSrc('/assets/login_pic.png')} />
       </div>
@@ -47,7 +51,7 @@ export const Login = memo(() => {
             labelPlacement="left"
             className="only-bottom-border"
             name="password"
-            inputType="password"
+            htmlType="password"
             validator={(value) => typeof value === 'string' && regex.password.test(value)}
             errMsg="请输入密码！"
             placeholder="请输入密码"
@@ -56,8 +60,11 @@ export const Login = memo(() => {
             render={<Button extClass="login-button" block htmlType="submit">登录</Button>}
           />
         </Form>
+        <div className="bottom-link">
+          <Button extClass="link-button" onClick={handleGotoRegister}>没有账号？去注册</Button>
+        </div>
       </div>
-    </LoginContainer>
+    </BaseContainer>
   );
 });
 

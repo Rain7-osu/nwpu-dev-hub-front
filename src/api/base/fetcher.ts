@@ -1,4 +1,4 @@
-import { LocalStorageKeys } from '../../common/LocalStorageKeys';
+import { LocalStorageKeys } from '@src/common/LocalStorageKeys';
 import type { HttpInstance, RequestInterceptor, ResponseInterceptor } from './request';
 import { baseHttpFactory } from './request';
 
@@ -13,7 +13,7 @@ export type ResponseOnRejected = ResponseInterceptor[1];
  */
 export const loginFactory = () => {
   return baseHttpFactory<HttpInstance>({
-    responseInterceptor: [httpResponseInterceptorFactory()],
+    responseInterceptor: [loginResponseInterceptorFactory()],
   });
 };
 
@@ -42,13 +42,27 @@ const httpRequestInterceptorFactory = () => {
   return [onFulfilled] as RequestInterceptor;
 };
 
+const loginResponseInterceptorFactory = () => {
+  const onFulfilled: ResponseOnFulfilled = async (res) => {
+    const { headers } = res;
+    setAccessToken(headers.token);
+    return res ? res.data : res;
+  };
+
+  const onRejected: ResponseOnRejected = async (err) => {
+    return Promise.resolve(err);
+  };
+
+  return [onFulfilled, onRejected] as ResponseInterceptor;
+};
+
 const httpResponseInterceptorFactory = () => {
   const onFulfilled: ResponseOnFulfilled = async (res) => {
     return res ? res.data : res;
   };
 
   const onRejected: ResponseOnRejected = async (err) => {
-    return Promise.resolve(err.response);
+    return Promise.resolve(err);
   };
 
   return [onFulfilled, onRejected] as ResponseInterceptor;
@@ -58,4 +72,8 @@ const getAccessToken = (): Promise<string> => {
   // TODO: 有关 accessToken
   const token = localStorage.getItem(LocalStorageKeys.A_TOKEN);
   return Promise.resolve(token || '');
+};
+
+const setAccessToken = (token: string) => {
+  localStorage.setItem(LocalStorageKeys.A_TOKEN, token);
 };

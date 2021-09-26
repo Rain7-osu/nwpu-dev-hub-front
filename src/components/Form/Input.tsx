@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from 'react';
+import React, { BaseSyntheticEvent, SyntheticEvent } from 'react';
 import cls from 'classnames';
 import { InputContainer } from './styles';
 
@@ -7,7 +7,7 @@ export type InputValue = string | ReadonlyArray<string> | number | undefined;
 export type InputTypes = 'text' | 'password';
 
 export interface InputProps {
-  onInput?: (e: SyntheticEvent) => void;
+  onInput?: (e: BaseSyntheticEvent) => void;
   onBlur?: (e: SyntheticEvent) => void;
   onFocus?: (e: SyntheticEvent) => void;
   onChange?: (e: SyntheticEvent) => void;
@@ -15,7 +15,7 @@ export interface InputProps {
   placeholder?: string;
   readonly?: boolean;
   name?: string;
-  inputType?: InputTypes;
+  htmlType?: InputTypes;
 }
 
 export function Input (props: InputProps) {
@@ -28,7 +28,7 @@ export function Input (props: InputProps) {
     onInput,
     onChange,
     readonly = false,
-    inputType,
+    htmlType,
   } = props;
 
   return (
@@ -43,7 +43,7 @@ export function Input (props: InputProps) {
         onInput={onInput}
         onFocus={onFocus}
         onChange={onChange}
-        type={inputType}
+        type={htmlType}
       />
     </InputContainer>
   );
