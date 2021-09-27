@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 const disabled = css`
   &[disabled] {
     background-color: var(--base_gray_light);
+    color: var(--base_gray_color);
   }
 `;
 

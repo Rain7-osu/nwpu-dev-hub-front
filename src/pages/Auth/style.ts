@@ -4,28 +4,27 @@ export const AuthContainer = styled.div`
   transition: all .3s ease;
   
   .auth-form {
-    background-color: #fff;
-    max-width: 1080px;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, 0);
+    margin: 400px auto;
+    position: relative;
     box-sizing: border-box;
-    border-radius: 15px;
-    transition: all .3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
-    @media (min-width: 1080px) {
-      padding: 120px 60px;
-    }
-    
-    @media (max-width: 1080px) {
-      max-width: 400px;
+    @media (max-width: 1080px) and (min-width: 480px) {
       padding: 60px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    
+
+    @media (max-width: 480px) {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 140px;
+    }
     
     .auth-page-logo {
       position: absolute;
@@ -79,8 +78,11 @@ export const AuthContainer = styled.div`
 
 export const BaseContainer = styled.section`
   display: flex;
+  justify-content: center;
+  align-items: stretch;
   flex-direction: row;
-  width: 100%;
+  background-color: #fff;
+  border-radius: 15px;
   
   .email-code {
     display: flex;
@@ -88,11 +90,11 @@ export const BaseContainer = styled.section`
     justify-content: space-between;
     
     .email-code-form-item {
-      width: 140px;
+      width: calc(100% - 180px);
     }
     
     input {
-      width: 140px;
+      width: 100%;
       box-shadow: none;
     }
     
@@ -110,13 +112,9 @@ export const BaseContainer = styled.section`
       font-size: 28px;
       margin-right: 20px;
     }
-    
-    max-width: 400px;
-    transition: all .3s ease;
   }
   
   .form-picture {
-    
     img {
       width: 100%;
       height: 100%;
@@ -124,8 +122,9 @@ export const BaseContainer = styled.section`
     }
   }
   
-  @media (min-width: 1080px) {
-    
+  @media screen and (min-width: 1080px) {
+    padding: 80px 40px;
+
     .form-container {
       flex: 1;
       width: 480px;
@@ -133,33 +132,46 @@ export const BaseContainer = styled.section`
     
     .form-picture {
       padding: 20px;
+      margin-right: 60px;
       box-sizing: border-box;
       color: var(--base_orange);
       
       img {
-        width: 300px;
+        object-fit: cover;
+        max-width: 400px;
       }
     }
   }
   
-  @media (max-width: 1080px) {
-    .form-picture, .form-picture img {
-      width: 0;
-      overflow: hidden;
-    }
-    
+  @media screen and (max-width: 1080px) {
+    padding: 80px 40px;
+    width: 80%;
+
     .form-container {
-      max-width: 100%;
+      flex: 1;
+    }
+
+    .form-picture, .form-picture img {
+      display: none;
     }
   }
   
-  .login-button {
+  @media screen and (max-width: 480px) {
+    border-radius: 0;
+    
+    .form-container {
+      width: 100%;
+    }
+  }
+  
+  button.login-button {
     background: linear-gradient(90deg, #F13F12 0%, #F5A419 100%);
     height: 40px;
     border-radius: 20px;
     color: #fff;
     opacity: .75;
     transition: opacity .3s ease;
+    margin-top: 40px;
     
     &:hover {
       opacity: 1;
@@ -174,6 +186,7 @@ export const BaseContainer = styled.section`
   .bottom-link {
     display: flex;
     justify-content: center;
+    margin-top: 40px;
 
     .link-button {
       border: none;

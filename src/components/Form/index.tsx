@@ -49,19 +49,17 @@ export function FormItem(props: FormItemProps) {
 
   const [innerValue, setInnerValue] = useState<string>('');
   const [showErr, setShowErr] = useState<boolean>(false);
+  const validateResult = useRef<boolean>(true);
 
   const doValidate = useCallback(() => {
-    if (typeof validator === 'function') {
-      const pass = validator(value || innerValue);
-      setShowErr(!pass);
-      return !pass;
-    } else if(validator instanceof RegExp) {
-      const pass = validator.test(String(value || innerValue));
-      setShowErr(!pass);
-      return !pass;
-    }
-
-    return true;
+    const pass = typeof validator === 'function'
+      ? validator(value || innerValue)
+      : validator instanceof RegExp
+        ? validator.test(String(value || innerValue))
+        : true;
+    validateResult.current = pass;
+    setShowErr(!pass);
+    return pass;
   }, [innerValue, validator, value]);
 
   const handleInputBlur = useCallback((e) => {
@@ -83,9 +81,9 @@ export function FormItem(props: FormItemProps) {
       onInput(e);
     } else {
       setInnerValue(e.target.value);
-      onChange && onChange(e.target.value, doValidate());
+      onChange && onChange(e.target.value, validateResult.current);
     }
-  }, [doValidate, onChange, onInput]);
+  }, [onChange, onInput]);
 
   const base =
     typeof render === 'function'
@@ -127,15 +125,15 @@ export function FormItem(props: FormItemProps) {
   );
 }
 
-export interface FormProps extends Partial<Pick<HTMLFormElement, 'method' | 'action'>>{
+export interface FormProps<T extends Record<string, any> = any> extends Partial<Pick<HTMLFormElement, 'method' | 'action'>>{
   target?: string;
-  onSubmit?: (e: Record<string, any>) => void;
+  onSubmit?: (e: T) => void;
   className?: string;
   style?: CSSProperties;
   name: string;
 }
 
-function Form (props: React.PropsWithChildren<FormProps>) {
+function Form <T extends Record<string, any> = any>(props: React.PropsWithChildren<FormProps<T>>) {
   const {
     target,
     onSubmit,
@@ -151,7 +149,7 @@ function Form (props: React.PropsWithChildren<FormProps>) {
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    const data = getValuesFromForm(formRef.current);
+    const data: T = getValuesFromForm(formRef.current) as T;
 
     if (onSubmit) {
       onSubmit(data);

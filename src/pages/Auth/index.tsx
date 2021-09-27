@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AuthContainer } from './style';
 import { Login as LoginForm } from '@src/pages/Auth/Login';
-import { SignIn as RegisterForm } from '@src/pages/Auth/SignIn';
+import { SignIn as SignInForm } from '@src/pages/Auth/SignIn';
 import { DevhubLogo } from '@src/components/DevhubLogo';
 
 export const Auth = memo(() => {
@@ -17,7 +17,7 @@ export const Auth = memo(() => {
         </div>
         <Switch>
           <Route exact path="/auth/login" component={LoginForm} />
-          <Route exact path="/auth/register" component={RegisterForm} />
+          <Route exact path="/auth/register" component={SignInForm} />
         </Switch>
       </div>
     </AuthContainer>

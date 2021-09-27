@@ -1,7 +1,7 @@
 import { http } from '@src/api/http';
 import { IResponse } from '@src/api/base/types';
 
-export interface FetchEmailCodeSignInParams {
+export interface EmailCodeFormData {
   email: string;
 }
 
@@ -9,7 +9,7 @@ export interface FetchEmailCodeSignInParams {
  * 注册账号
  * @param params
  */
-export const fetchEmailCodeSignIn = async ({ email }: FetchEmailCodeSignInParams) => {
+export const fetchEmailCodeSignIn = async ({ email }: EmailCodeFormData) => {
   const res = await http.post<IResponse<null>>(`/api/user/register/email/${email}`);
   console.log(res);
 

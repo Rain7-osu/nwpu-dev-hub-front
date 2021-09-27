@@ -23,7 +23,7 @@ export function Button (props: ButtonProps) {
     type = 'default',
     disabled = false,
     extClass,
-    htmlType,
+    htmlType = 'button',
     block,
     link,
   } = props;

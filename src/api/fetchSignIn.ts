@@ -3,7 +3,7 @@ import { encrypt } from '../utils/encrypt';
 import { http } from './http';
 import { IResponse } from './base/types';
 
-export interface SignInParams {
+export interface SignInFormData {
   username: string;
   email: string;
   password: string;
@@ -15,7 +15,7 @@ export interface SignInParams {
  * 注册账号
  * @param params
  */
-export const fetchSignIn = async (params: SignInParams) => {
+export const fetchSignIn = async (params: SignInFormData) => {
   let { password } = params;
   password = encrypt(password);
 

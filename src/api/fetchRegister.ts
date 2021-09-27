@@ -1,7 +1,7 @@
 import { http } from './http';
 import { IResponse } from './base/types';
 
-export interface FetchRegisterParams {
+export interface RegisterFormData {
   name: string;
   gender: boolean;
   department: string;
@@ -16,7 +16,7 @@ export interface FetchRegisterParams {
   parenthetical?: string;
 }
 
-export async function fetchRegister(params: FetchRegisterParams) {
+export async function fetchRegister(params: RegisterFormData) {
   const res = await http.post<IResponse<null>>('/api/applicant', params);
   if (res?.flag) {
     return res?.data || {};
