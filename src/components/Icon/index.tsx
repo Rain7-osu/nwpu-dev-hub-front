@@ -8,16 +8,17 @@ export interface IconProps {
   alt?: string;
   width?: number;
   height?: number;
+  size?: number;
   className?: string;
 }
 
 const keys = Object.keys(iconMap);
 
 export function Icon(props: IconProps) {
-  const { alt, type, width, height, className } = props;
+  const { alt, type, width, height, className, size } = props;
 
   return (
-    <Container className={className} width={width} height={height}>
+    <Container className={className} width={width} height={height} size={size}>
       {
         keys.includes(type)
           ? <img alt={alt || type} src={type in iconMap ? iconMap[type] : ''} />

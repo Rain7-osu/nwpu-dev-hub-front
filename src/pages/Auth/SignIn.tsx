@@ -168,7 +168,7 @@ export const SignIn = memo(() => {
           />
         </Form>
         <div className="bottom-link">
-          <Button extClass="link-button" onClick={handleGoToLogin}>已有账号？登录</Button>
+          <Button extClass="link-button" onClick={handleGoToLogin}>已有账号？去登录</Button>
         </div>
       </div>
     </BaseContainer>

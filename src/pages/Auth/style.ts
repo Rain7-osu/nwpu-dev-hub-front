@@ -109,8 +109,10 @@ export const BaseContainer = styled.section`
   .form-container {
     .icon-class {
       color: var(--base_orange);
-      font-size: 28px;
+      font-size: 24px;
       margin-right: 20px;
+      width: 26px;
+      height: 26px;
     }
   }
   
@@ -171,7 +173,8 @@ export const BaseContainer = styled.section`
     color: #fff;
     opacity: .75;
     transition: opacity .3s ease;
-    margin-top: 40px;
+    margin: 40px auto 0;
+    max-width: 260px;
     
     &:hover {
       opacity: 1;
@@ -186,7 +189,7 @@ export const BaseContainer = styled.section`
   .bottom-link {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 20px;
 
     .link-button {
       border: none;
