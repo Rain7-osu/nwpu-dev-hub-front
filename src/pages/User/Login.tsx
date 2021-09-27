@@ -24,7 +24,7 @@ export const Login = memo(() => {
   }, [router]);
 
   const handleGotoRegister = useCallback(() => {
-    router.push({ path: '/auth/register' });
+    router.push({ path: '/user/register' });
   }, [router]);
 
   return (
@@ -42,9 +42,9 @@ export const Login = memo(() => {
             labelPlacement="left"
             className="only-bottom-border"
             name="username"
-            validator={(value) => typeof value === 'string' && regex.username.test(value)}
-            errMsg="请输入用户名！"
-            placeholder="请输入用户名"
+            validator={(value) => typeof value === 'string' && (regex.username.test(value) || regex.email.test(value))}
+            errMsg="请输入正确的用户名或邮箱！"
+            placeholder="请输入用户名或邮箱"
           />
           <Form.Item
             label={<Icon className="icon-class" type="password" />}

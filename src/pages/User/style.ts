@@ -88,6 +88,7 @@ export const BaseContainer = styled.section`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 20px;
     
     .email-code-form-item {
       width: calc(100% - 180px);
@@ -173,7 +174,7 @@ export const BaseContainer = styled.section`
     color: #fff;
     opacity: .75;
     transition: opacity .3s ease;
-    margin: 40px auto 0;
+    margin: 20px auto 0;
     max-width: 260px;
     
     &:hover {

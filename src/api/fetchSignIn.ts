@@ -24,5 +24,7 @@ export const fetchSignIn = async (params: SignInFormData) => {
     password,
   });
 
-  return res?.data || res;
+  if (!res?.flag) {
+    throw res?.message || '发生未知错误';
+  }
 };

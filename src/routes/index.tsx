@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { RouterListener } from './RouterListener';
-import { Auth } from '@src/pages/Auth';
+import { User } from '@src/pages/User';
 import { Navigator } from './Navigator';
 import { Footer } from './Footer';
 import { Layout } from './Layout';
@@ -74,7 +74,7 @@ export const Routes = () => {
     <BrowserRouter>
       <RouterListener/>
       <Switch>
-        <Route path="/auth" component={Auth} />
+        <Route path="/auth" component={User} />
         <Route path="/" render={() => {
           return (
             <React.Fragment>

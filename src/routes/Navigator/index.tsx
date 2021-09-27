@@ -47,7 +47,7 @@ export const Navigator = memo(() => {
             </Menu>
           </div>
           <div className="right-user">
-            <NavLink to="/auth/login">点击登录</NavLink>
+            <NavLink to="/user/login">点击登录</NavLink>
           </div>
         </NavWrapper>
       </DefaultContainer>

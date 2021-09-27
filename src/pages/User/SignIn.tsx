@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useRef, useState } from 'react';
-import { BaseContainer } from '@src/pages/Auth/style';
+import { BaseContainer } from '@src/pages/User/style';
 import { Form } from '@src/components/Form';
 import { Icon } from '@src/components/Icon';
 import regex from '@src/utils/regex';
@@ -33,12 +33,13 @@ export const SignIn = memo(() => {
 
     try {
       isSignInIng.current = true;
-      await fetchSignIn(data);
+      const { username, password, code, email } = data;
+      await fetchSignIn({ username, password, code, email });
       modal.show({
         title: '注册成功',
         content: '点击确认返回登录',
         onOk() {
-          router.push({ path: '/auth/login' });
+          router.push({ path: '/user/login' });
         },
         okText: '返回登录',
       });
@@ -48,6 +49,7 @@ export const SignIn = memo(() => {
         title: '注册失败',
         content: String(err),
       });
+      isSignInIng.current = false;
     }
   }, [router]);
 
@@ -87,7 +89,7 @@ export const SignIn = memo(() => {
   }, [doWaiting, email, isGettingCode]);
 
   const handleGoToLogin = useCallback(() => {
-    router.push({ path: '/auth/login' });
+    router.push({ path: '/user/login' });
   }, [router]);
 
   return (
@@ -145,11 +147,10 @@ export const SignIn = memo(() => {
             <Form.Item
               labelPlacement="left"
               className="email-code-form-item"
-              name="email"
+              name="code"
               validator={(value) => typeof value === 'string' && regex.code.test(value)}
               errMsg="请输入验证码！"
               placeholder="邮箱验证码"
-              onChange={(value) => setEmail(String(value))}
             />
             <Button
               extClass="code-button"

@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AuthContainer } from './style';
-import { Login as LoginForm } from '@src/pages/Auth/Login';
-import { SignIn as SignInForm } from '@src/pages/Auth/SignIn';
+import { Login as LoginForm } from '@src/pages/User/Login';
+import { SignIn as SignInForm } from '@src/pages/User/SignIn';
 import { DevhubLogo } from '@src/components/DevhubLogo';
 
-export const Auth = memo(() => {
+export const User = memo(() => {
   return (
     <AuthContainer>
       <div className="login-bg">
@@ -16,12 +16,12 @@ export const Auth = memo(() => {
           <DevhubLogo white type="picture" size="normal" />
         </div>
         <Switch>
-          <Route exact path="/auth/login" component={LoginForm} />
-          <Route exact path="/auth/register" component={SignInForm} />
+          <Route exact path="/user/login" component={LoginForm} />
+          <Route exact path="/user/register" component={SignInForm} />
         </Switch>
       </div>
     </AuthContainer>
   );
 });
 
-Auth.displayName = 'Login';
+User.displayName = 'Login';

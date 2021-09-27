@@ -11,7 +11,8 @@ export interface EmailCodeFormData {
  */
 export const fetchEmailCodeSignIn = async ({ email }: EmailCodeFormData) => {
   const res = await http.post<IResponse<null>>(`/api/user/register/email/${email}`);
-  console.log(res);
 
-  return res?.data || res;
+  if (!res?.flag) {
+    throw res.message;
+  }
 };
