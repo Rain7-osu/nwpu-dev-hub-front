@@ -1,4 +1,4 @@
-import { Group, Role } from '../../data/user';
+import { Group, Role } from '@src/data/user';
 
 export interface IParams {
   [key: string]: any;
