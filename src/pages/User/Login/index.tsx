@@ -4,25 +4,22 @@ import regex from '@src/utils/regex';
 import { Button } from '@src/components/Button';
 import { fetchLogin } from '@src/api/fetchLogin';
 import { modal } from '@src/components/Modal';
-import { useRouter } from '@src/routes';
 import { Icon } from '@src/components/Icon';
 import { BaseFormContainer } from '../style';
-import { LoginContainer } from '@src/pages/User/LoginContainer';
+import { LoginContainer } from '../LoginContainer';
 
 export const Login = memo(() => {
-  const router = useRouter();
-
   const handleSubmit = useCallback(async (data) => {
     try {
       await fetchLogin(data);
-      router.push({ path: '/' });
+      location.href = '/';
     } catch (err) {
       modal.show({
         title: '登录失败',
         content: String(err),
       });
     }
-  }, [router]);
+  }, []);
 
   return (
     <LoginContainer>

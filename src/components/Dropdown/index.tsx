@@ -37,6 +37,12 @@ export function Dropdown (props: DropdownProps) {
     }
   }, [trigger, setShow]);
 
+  const handleMouseOut = useCallback(() => {
+    if (trigger === 'hover') {
+      setShow(false);
+    }
+  }, [trigger, setShow]);
+
   const handleClickTriggerButton = useCallback((e: any) => {
     e.stopPropagation();
     if (trigger === 'click') {
@@ -46,7 +52,7 @@ export function Dropdown (props: DropdownProps) {
   }, [setHidEvent, show, trigger]);
 
   return (
-    <DropdownContainer onMouseOver={handleMouseOver}>
+    <DropdownContainer onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <div className="content" onClick={handleClickTriggerButton}>{children}</div>
       <div className={cls('overlay', {
         show,

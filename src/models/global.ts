@@ -1,6 +1,7 @@
 import { FlowStatus, Gender, Group, Qualification, Role, UserInfo } from '../data/user';
 import type { Model } from './types';
 import { fetchUserInfo } from '@src/api/fetchUserInfo';
+import { clearAccessToken } from '@src/api/token';
 
 export interface GlobalState {
   userInfo: UserInfo;
@@ -40,6 +41,15 @@ const model: Model<GlobalState> = {
         },
       };
     },
+    clearUserInfo(state = initState) {
+      clearAccessToken();
+      console.log('log out');
+
+      return {
+        ...state,
+        userInfo: initState.userInfo,
+      };
+    },
   },
   effects: {
     * getUserInfo(_, { put }) {
@@ -47,6 +57,11 @@ const model: Model<GlobalState> = {
       yield put({
         type: 'setUserInfo',
         payload: res,
+      });
+    },
+    * logout(_, { put }) {
+      yield put({
+        type: 'clearUserInfo',
       });
     },
   },

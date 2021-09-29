@@ -1,4 +1,4 @@
-import { LocalStorageKeys } from '@src/common/LocalStorageKeys';
+import { setAccessToken, getAccessToken } from '../token';
 import type { HttpInstance, RequestInterceptor, ResponseInterceptor } from './request';
 import { baseHttpFactory } from './request';
 
@@ -66,14 +66,4 @@ const httpResponseInterceptorFactory = () => {
   };
 
   return [onFulfilled, onRejected] as ResponseInterceptor;
-};
-
-const getAccessToken = (): Promise<string> => {
-  // TODO: 有关 accessToken
-  const token = localStorage.getItem(LocalStorageKeys.A_TOKEN);
-  return Promise.resolve(token || '');
-};
-
-const setAccessToken = (token: string) => {
-  localStorage.setItem(LocalStorageKeys.A_TOKEN, token);
 };

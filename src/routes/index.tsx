@@ -12,6 +12,7 @@ import { NotFoundContainer } from '@src/routes/styles';
 export interface RouteChangeParams {
   path: string;
   query?: Record<string, string>;
+  refresh?: boolean;
 }
 
 // 后面由于有可能出现携带参数什么的，所以这里先封装
@@ -20,10 +21,16 @@ export const useRouter = () => {
 
   return useMemo(() => {
     return {
-      push ({ path }: RouteChangeParams) {
+      push ({ path, refresh }: RouteChangeParams) {
+        if (refresh) {
+          location.href = path;
+        }
         history.push(path);
       },
-      replace ({ path }: RouteChangeParams) {
+      replace ({ path, refresh }: RouteChangeParams) {
+        if (refresh) {
+          location.href = path;
+        }
         history.replace(path);
       },
     };
