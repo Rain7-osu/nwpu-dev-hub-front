@@ -23,6 +23,11 @@ export const BaseButton = styled.button`
       cursor: not-allowed;
     }
   }
+  
+  &.link {
+    background: none;
+    color: var(--base_orange);
+  }
 
   &.default {
     background-color: #fff;

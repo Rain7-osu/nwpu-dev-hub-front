@@ -1,5 +1,6 @@
 import { FlowStatus, Gender, Group, Qualification, Role, UserInfo } from '../data/user';
 import type { Model } from './types';
+import { fetchUserInfo } from '@src/api/fetchUserInfo';
 
 export interface GlobalState {
   userInfo: UserInfo;
@@ -7,6 +8,7 @@ export interface GlobalState {
 
 export const initState: GlobalState = {
   userInfo: {
+    id: -1,
     username: '',
     email: '',
     role: Role.USER,
@@ -40,8 +42,19 @@ const model: Model<GlobalState> = {
     },
   },
   effects: {
-    * getUserInfo() {
-      // TODO: fetch user info
+    * getUserInfo(_, { put }) {
+      const res: UserInfo = yield fetchUserInfo();
+      yield put({
+        type: 'setUserInfo',
+        payload: res,
+      });
+    },
+  },
+  subscriptions: {
+    setup({ dispatch }) {
+      dispatch({
+        type: 'getUserInfo',
+      });
     },
   },
 };

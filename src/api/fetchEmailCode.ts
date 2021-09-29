@@ -1,5 +1,5 @@
 import { Intention } from '../pages/JoinUs/Register';
-import { IResponse } from './base/types';
+import { IResponse } from './core/types';
 import { http } from './http';
 
 export interface FetchEmailCodeParams {

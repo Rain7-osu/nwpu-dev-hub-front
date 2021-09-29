@@ -7,6 +7,7 @@ import Menu from '../../components/Menu';
 import routes from '../RouterConfig';
 import { HamburgerButton } from '@src/components/HamburgerButton';
 import { Container, DefaultContainer, MobileContainer, NavWrapper } from './styles';
+import { NavRight } from '@src/routes/Navigator/NavRight';
 
 export const Navigator = memo(() => {
   const { pathname } = useLocation();
@@ -14,7 +15,7 @@ export const Navigator = memo(() => {
     <>
       {routes.map(({ title, path }) => {
         // login 的另作处理
-        if (typeof path !== 'string' || path === '/login') {
+        if (typeof path !== 'string') {
           return null;
         }
 
@@ -47,7 +48,7 @@ export const Navigator = memo(() => {
             </Menu>
           </div>
           <div className="right-user">
-            <NavLink to="/user/login">点击登录</NavLink>
+            <NavRight />
           </div>
         </NavWrapper>
       </DefaultContainer>

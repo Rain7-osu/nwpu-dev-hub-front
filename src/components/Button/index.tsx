@@ -1,11 +1,12 @@
 import React, { BaseSyntheticEvent, useCallback } from 'react';
+import { useHistory } from 'react-router';
 import cls from 'classnames';
 import { CSSProperties } from 'styled-components';
 import { BaseButton } from './style';
 
 export interface ButtonProps {
   children?: string;
-  type?: 'danger' | 'warning' | 'default' | 'primary';
+  type?: 'danger' | 'warning' | 'default' | 'primary' | 'link';
   onClick?: (e: BaseSyntheticEvent) => void;
   style?: CSSProperties;
   disabled?: boolean;
@@ -28,13 +29,15 @@ export function Button (props: ButtonProps) {
     link,
   } = props;
 
+  const history = useHistory();
+
   const handleClick = useCallback((e) => {
     if (onClick) {
       onClick(e);
     } else if (link) {
-      location.href = link;
+      history.push(link);
     }
-  }, [link, onClick]);
+  }, [history, link, onClick]);
 
   return (
     <BaseButton

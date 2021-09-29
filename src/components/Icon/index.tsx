@@ -6,19 +6,18 @@ import { Container } from './styles';
 export interface IconProps {
   type: string;
   alt?: string;
-  width?: number;
-  height?: number;
   size?: number;
   className?: string;
 }
 
 const keys = Object.keys(iconMap);
 
+// 暂时这么写，后面等全部迁移到 icon-font 后修改
 export function Icon(props: IconProps) {
-  const { alt, type, width, height, className, size } = props;
+  const { alt, type, className, size } = props;
 
   return (
-    <Container className={className} width={width} height={height} size={size}>
+    <Container className={className} size={size}>
       {
         keys.includes(type)
           ? <img alt={alt || type} src={type in iconMap ? iconMap[type] : ''} />

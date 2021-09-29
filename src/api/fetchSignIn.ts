@@ -1,7 +1,7 @@
 import { Group } from '../data/user';
 import { encrypt } from '../utils/encrypt';
 import { http } from './http';
-import { IResponse } from './base/types';
+import { IResponse } from './core/types';
 
 export interface SignInFormData {
   username: string;

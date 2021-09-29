@@ -6,7 +6,7 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 // @ts-ignore
 import { proxyUrl, buildTarget } from './config.json';
 
-declare const process;
+declare const process: any;
 
 const mode = process.env.NODE_ENV;
 
@@ -26,6 +26,7 @@ export default defineConfig(() => {
     build: {
       outDir: buildTarget || 'dist',
       assetsInlineLimit: 4096,
+      sourcemap: true,
     },
     mode,
     resolve: {

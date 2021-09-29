@@ -1,5 +1,6 @@
 import type { EffectsMapObject, SubscriptionsMapObject } from 'dva';
 import type { Action } from 'redux';
+import { GlobalState } from '@src/models/global';
 
 export type Reducer<S, A> = (prevState: S, action: A) => S;
 
@@ -17,4 +18,8 @@ export interface Model<State = any, Payload = any> {
   };
   effects?: EffectsMapObject;
   subscriptions?: SubscriptionsMapObject;
+}
+
+export interface RootState {
+  global: GlobalState;
 }

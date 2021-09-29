@@ -76,6 +76,13 @@ export enum Qualification {
   UNKNOWN = -1,
 }
 
+export const QualificationName: Record<Qualification, string> = {
+  [Qualification.DOCTOR]: '博士',
+  [Qualification.MASTER]: '硕士',
+  [Qualification.UNDERGRADUATE]: '本科',
+  [Qualification.UNKNOWN]: '未知学历',
+};
+
 export enum Group {
   APP = 0,
   WEB = 1,
@@ -85,7 +92,17 @@ export enum Group {
   UNKNOWN = -1,
 }
 
+export const GroupName: Record<Group, string> = {
+  [Group.APP]: 'APP组',
+  [Group.UI]: 'UI组',
+  [Group.WEB]: '网页组',
+  [Group.MINI]: '小程序组',
+  [Group.OPERATE]: '运营组',
+  [Group.UNKNOWN]: '未知组别',
+};
+
 export interface UserInfo {
+  id?: number;
   username?: string;
   email?: string;
   role?: Role;

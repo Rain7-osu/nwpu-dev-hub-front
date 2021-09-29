@@ -74,7 +74,7 @@ export const Routes = () => {
     <BrowserRouter>
       <RouterListener/>
       <Switch>
-        <Route path="/auth" component={User} />
+        <Route path="/user" component={User} />
         <Route path="/" render={() => {
           return (
             <React.Fragment>

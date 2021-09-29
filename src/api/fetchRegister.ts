@@ -1,5 +1,5 @@
 import { http } from './http';
-import { IResponse } from './base/types';
+import { IResponse } from './core/types';
 
 export interface RegisterFormData {
   name: string;

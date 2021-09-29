@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const AuthContainer = styled.div`
-  transition: all .3s ease;
   
   .auth-form {
     margin: 400px auto;
@@ -76,7 +75,7 @@ export const AuthContainer = styled.div`
   }
 `;
 
-export const BaseContainer = styled.section`
+export const BaseFormContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: stretch;

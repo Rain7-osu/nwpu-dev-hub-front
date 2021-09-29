@@ -1,17 +1,26 @@
 import { encrypt } from '../utils/encrypt';
 import { login } from './http';
-import { IResponse } from '@src/api/base/types';
+import { IResponse } from '@src/api/core/types';
+import { Group, Role } from '@src/data/user';
 
 export interface LoginFormData {
   username: string;
   password: string;
 }
 
+export interface LoginResponseData {
+  username: string,
+  role: Role,
+  email: string,
+  groupId: Group | null,
+  avatar: string | null,
+}
+
 export const fetchLogin = async ({
   username,
   password,
 }: LoginFormData) => {
-  const res = await login.post<IResponse<null>>('/api/user/login', {
+  const res = await login.post<IResponse<LoginResponseData>>('/api/user/login', {
     username,
     password: encrypt(password),
   });
@@ -19,4 +28,6 @@ export const fetchLogin = async ({
   if (!res?.flag) {
     throw res.message;
   }
+
+  return res.data;
 };

@@ -1,5 +1,5 @@
 import { http } from '@src/api/http';
-import { IResponse } from '@src/api/base/types';
+import { IResponse } from '@src/api/core/types';
 
 export interface EmailCodeFormData {
   email: string;
