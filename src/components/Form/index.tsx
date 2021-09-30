@@ -96,6 +96,7 @@ export function FormItem(props: FormItemProps) {
           onInput={handleInput}
           onBlur={handleInputBlur}
           htmlType={htmlType}
+          required={required}
         />
       );
 

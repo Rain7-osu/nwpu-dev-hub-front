@@ -16,6 +16,7 @@ export interface InputProps {
   readonly?: boolean;
   name?: string;
   htmlType?: InputTypes;
+  required?: boolean;
 }
 
 export function Input (props: InputProps) {
@@ -29,6 +30,7 @@ export function Input (props: InputProps) {
     onChange,
     readonly = false,
     htmlType,
+    required,
   } = props;
 
   return (
@@ -44,6 +46,7 @@ export function Input (props: InputProps) {
         onFocus={onFocus}
         onChange={onChange}
         type={htmlType}
+        required={required}
       />
     </InputContainer>
   );
