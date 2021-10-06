@@ -68,6 +68,15 @@ export const MemberInfo = styled.div`
     font-size: 36px;
     color: var(--base_orange);
     padding: 20px;
+    
+    .username {
+      margin-right: 40px;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
   }
   
   .icon-info {
@@ -80,4 +89,9 @@ export const MemberInfo = styled.div`
       font-size: 16px;
     }
   }
+`;
+
+export const FlowContainer = styled.div`
+  margin-left: -40px;
+  margin-top: 40px;
 `;

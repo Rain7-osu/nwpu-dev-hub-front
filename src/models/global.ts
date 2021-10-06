@@ -53,10 +53,14 @@ const model: Model<GlobalState> = {
   },
   effects: {
     * getUserInfo(_, { put }) {
-      const res: UserInfo = yield fetchUserInfo();
+      const res = yield fetchUserInfo();
+      const userInfo: UserInfo = {
+        ...res,
+        group: res.groupId,
+      };
       yield put({
         type: 'setUserInfo',
-        payload: res,
+        payload: userInfo,
       });
     },
     * logout(_, { put }) {

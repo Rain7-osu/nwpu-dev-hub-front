@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { ImgKeys } from '../../imgKeys';
+import { ImgKeys } from '@src/imgKeys';
 import { NewsContainer, HubNewsContainer } from './styles';
 
 interface NewItem {

@@ -110,7 +110,7 @@ export function FormItem(props: FormItemProps) {
 
   return (
     <Container className={className} style={style}>
-      {labelPlacement === 'top' && <Label>{required && <RequiredTag />} {label}</Label>}
+      {labelPlacement === 'top' && label && <Label>{required && <RequiredTag />} {label}</Label>}
       {labelPlacement === 'top' && base}
       {labelPlacement === 'top' && errMessage}
       {labelPlacement === 'left' && (

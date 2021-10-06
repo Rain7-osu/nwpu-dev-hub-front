@@ -1,0 +1,57 @@
+.ndd-step-container {
+  flex: 1;
+
+  .ndd-step-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .ndd-step-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--base_gray_color);
+      margin-left: 62px;
+    }
+
+    .ndd-step-title {
+      margin-top: 20px;
+      font-size: 16px;
+      max-width: 140px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+  }
+}
+
+.ndd-step-container:not(:last-child) {
+  .ndd-step-wrapper {
+    .ndd-step-tail {
+      position: absolute;
+      margin-left: 50%;
+      top: -2px;
+      width: 100%;
+
+      &::after {
+        height: 3px;
+        background-color: var(--base_gray_color);
+        width: calc(100% - 30px);
+        left: 0;
+        content: "";
+        display: inline-block;
+        margin-left: 12px;
+      }
+    }
+  }
+
+  &.finished .ndd-step-wrapper .ndd-step-tail::after {
+    background-color: var(--base_green);
+  }
+
+  &.finished .ndd-step-wrapper .ndd-step-icon, &.processing .ndd-step-wrapper .ndd-step-icon {
+    background-color: var(--base_green);
+  }
+}

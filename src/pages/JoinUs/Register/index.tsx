@@ -51,8 +51,7 @@ interface IntentionItemProps {
 }
 
 const groupIconProps = {
-  width: 80,
-  height: 80,
+  size: 80,
 };
 
 const IntentionItem = (props: IntentionItemProps) => {
@@ -405,10 +404,10 @@ export const Register = memo(() => {
     return (
       <GenderContainer>
         <div className="gender-wrapper" onClick={handleSelectMan}>
-          <Icon width={ICON_SIZE} height={ICON_SIZE} type={genderSelectedIndex === 0 ? 'man': 'man_gray'} />
+          <Icon size={ICON_SIZE} type={genderSelectedIndex === 0 ? 'man': 'man_gray'} />
         </div>
         <div className="gender-wrapper" onClick={handleSelectWoman}>
-          <Icon width={ICON_SIZE} height={ICON_SIZE} type={genderSelectedIndex === 1 ? 'woman': 'woman_gray'} />
+          <Icon size={ICON_SIZE} type={genderSelectedIndex === 1 ? 'woman': 'woman_gray'} />
         </div>
       </GenderContainer>
     );
@@ -556,7 +555,7 @@ export const Register = memo(() => {
         </FormRow>
         <FormRow align="center">
           <Button
-            type="warning"
+            type="primary"
             style={{ width: 140 }}
             onClick={handleSubmit}
           >
