@@ -7,7 +7,7 @@ import { IconInfo, IconInfoProps } from '@src/pages/User/Info/IconInfo';
 import { FlowContainer, InfoContainer, MainContent, MemberInfo, TopBanner, TopLogo, TopTitle } from './styles';
 import { InfoCard } from './InfoCard';
 import { Step, Steps } from '@src/components/Steps';
-import { LevelTag } from '@src/pages/User/Info/LevelTag';
+import { LevelTag } from '@src/components/LevelTag';
 
 export const Info = () => {
   const {

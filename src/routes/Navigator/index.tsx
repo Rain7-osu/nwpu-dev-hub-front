@@ -25,6 +25,9 @@ export const Navigator = memo(() => {
           </Menu.Item>
         );
       })}
+      <Menu.Item>
+        <NavRight />
+      </Menu.Item>
     </>
   );
 
