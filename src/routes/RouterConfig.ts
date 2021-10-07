@@ -20,9 +20,10 @@ const routes: RoutesConfig = [
 ];
 
 export const userRoutes: RoutesConfig = [
-  { path: '/user/:userId', component: Info, title: '个人中心', exact: false, regex: /^\/user\/info\/\d+$/ },
+  { path: '/user/:userId/info', component: Info, title: '个人中心', exact: false, regex: /^\/user\/\d+\/info$/ },
   { path: '/user/login', component: Login, title: '登录', exact: true, regex: /^\/user\/login$/ },
   { path: '/user/register', component: Register, title: '注册', exact: true, regex: /^\/user\/register$/ },
+  { path: '/user/reset-pwd', component: Register, title: '修改密码', exact: true, regex: /^\/user\/reset-pwd$/ },
 ];
 
 export default routes;

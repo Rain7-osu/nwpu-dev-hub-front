@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useRef, useState } from 'react';
 import { useRouter } from '@src/routes';
 import { modal } from '@src/components/Modal';
-import { fetchEmailCodeSignIn } from '@src/api/fetchEmailCodeSignIn';
 import { Form } from '@src/components/Form';
 import { Icon } from '@src/components/Icon';
 import regex from '@src/utils/regex';
@@ -9,6 +8,7 @@ import { Button } from '@src/components/Button';
 import { BaseFormContainer } from '../style';
 import { LoginContainer } from '@src/pages/User/LoginContainer';
 import { fetchResetPassword, FetchResetPasswordFormData } from '@src/api/fetchResetPassword';
+import { fetchEmailCodeResetPassword } from '@src/api/fetchEmailCodeResetPassword';
 
 const WAITING_TIME = 60;
 
@@ -72,7 +72,7 @@ export const ResetPassword = memo(() => {
 
     try {
       isGettingCode.current = true;
-      await fetchEmailCodeSignIn({ email });
+      await fetchEmailCodeResetPassword({ email });
       doWaiting();
 
       modal.show({
