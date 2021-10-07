@@ -9,7 +9,7 @@ import { JoinUsContainer, EndRegisterContainer } from './styles';
 const END_TIME = '2021-9-24 0.00';
 
 export const JoinUsMain = memo(() => {
-  const canRegister = (dayjs().valueOf() - dayjs(END_TIME).valueOf()) <= 0 || true;
+  const canRegister = (dayjs().valueOf() - dayjs(END_TIME).valueOf()) <= 0;
 
   return (
     <JoinUsContainer>

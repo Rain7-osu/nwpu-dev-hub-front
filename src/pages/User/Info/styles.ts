@@ -94,4 +94,8 @@ export const MemberInfo = styled.div`
 export const FlowContainer = styled.div`
   margin-left: -40px;
   margin-top: 40px;
+  
+  @media screen and (max-width: 540px) {
+    display: none;
+  }
 `;

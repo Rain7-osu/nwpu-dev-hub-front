@@ -22,6 +22,12 @@ function Item (props: MenuItemProps) {
   );
 }
 
+function Divider() {
+  return (
+    <li className="menu-item-divider" />
+  );
+}
+
 export interface MenuProps {
   children: ReactNode;
   extClass?: string;
@@ -57,5 +63,6 @@ function Menu (props: MenuProps) {
 }
 
 Menu.Item = Item;
+Menu.Divider = Divider;
 
 export default Menu;

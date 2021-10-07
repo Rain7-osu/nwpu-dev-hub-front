@@ -8,6 +8,7 @@ import routes from '../RouterConfig';
 import { HamburgerButton } from '@src/components/HamburgerButton';
 import { Container, DefaultContainer, MobileContainer, NavWrapper } from './styles';
 import { NavRight } from '@src/routes/Navigator/NavRight';
+import { MobileNavBottom } from '@src/routes/Navigator/MobileNavBottom';
 
 export const Navigator = memo(() => {
   const { pathname } = useLocation();
@@ -25,9 +26,6 @@ export const Navigator = memo(() => {
           </Menu.Item>
         );
       })}
-      <Menu.Item>
-        <NavRight />
-      </Menu.Item>
     </>
   );
 
@@ -37,7 +35,12 @@ export const Navigator = memo(() => {
         <DevhubLogo size="small" type="default"/>
         <Dropdown
           placement="bottom-right"
-          overlay={<Menu>{links}</Menu>}
+          overlay={
+            <Menu>
+              {links}
+              <MobileNavBottom />
+            </Menu>
+          }
         >
           <HamburgerButton/>
         </Dropdown>

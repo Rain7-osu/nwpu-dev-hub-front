@@ -12,7 +12,7 @@ export const IconInfo = (props: IconInfoProps) => {
   return (
     <IconInfoContainer>
       <div className="icon">
-        <Icon type={icon} size={80} />
+        <Icon type={icon} size={64} />
       </div>
       <div className="title">
         {title}
