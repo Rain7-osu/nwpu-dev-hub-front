@@ -1,4 +1,3 @@
-import { fetchSignIn, SignInFormData } from '@src/api/fetchSignIn';
 import React, { memo, useCallback, useRef, useState } from 'react';
 import { useRouter } from '@src/routes';
 import { modal } from '@src/components/Modal';
@@ -9,14 +8,15 @@ import regex from '@src/utils/regex';
 import { Button } from '@src/components/Button';
 import { BaseFormContainer } from '../style';
 import { LoginContainer } from '@src/pages/User/LoginContainer';
+import { fetchResetPassword, FetchResetPasswordFormData } from '@src/api/fetchResetPassword';
 
 const WAITING_TIME = 60;
 
-interface FormData extends SignInFormData {
+interface FormData extends FetchResetPasswordFormData {
   ['confirm-password']: string;
 }
 
-export const SignIn = memo(() => {
+export const ResetPassword = memo(() => {
   const router = useRouter();
 
   const [password, setPassword] = useState<string>('');
@@ -34,10 +34,10 @@ export const SignIn = memo(() => {
 
     try {
       isSignInIng.current = true;
-      const { username, password, code, email } = data;
-      await fetchSignIn({ username, password, code, email });
+      const { email, newPassword, code } = data;
+      await fetchResetPassword({ email, newPassword, code });
       modal.show({
-        title: '注册成功',
+        title: '修改成功',
         content: '点击确认返回登录',
         onOk() {
           router.push({ path: '/user/login' });
@@ -47,7 +47,7 @@ export const SignIn = memo(() => {
       isSignInIng.current = false;
     } catch (err) {
       modal.show({
-        title: '注册失败',
+        title: '修改失败',
         content: String(err),
       });
       isSignInIng.current = false;
@@ -97,44 +97,13 @@ export const SignIn = memo(() => {
     <LoginContainer>
       <BaseFormContainer>
         <div className="form-picture">
-          <img alt="login-pic" src={findSrc('/assets/signup_pic.jpg')} />
+          <img alt="login-pic" src={findSrc('/assets/changepswd_pic.jpg')} />
         </div>
         <div className="form-container">
           <Form<FormData>
-            name="signin-form"
+            name="reset-password"
             onSubmit={handleSubmit}
           >
-            <Form.Item
-              label={<Icon className="icon-class" type="user" />}
-              labelPlacement="left"
-              className="only-bottom-border"
-              name="username"
-              validator={(value) => typeof value === 'string' && regex.username.test(value)}
-              errMsg="请输入用户名！"
-              placeholder="请输入用户名"
-            />
-            <Form.Item
-              label={<Icon className="icon-class" type="password" />}
-              labelPlacement="left"
-              className="only-bottom-border"
-              name="password"
-              htmlType="password"
-              onChange={(value) => setPassword(String(value))}
-              validator={(value) => typeof value === 'string' && regex.password.test(password)}
-              errMsg="密码至少包括一个英文字符和数字，可以使用~!@#$%^&*_+=-符号！"
-              placeholder="请输入密码!"
-            />
-            <Form.Item
-              label={<Icon className="icon-class" type="password" />}
-              labelPlacement="left"
-              className="only-bottom-border"
-              name="confirm-password"
-              htmlType="password"
-              onChange={(value) => setCpassword(String(value))}
-              validator={(value) => typeof value === 'string' && cpassword === password}
-              errMsg="两次输入的密码不一致"
-              placeholder="请再次输入密码"
-            />
             <Form.Item
               label={<Icon className="icon-class" type="email" />}
               labelPlacement="left"
@@ -167,7 +136,29 @@ export const SignIn = memo(() => {
               </Button>
             </div>
             <Form.Item
-              render={<Button extClass="login-button" block htmlType="submit">注册</Button>}
+              label={<Icon className="icon-class" type="password" />}
+              labelPlacement="left"
+              className="only-bottom-border"
+              name="newPassword"
+              htmlType="password"
+              onChange={(value) => setPassword(String(value))}
+              validator={(value) => typeof value === 'string' && regex.password.test(password)}
+              errMsg="密码至少包括一个英文字符和数字，可以使用~!@#$%^&*_+=-符号！"
+              placeholder="请输入密码!"
+            />
+            <Form.Item
+              label={<Icon className="icon-class" type="password" />}
+              labelPlacement="left"
+              className="only-bottom-border"
+              name="confirm-password"
+              htmlType="password"
+              onChange={(value) => setCpassword(String(value))}
+              validator={(value) => typeof value === 'string' && cpassword === password}
+              errMsg="两次输入的密码不一致"
+              placeholder="请再次输入密码"
+            />
+            <Form.Item
+              render={<Button extClass="login-button" block htmlType="submit">确认</Button>}
             />
           </Form>
           <div className="bottom-link">
@@ -179,4 +170,4 @@ export const SignIn = memo(() => {
   );
 });
 
-SignIn.displayName = 'SignIn';
+ResetPassword.displayName = 'SignIn';

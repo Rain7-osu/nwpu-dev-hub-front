@@ -57,6 +57,7 @@ export const Login = memo(() => {
           </Form>
           <div className="bottom-link">
             <Button type="link" link="/user/register">没有账号？去注册</Button>
+            <Button type="link" link="/user/reset-pwd">忘记密码</Button>
           </div>
         </div>
       </BaseFormContainer>
