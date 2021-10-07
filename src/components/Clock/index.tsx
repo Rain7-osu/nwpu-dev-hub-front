@@ -29,7 +29,7 @@ const Timer = (props: TimerProps) => {
   const [sec, setSec] = useState(0);
 
   useEffect(() => {
-    let timer: number | null = null;
+    let timer: any;
     if (type === 'deadline') {
       let duration = parseInt(dayjs(date).diff(dayjs()) / 1000 + '');
       let tday = parseInt(duration / DAY + '');
