@@ -1,5 +1,6 @@
 import { Intention } from '../pages/JoinUs/Register';
-import { IResponse, request } from './base/request';
+import { IResponse } from './core/types';
+import { http } from './http';
 
 export interface FetchEmailCodeParams {
   email: string;
@@ -12,10 +13,11 @@ export async function fetchEmailCode({
   name,
   willGroup,
 }: FetchEmailCodeParams) {
-  const res = await request.post<IResponse<null>>(`/api/applicant/email/${email}`, {} ,{
+  const res = await http.post<IResponse<null>>(`/api/applicant/email/${email}`, {
     name,
     willGroup,
   });
+
   if (res?.flag) {
     return res?.data || {};
   } else {

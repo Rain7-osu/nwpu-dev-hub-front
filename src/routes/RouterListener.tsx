@@ -1,6 +1,6 @@
 import { memo, useEffect } from 'react';
 import { useLocation } from 'react-router';
-import routes from './RouterConfig';
+import routes, { userRoutes } from './RouterConfig';
 
 export const RouterListener = memo(() => {
   const { pathname } = useLocation();
@@ -13,10 +13,8 @@ export const RouterListener = memo(() => {
     // 切换路由后，回到顶部
     document.documentElement.scrollTop = document.body.scrollTop = 0;
 
-    routes.forEach(({ title, path }) => {
+    [...routes, ...userRoutes].forEach(({ title, path, regex }) => {
       if (typeof path === 'string') {
-        const regex = new RegExp(path);
-
         if (regex.test(pathname)) {
           document.title = title;
         }

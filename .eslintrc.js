@@ -72,6 +72,7 @@ module.exports = {
     'react/jsx-props-no-multi-spaces': ['error'],
     '@typescript-eslint/no-explicit-any': ['off'],
     'import-order/import-order': ['error'],
+    'prefer-destructuring': ['error'],
   },
   'settings': {
     'react': {

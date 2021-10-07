@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { BaseInput } from '../Form/BaseInput';
+import { Input } from '../Form/Input';
 import { Dropdown } from '../Dropdown';
 import { Option } from './Option';
 
@@ -43,7 +43,7 @@ export function Selector(props: SelectorProps) {
   }, [onChange, options, selectedIndex]);
   return (
     <Dropdown overlay={dropdown} enableScrollBar >
-      <BaseInput value={value} readonly />
+      <Input value={value} readonly />
     </Dropdown>
   );
 }

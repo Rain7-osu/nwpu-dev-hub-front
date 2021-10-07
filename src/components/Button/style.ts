@@ -1,8 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const disabled = css`
+  &[disabled] {
+    background-color: var(--base_gray_light);
+    color: var(--base_gray_color);
+  }
+`;
 
 export const BaseButton = styled.button`
   padding: 5px 10px;
   font-size: 16px;
+  transition: all .3s ease;
+  
+  &.ndd-btn-block {
+    width: 100%;
+  }
 
   &:hover {
     cursor: pointer;
@@ -11,66 +23,40 @@ export const BaseButton = styled.button`
       cursor: not-allowed;
     }
   }
+  
+  &.link {
+    background: none;
+    color: var(--base_orange);
+  }
 
   &.default {
     background-color: #fff;
-    border: 1px solid #e9e9e9;
-    color: #444;
-
-    &[disabled] {
-      background-color: darkgray;
-    }
+    border: 1px solid var(--base_orange3);
+    color: var(--base_orange);
+    
+    ${disabled};
 
     &:hover {
-      background-color: #e9e9e9;
+      background-color: var(--base_orange3);
 
-      &[disabled] {
-        background-color: darkgray;
-      }
-    }
-  }
-
-  &.warning {
-    background-color: #f48617;
-    border: 1px solid #f48617;
-    color: #fff;
-
-    &[disabled] {
-      background-color: darkgray;
-    }
-
-    &:hover {
-      background-color: #e57f15;
-
-      &[disabled] {
-        background-color: darkgray;
-      }
-    }
-
-    &:active {
-      background-color: #d07313;
+      ${disabled};
     }
   }
 
   &.primary {
-    background-color: deepskyblue;
-    border: 1px solid deepskyblue;
+    background-color: var(--base_orange);
     color: #fff;
 
-    &[disabled] {
-      background-color: darkgray;
-    }
+    ${disabled};
 
     &:hover {
-      background-color: skyblue;
+      background-color: var(--base_orange2);
 
-      &[disabled] {
-        background-color: darkgray;
-      }
+      ${disabled};
     }
 
     &:active {
-      background-color: lightblue;
+      background-color: var(--base_orange1);
     }
   }
 `;

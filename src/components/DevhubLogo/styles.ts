@@ -94,13 +94,20 @@ export const DevhubWrapper = styled.div`
   }
   
   img.large {
+    height: 80px;
+    width: 320px;
+    background-position: center;
   }
   
   img.normal {
-    max-width: 250px;
+    height: 60px;
+    width: 260px;
+    background-position: center;
   }
   
   img.small {
-    max-width: 180px;
+    height: 40px;
+    width: 180px;
+    background-position: center;
   }
 `;

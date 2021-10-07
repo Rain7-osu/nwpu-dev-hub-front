@@ -7,7 +7,7 @@ export interface BaseTextareaProps {
   maxLength?: number;
 }
 
-export function BaseTextarea (props: BaseTextareaProps) {
+export function Textarea (props: BaseTextareaProps) {
   const { value, onInput, maxLength } = props;
   const [count, setCount] = useState<number>(0);
 

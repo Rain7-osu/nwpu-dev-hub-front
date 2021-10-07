@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
+import { ImgKeys } from '@src/imgKeys';
 import { NewsContainer, HubNewsContainer } from './styles';
-import { ImgKeys } from '../../imgKeys';
 
 interface NewItem {
   avatar: string;

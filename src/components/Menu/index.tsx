@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { BaseSyntheticEvent, CSSProperties, ReactNode } from 'react';
 import './styles.less';
 import cls from 'classnames';
 
@@ -7,17 +7,24 @@ export interface MenuItemProps {
   style?: CSSProperties;
   extClass?: string;
   active?: boolean;
+  onClick?: (e: BaseSyntheticEvent) => void;
 }
 
 function Item (props: MenuItemProps) {
-  const { children, style, extClass = '', active = false } = props;
+  const { children, style, extClass = '', active = false, onClick } = props;
 
   return (
-    <li className={cls('menu-item', { active })}>
+    <li className={cls('menu-item', { active })} onClick={onClick}>
       <div className={cls('menu-item-wrapper', extClass)} style={style}>
         {children}
       </div>
     </li>
+  );
+}
+
+function Divider() {
+  return (
+    <li className="menu-item-divider" />
   );
 }
 
@@ -56,5 +63,6 @@ function Menu (props: MenuProps) {
 }
 
 Menu.Item = Item;
+Menu.Divider = Divider;
 
 export default Menu;

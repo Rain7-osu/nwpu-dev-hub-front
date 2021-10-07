@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
-export const Container = styled.div<{ width?: number; height?: number }>`
-  width: ${props => props.width || 24 }px;
-  height: ${props => props.height || 24}px;
+export const Container = styled.div<{
+  size?: number;
+}>`
+  width: ${props => props.size || 24 }px;
+  height: ${props => props.size || 24}px;
+  font-size: ${props => props.size || 24}px;
   display: flex;
   justify-content: center;
   align-items: center;

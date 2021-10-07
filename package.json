@@ -12,8 +12,11 @@
     "lint-fix": "eslint src --fix"
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.7",
+    "dva": "^2.6.0-beta.21",
+    "history": "^5.0.1",
     "qs": "^6.10.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
@@ -22,12 +25,16 @@
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/dva": "^1.1.0",
+    "@types/node": "^16.10.0",
     "@types/qs": "^6.9.7",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router": "^5.1.16",
     "@types/react-router-dom": "^5.1.8",
     "@types/react-syntax-highlighter": "^13.5.2",
+    "@types/redux": "^3.6.0",
     "@types/styled-components": "^5.1.14",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",

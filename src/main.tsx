@@ -1,10 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import dva from 'dva';
+import { createBrowserHistory } from 'history';
+import { Routes } from './routes';
+import models from './models';
+import './reset.css';
+import './index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+const app = dva({
+  history: createBrowserHistory(),
+});
+
+models.forEach((m) => {
+  app.model(m as any);
+});
+
+app.router(Routes);
+
+app.start('#root');

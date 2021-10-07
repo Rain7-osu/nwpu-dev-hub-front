@@ -1,8 +1,13 @@
-import { build, defineConfig } from 'vite';
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
-import { proxyUrl, buildTarget } from './config.json'
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
+import { proxyUrl, buildTarget } from './config.json';
+
+declare const process: any;
+
 const mode = process.env.NODE_ENV;
 
 export default defineConfig(() => {
@@ -21,7 +26,13 @@ export default defineConfig(() => {
     build: {
       outDir: buildTarget || 'dist',
       assetsInlineLimit: 4096,
+      sourcemap: true,
     },
     mode,
-  }
+    resolve: {
+      alias: {
+        '@src': resolve(__dirname, 'src'),
+      },
+    },
+  };
 });

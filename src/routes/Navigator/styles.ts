@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ContentWrapper } from '../../styles';
 
 export const Container = styled.header`
   width: 100%;
@@ -88,11 +87,23 @@ export const DefaultContainer = styled.nav`
   }
 `;
 
-export const NavWrapper = styled(ContentWrapper)`
+export const NavWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  
+  .left-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    height: 60px;
+    
+    > .logo {
+      margin-right: 60px;
+    }
+  }
 `;
