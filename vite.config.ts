@@ -24,9 +24,16 @@ export default defineConfig(() => {
       },
     },
     build: {
+      target: "es2015",
       outDir: buildTarget || 'dist',
       assetsInlineLimit: 4096,
       sourcemap: true,
+      minify: false,
+      commonjsOptions: {
+        transformMixedEsModules: [
+          'node_modules/dva/dist/index.esm.js',
+        ]
+      }
     },
     mode,
     resolve: {
